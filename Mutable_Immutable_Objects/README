@@ -1,0 +1,3 @@
+The mutable objects can be changed to any value or state without adding a new object. Whereas, the immutable
+objects can not be changed to its value or state once it is created. In the case of immutable objects, whenever
+we change the state of the object, a new object will be created.

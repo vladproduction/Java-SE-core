@@ -1,0 +1,14 @@
+In Java, mutable and immutable are terms used to describe the characteristics and behavior of objects.
+
+*Mutable Objects: Mutable objects are those whose state can be modified after they are created.
+This means that you can change their internal data or properties.
+
+*Immutable Objects: Immutable objects, on the other hand, are those whose state cannot be changed after
+they are created. Once an immutable object is created, its internal state is fixed and cannot be modified.
+
+Immutable objects have a number of benefits, including thread-safety, simplifying coding,
+and improving performance in certain scenarios. They ensure that the object's state is consistent throughout
+its lifetime and can be safely shared among different threads without the risk of concurrent modification issues.
+
+It's important to note that the immutability of an object is determined by its class design and not
+by the final keyword used on its fields.
