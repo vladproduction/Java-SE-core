@@ -1,0 +1,14 @@
+In Java, an inner class is a class that is defined within another class. It is also known as a nested class
+because it is placed within the scope of another class.
+
+An inner class has access to the members (variables and methods) of the enclosing class,
+including its private members. This allows for a tighter association and encapsulation between
+the inner class and its outer class. Inner classes can be declared as static or non-static.
+
+An instance of the static inner class can be created using the syntax
+OuterClass.InnerClass innerObj = new OuterClass.InnerClass();,
+without the need for an instance of the outer class.
+
+Inner classes can be useful for organizing and encapsulating related code, improving code readability,
+and achieving better maintainability. They are also commonly used in implementing certain design patterns
+and event handling mechanisms.
