@@ -1,0 +1,10 @@
+In Java, an anonymous class is a class that is declared without explicitly naming it.
+It is commonly used when you want to create a subclass of an existing class or implement an
+interface inline without the need for a separate class declaration.
+
+Anonymous classes are useful in situations where you only need to use the subclass or implementation once
+and don't want to create a separate file or class for it. They provide a compact way to define and
+instantiate a class at the same time.
+
+Typically, anonymous classes are used in scenarios such as event listeners, callback methods,
+or when creating temporary or one-time use objects.
