@@ -1,0 +1,27 @@
+Autoboxing and unboxing are features in Java that provide automatic conversion between primitive types and
+their corresponding wrapper classes (e.g., int and Integer).
+
+Autoboxing is the automatic conversion of a primitive type to its corresponding wrapper class. For example,
+when an int value is assigned to an Integer object, autoboxing automatically converts it from int to Integer:
+
+```java
+int number = 42;
+Integer wrappedNumber = number; // autoboxing
+```
+
+Unboxing, on the other hand, is the automatic conversion of a wrapper class object to its corresponding
+primitive type. It allows you to extract the primitive value from the wrapper class without explicitly
+invoking a method. For example:
+
+```java
+Integer wrappedNumber = 42;
+int number = wrappedNumber; // unboxing
+```
+
+Autoboxing and unboxing provide a convenient way to work with primitives and their corresponding wrapper
+classes without requiring manual conversions. They simplify code and make it more readable by reducing the
+need for explicit conversions between primitive types and wrapper classes.
+
+These features were introduced in Java 5 to improve the compatibility between primitive types and the
+Object-oriented nature of the language. They allow developers to seamlessly switch between primitives and
+their wrapper classes in situations where both are supported.
