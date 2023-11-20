@@ -1,0 +1,32 @@
+DTO-data transfer object
+For objects to transfer from base A to base B, and transferring state of the defined class.
+Class Login(){...}; classic class perform standard blocks;
+-fields are private , encapsulation rule, as well we have to create getters and setters;
+-constructor (the empty one), have to use for serialization, for transferring between places for object;
+and if we have constructor with parameters, the default does`t exist;
+-equals and hashCode: for compare objects, so we have to override them; after useful comparator or other staff;
+'==' compere reference, same class or not, state of the fields;
+hashCode have to override, so after it cold`t happen collision for example in hashMap;
+(Bad example to have public fields in class)
+(Bad practice if we have getters with multiTasks)-should be single responsibility principle;
+SOLID principles:
+*single responsibility;
+*open-closed;
+*Liskov substitution;
+*interface segregation;
+*dependency inversion;
+most important in DTO (single responsibility, open-closed);
+
+mutable/immutable objects in dto regulating by getters and setters;
+actually for making object immutable we have to paste identifier 'final' for the class (cou`t extends) and fields;
+
+for testing we have to add <dependencies>...junit for example
+
+in DTOTest Part-2 we can see how hashMap worked;
+if we put by key some value, and trying to put by same key other value --> in our map it is override by the last
+putted value for that key (so no creating a new obj with same things); map.size() in that case does not rising;
+
+in DTOTest Part-3 created object from class where fields are public, so it does not worked by compare in case of
+equals and hashCode; so it`s possible to put absolutely same instances to our map, because hashCode is not same;
+size = 2, and for keys are respective values;
+
