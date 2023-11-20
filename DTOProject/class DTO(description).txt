@@ -1,0 +1,149 @@
+
+version of DTO by using cmd:
+
+1) java -version //check java version
+2) javac -version //check compiler
+3) C:. \cd Desctop // moove to Desctop folder (C:. --> in subsequent entries --> \)
+4) \mkdir DTOProject //creating folder in Desctop "DTOProject"
+5) \cd DTOProject //moove to DTOProject folder
+6) \dir DTOProject //check current folder is some files ixistig
+7) \tree //check hierarchy of current place in folder
+8) \mkdir sources //creating folder "sources" in DTOProject (folder --> in subsequent entries --> package)
+9) \cd sources
+10) \mkdir com //creating package "com" in "sources"
+11) \cd com
+12) \mkdir entity //creating package "entity" in "com"
+13) \mkdir main //creating package "main" in "com"
+14) \cd main
+15) \copy con (fileName) "Enter" --> possible to write text as in notepad, at the end Ctrl+Z (to save)
+16) // I create by notepad : lets make the file "Main.java" important to have extension ".java"
+17) \inside Main.java have to write:
+	class Main{}
+18) \javac Main.java //compile the Main.java --> now we have at the same location one more file "Main.class" (it is binary code)
+19) \inside Main.java have to write (and save changes):
+	class Main{
+		public static void main(String [] args){
+		System.out.println("Hello World!");
+		}
+	}
+20) \javac Main.java //compile the Main.java again, so new version of Main.class updated
+21) \java Main //now run programm:(we can see in cmd) Hello World! (--> do not need to write .java)
+22)//now we create an example of DTO class in package entity called "User.java" (write inside and save):
+
+	package com.entity; //important to define location of the class
+	import java.util.Objects; //important to have import (other case does not copmpile)
+	public class User {
+    private String login;
+    private String password;
+    private Long timestamp;
+
+    public User(){}
+
+    public User(String login, String password, Long timestamp) {
+        this.login = login;
+        this.password = password;
+        this.timestamp = timestamp;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Long getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Long timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        User user = (User) object;
+        return  Objects.equals(login, user.login) &&
+                Objects.equals(password, user.password) &&
+                Objects.equals(timestamp, user.timestamp);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(login, password, timestamp);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("login = %s, password = %s, timestamp = %d " , login, password, timestamp);
+    }
+}
+23) \cd .. //mooving back on package higher to "com"
+24) \cd entity //jump in "entity"
+25) \javac User.java //compile User.java (User.class created)
+26) //lets create an object from class User in our Main,  (moove back to Main and write):
+	
+	package com.main;
+	import com.entity.User;
+	class Main{
+		public static void main(String [] args){
+			System.out.println("Hello World!");
+			User user1 = new User("login1", "pass1", 20L);
+			System.out.println(user1);
+	}
+}
+27) //now we compile all files in the other combination as it was before: (but first we have to delete all files "*.class")
+	\cd.. --> moove to the root package DTOProject
+28)	in cmd: \javac -d target -sourcepath sources sources/com/main/Main.java //in that case we have:
+	//description:
+	a) -d target - say at what package have to put result of compilation (binary classes .class)
+	b) -sourcepath sources - pointed at which directory have to find files (*.java), marked in import (in file Main.java)
+	c) sources/com/main/Main.java - pointed out concrete file for compilation
+29) //at this stage has been created package "target" in DTOProject with the same structure as in "sources"
+30) \java -cp target com.main.Main // run our programm, we see on console:
+Hello World!
+login = login1, password = pass1, timestamp = 20
+31) //description:
+	a) -cp target - pointed out package to find files(.class) has been created after compilation
+	b) com.main.Main - name of the class "Main" with main() method and with up to package "com.main"
+	
+	
+32) //lets create jar file and start it:
+	a)in package "target" create file (manifest.txt);manifest information we provide we’ll be added to what the jar command generates;
+	in file we write:   Main-Class: com.main.Main //It’s important that we end our manifest file with a newline
+	b)in cmd (in "target"): jar cvfm My.jar manifest.txt .  //after that we have My.jar in current package
+	in cmd we can see:
+	added manifest
+adding: com/(in = 0) (out= 0)(stored 0%)
+adding: com/entity/(in = 0) (out= 0)(stored 0%)
+adding: com/entity/User.class(in = 1573) (out= 757)(deflated 51%)
+adding: com/main/(in = 0) (out= 0)(stored 0%)
+adding: com/main/Main.class(in = 673) (out= 426)(deflated 36%)
+adding: manifest.txt(in = 27) (out= 26)(deflated 3%)
+	c)now we can start our programm via jar-file in cmd (we are in "target"): java -jar My.jar  //start programm (we can see):
+Hello World!
+login = login1, password = pass1, timestamp = 20
+
+***
+open new window cmd:
+
+\java -jar C:..(path to the file)..\Desktop\DTOProject\target\My.jar //"Enter" (we see):
+Hello World!
+login = login1, password = pass1, timestamp = 20
+
+
+	
+
+
+	
