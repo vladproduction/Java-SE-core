@@ -1,0 +1,3 @@
+In shallow copy, only fields of the primitive data type are copied while the objects' references are not copied.
+Deep copy involves the copy of primitive data types as well as to object references. There is no hard and fast rule
+as to when to do shallow copy and when to do a deep copy.
