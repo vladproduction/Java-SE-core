@@ -1,0 +1,25 @@
+1. Abstract class
+1.1 abstract key word
+Class is abstract if it marked with abstract key word
+public abstract class Game
+
+You can not create such class with new:
+Game game = new Game();
+
+You need to create children via extends;
+
+2. abstract method
+Method marked with key word abstract;
+Abstract method can not have body {};
+public abstract void play(){};
+
+Class that has at least 1 abstract method must be abstract
+
+public abstract class MusicInstrument {
+    public abstract void play(){};
+}
+------------------------------------
+Interface - abstract class where only abstract methods exists
+------------------------------------------
+Interface vs Abstract class
+You can implement many interfaces, but extend only 1 class
