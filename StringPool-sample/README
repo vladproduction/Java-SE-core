@@ -1,0 +1,4 @@
+String Pool in Java is a special storage space in Java Heap memory where string literals are stored.
+It is also known by the names - String Constant Pool or String Intern Pool.
+Whenever a string literal is created, the JVM first checks the String Constant Pool
+before creating a new String object corresponding to it.
