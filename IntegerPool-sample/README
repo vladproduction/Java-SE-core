@@ -1,0 +1,4 @@
+Integer constant pool is similar to the String Constant pool in Java. Integer constant pool is
+used to cache frequently used integer objects to increase performance while processing Integers.
+Integer.valueOf(int) method provides the Integer from Integer constant pool (if available) rather than
+creating new object.
