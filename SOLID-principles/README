@@ -1,0 +1,30 @@
+SOLID is an acronym that represents a set of principles for software design and architecture.
+It stands for:
+
+1. Single Responsibility Principle (SRP): This principle states that a class should have only one reason to change.
+It means that each class or module should be responsible for a single task or responsibility.
+
+2. Open-Closed Principle (OCP): According to this principle, software entities should be open for extension but
+closed for modification. It promotes the idea of designing classes and modules in a way that allows them to be easily
+extended without modifying the existing code.
+
+3. Liskov Substitution Principle (LSP): This principle states that objects of a superclass should be replaceable
+with objects of its subclasses without affecting the correctness of the program. It emphasizes the importance of
+following the correct inheritance hierarchy and ensuring that subclasses adhere to the contract defined by the
+superclass.
+
+4. Interface Segregation Principle (ISP): This principle suggests that clients should not be forced to depend on
+interfaces they do not use. It promotes the idea of designing fine-grained interfaces that cater to specific client
+needs instead of having large, monolithic interfaces.
+
+5. Dependency Inversion Principle (DIP): This principle states that high-level modules should not depend on
+low-level modules; instead, they should both depend on abstractions. It encourages the use of interfaces or
+abstract classes to decouple components and enable flexible, interchangeable dependencies.
+
+These principles, when applied together, promote code that is modular, maintainable, and flexible. They help
+in achieving loose coupling, high cohesion, and promoting good software design practices.
+
+In Java, the SOLID principles can be applied by following best practices and using design patterns such as the
+Factory pattern, Dependency Injection, and Interface-based programming.
+These principles provide guidelines that can lead to well-structured and robust Java code.
+

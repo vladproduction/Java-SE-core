@@ -1,0 +1,42 @@
+To understand the Liskov Substitution Principle, we must first understand the Open/Closed Principle
+(the “O” from SOLID).
+
+The goal of the Open/Closed principle encourages us to design our software, so we add new features only
+by adding new code. When this is possible, we have loosely coupled, and thus easily maintainable applications.
+For the Open/Closed Principle to work well, all subtypes must be substitutable for their supertype without
+ever having to modify the client code. Adhering to the Liskov Substitution Principle ensures this
+substitutability.
+
+//Subtypes must be substitutable for their base types.
+
+//If for each object =o1 of type S= there is an object =o2 of type T= such that for all programs P defined in
+terms of T, the behavior of P is unchanged when o1 is substituted for o2 then S is a subtype of T.
+
+To be substitutable, the subtype must behave like its supertype.
+
+To ensure we create well-behaved subtypes we should follow rules/technics:
+
+1)Signature Rule – method argument (the overridden subtype method argument types can be identical or wider
+than the supertype method argument types);
+
+2)Signature Rule – return type (return type of the overridden subtype method can be narrower than the
+return type of the supertype method); This is called covariance of the return types. Covariance indicates
+when a subtype is accepted in place of a supertype. Java supports the covariance of return types.
+
+3)Signature Rule – Exceptions (The subtype method can throw fewer or narrower
+(but not any additional or broader) exceptions than the supertype method); Java’s method overriding rules
+already enforce this rule for checked exceptions.
+
+4)Properties Rule – Class Invariants (The invariants rule states that all subtype methods (inherited and new)
+must maintain or strengthen the supertype’s class invariants);
+
+5)Properties Rule – History Constraint (Similarly, if the base class has an immutable property, the
+subclass should not permit this property to be modified. This is why immutable classes should be final);
+
+6)Methods Rule – Preconditions (A precondition should be satisfied before a method can be executed;
+A subtype can weaken (but not strengthen) the precondition for a method it overrides);
+
+7)Methods Rule – Post-conditions (A post-condition is a condition that should be met after a method is executed);
+Here, the brake method of Car specifies a post-condition that the Car‘s speed must reduce at the end of the method
+execution.  The subtype can strengthen (but not weaken) the post-condition for a method it overrides.
+When a subtype strengthens the post-condition, it provides more than the supertype method.

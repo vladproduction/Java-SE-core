@@ -1,0 +1,3 @@
+Following the SRP principle, our classes will adhere to one functionality.
+Their methods and data will be concerned with one clear purpose. This means high cohesion, as well as robustness,
+which together reduce errors.

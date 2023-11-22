@@ -1,0 +1,5 @@
+The Dependency Inversion Principle (DIP) states that high-level modules should not depend upon low-level modules;
+they should depend on abstractions. Secondly, abstractions should not depend upon details; details should
+depend upon abstractions.
+The DIP is about inverting the classic dependency between high-level and low-level components by abstracting away the
+interaction between them.
