@@ -1,0 +1,13 @@
+•The dictionary definition of polymorphism refers to a
+principle in biology in which an organism or species can
+have many different forms or stages.
+•Subclasses of a class can define their own unique
+behaviors and yet share some of the same functionality
+of the parent class.
+•The Java Virtual Machine (JVM) calls the appropriate
+method for the object that is referred to in each variable.
+•It does not call the method that is defined by the
+variable's type.
+•This behavior is referred to as virtual method invocation
+and demonstrates an aspect of the important
+polymorphism features in the Java language.

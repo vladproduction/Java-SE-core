@@ -1,0 +1,45 @@
+•Object-oriented programming allows classes to inherit
+commonly used state and behavior from other classes.
+•In the Java programming language, each class is
+allowed to have one direct superclass, and each
+superclass has the potential for an unlimited number of
+subclasses.
+•Excepting Object, which has no superclass, every class
+has one and only one direct superclass (single
+inheritance).
+•In the absence of any other explicit superclass, every
+class is implicitly a subclass of Object.
+•Classes can be derived from classes that are derived
+from classes that are derived from classes, and so on,
+and ultimately derived from the topmost class, Object.
+
+The syntax for creating a subclass is simple. At the beginning of
+your class declaration, use the extends keyword, followed by the
+name of the class to inherit from class, every class
+
+The Java programming language supports multiple
+inheritance of type, which is the ability of a class to
+implement more than one interface. An object can have
+multiple types: the type of its own class and the types of all
+the interfaces that the class implements.
+
+Overriding and Hiding Methods
+● Instance Methods
+● Static Methods
+● Interface Methods
+
+•If your method overrides one of its superclasses methods, you
+can invoke the overridden method through the use of the
+keyword super.
+•You can also use super to refer to a hidden field.
+•Invocation of a superclass constructor must be the first line in
+the subclass constructor. If you need to do this you should use
+the word super and provided parent’s constructor parameters.
+
+•You use the final keyword in a method declaration to indicate
+that the method cannot be overridden by subclasses. The
+Object class does this.
+•You might wish to make a method final if it has an
+implementation that should not be changed and it is critical to
+the consistent state of the object.
+
