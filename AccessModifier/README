@@ -1,0 +1,27 @@
+Access Modifiers:
+Field and method
+1) private - only inside class
+2) default = private+package
+3) protected = default + children
+4) public = all
+
+Class:
+public (4)
+default (2)
+
+
+Methods <= when extends //arise
+2) default = private+package
+3) protected = default + children
+4) public = all
+
+4)->3) - fail
+public void m1 --> protected void m1
+4)->2) - fail
+public void m1 --> void m1
+
+3)->2) - fail
+protected void m1 --> void m1
+
+2)->1) - fail
+void m1 --> private

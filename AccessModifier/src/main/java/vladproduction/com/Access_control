@@ -1,0 +1,23 @@
+•When attempting to modify the code written by other
+developers, sometimes we need to understand how we
+can access it or can not.
+•To prevent an authorized access to some classes,
+methods or attributes Java provides Access Level
+Modifiers to determine whether to avoid or permit their
+usage.
+•Access level modifiers determine whether other classes
+can use a particular field or invoke a particular method.
+•When attempting to modify the code written by other
+Type of Access Control:
+•At the top level—public, or package-private (non explicit
+modifier).
+•At the member level—public, private, protected, or
+package-private (no explicit modifier).
+At the member level:
+•Public modifier, just as with top-level classes.
+•No modifier (package-private), just as with top-level
+classes.
+•Private modifier specifies that the member can only be
+accessed in its own class.
+•Protected modifier specifies that the member can only
+be accessed within its own package.
