@@ -1,0 +1,26 @@
+It tells your program to execute a certain section of code
+only if a particular test evaluates to true.
+void stopCar() {
+ // the "if" clause: car must be stopped
+ if (isMoving) {
+ // the "then" clause must stop car
+ isMoving = false;
+ }
+}
+The opening and closing braces are optional, provided
+that the "then" clause contains only one statement:
+ void stopCar() {
+ // same as above, but without braces
+ if (isMoving)
+ isMoving = false;
+ }
+
+ Provides a secondary path of execution when an "if" clause
+ evaluates to false.
+ void stopCar() {
+ if (isMoving) {
+  isMoving = false;
+ } else {
+  System.err.println("The car has already stopped!");
+ }
+ }
