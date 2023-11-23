@@ -1,0 +1,40 @@
+finalize() method in Java
+is a method of the Object class that is used to perform cleanup activity before destroying any object.
+It is called by Garbage collector before destroying the objects from memory.
+
+steps:
+1)Object of a class is created.
+2)Object gets unreferenced or it is unreachable. These objects are of no use and occupy unnecessary space.
+3)The unreachable object is added to the finalization queue by the Garbage Collector which is invoked by the JVM.
+4)finalize() method performs clean up activity and object is finalized.
+5)GC destroys the object completely and reclaims the space occupied by the object.
+
+Alternatives for finalize()
+Due to all the drawbacks, heavy penalty performance issues, deadlocks finalize() method has been deprecated
+in Java 9 and its further releases.
+
+Other efficient and more flexible ways to release resources when an object becomes unreachable in Java are
+as follows:
+
+*Cleaner Class When finalize() method was deprecated in Java 9, a new class Cleaner was added to garbage
+collection management. When any object becomes eligible for garbage collection, the object of the Cleaner class gets notified automatically and releases the resources of that class. Here, the object that has to be garbage collected should be registered with the cleaner object with the help of register() method in Java.
+-java.lang.ref.Cleaner
+
+*PhantomReference It can be used instead of finalize() method. It guarantees that the object can't be
+restored while finalization.
+-java.lang.ref.PhantomReference
+
+Conclusion:
+-finalize() is an Object class method in Java, and it can be used in all other classes by overriding it.
+-An object can become eligible for garbage collection through anonymous object creation, nulling
+reference or by assigning its reference variable to some other object.
+-Garbage collector uses finalize() method to complete clean-up activity before destroying the object.
+-JVM allows invoking of the finalize() method in Java only once per object.
+-Garbage collection is automated in Java and controlled by JVM.
+-Garbage Collector calls the finalize() method of that class whose object is eligible for Garbage collection.
+-final, finally and finalize have different meanings and functionalities.
+-The JVM does not execute finalize() method if any exception occurs and is not handled.
+-Compiler ignores finalize() method if it's called explicitly and not invoked by the Garbage collector.
+-finalize() method has severe performance penalties and it has been deprecated since Java 9 and should be
+used carefully when needed.
+-Other alternatives of finalize() method are Cleaner and PhantomReference classes.
