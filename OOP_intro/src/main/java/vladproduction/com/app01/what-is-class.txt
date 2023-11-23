@@ -1,0 +1,73 @@
+Classes
+• A class is the blueprint from which individual objects are
+created.
+• A class is a representation, abstract but representation of
+reality, entities will be living in our programs.
+• A class could contain some attributes which define its
+characteristics.
+• A class could contain some methods to perform operations
+with itself or another objects from same class or another
+• A class could be a point of entrance a program,
+a helper object, a way to interact with other.
+• Classes are very difficult to understand
+because all in them are optional and depends
+on your design.
+• Creating classes will be more easy if you
+practice modeling all exist around your daily
+life and job.
+
+Declaring Classes
+• The class body contains all the code that provides for the life cycle of the
+objects created from the class:
+• Constructors for initializing new objects
+• Declarations for the fields that provide the state of the class and its
+objects.
+• Methods to implement the behavior of the class and its objects.
+
+The preceding class declaration is a minimal one.
+You can provide more information about the class, such
+as the name of its superclass, whether it implements any
+interfaces, and so, at the start of the class declaration.
+In general, class declarations can include these components, in
+order:
+1. Access Modifiers such as public, private, and others.
+2. The class name, with the initial letter capitalized by convention.
+3. The name of the class's parent (superclass), if any, preceded by
+the keyword extends.
+4. A comma-separated list of interfaces implemented by the class,
+if any, preceded by the keyword implements.
+5. The class body, surrounded by braces, {}.
+
+Declaring Member Variables
+There are several kinds of variables:
+• Member variables in a class—these are called fields.
+• Variables in a method or block of code—these are
+called local variables.
+• Variables in method declarations—these are called
+parameters.
+
+Field declarations are composed of three components, in order:
+Zero or more modifiers, such as public or private.
+The field's type.
+The field's name.
+
+Declaring Methods
+Here is an example of a typical method declaration:
+The only required elements of a method declaration are the method's
+return type, name, a pair of parentheses, (), and a body between
+braces, {}.
+More generally, method declarations have six components, in
+order:
+Modifiers—such as public, private, and others.
+The return type—the data type of the value returned by
+the method, or void if the method does not return a value.
+The method name—the rules for field names apply to
+method names as well, but the convention is a little
+different.
+The parameter list in parenthesis—a comma-delimited list
+of input parameters, preceded by their data types,
+enclosed by parentheses, (). If there are no parameters,
+you must use empty parentheses.
+An exception list.
+The method body, enclosed between braces—the
+method's code, including the declaration of local variables.
