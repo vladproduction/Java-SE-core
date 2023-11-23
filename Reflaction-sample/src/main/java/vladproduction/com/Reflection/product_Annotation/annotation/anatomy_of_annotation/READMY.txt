@@ -1,0 +1,53 @@
+Реализация базового определения аннотации имеет следующий вид:
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE)
+@Inherited
+@Documented
+public @interface MyAnnotation {
+    String name() default "";
+    int value();
+}
+Начальный символ @ сообщает о наличии аннотации.
+Кратко расшифруем каждую строку с аннотациями и что они определяют:
+    -@Retention: в каком жизненном цикле кода аннотация (@MyAnnotation)
+будет доступна (в исходнике, в class-файле или во время выполнения)
+    -@Target: для какого элемента ее можно использовать (поле, класс, пакет и тд)
+    -@Inherited: позволяет реализовать наследование аннотаций родительского класса классом-наследником
+    -@Documented: аннотация будет помещена в сгенерированную документацию javadoc
+    -@interface: сообщает о том, что это аннотация
+Как значения параметров аннотации, так и значения по умолчанию, являются опциональными
+(в данном примере присутствует два параметра: name типа String со значением по умолчанию
+и value типа int).
+
+В аннотации можно перечислить несколько значений, если значения по умолчанию отсутствуют.
+При этом переменная, именуемая value, относится к специальным переменным. Значение value может
+использоваться без имени переменной, если другие значения отсутствуют. Например:
+
+// Оба значения приведены, их именование обязательно
+@MyAnnotation(name = "какое-то имя", value = 42)
+public class MyType { ... }
+
+// Присутствует только "value()", в качестве "name()" будет его значение по умолчанию
+@MyAnnotation(value = 42)
+public class MyType2 { ... }
+
+// Если требуется только "value()", мы можем опустить имя
+@MyAnnotation(42)
+public class MyType3 { ... }
+
+Создадим аннотацию JavaFileInfo, которая будет аннотировать классы и методы информацией
+об их авторах и версиях класса/метода:
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Target({ElementType.TYPE, ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface JavaFileInfo {
+    String name() default "vladproduction";
+    String value() default "0.0";
+}
+

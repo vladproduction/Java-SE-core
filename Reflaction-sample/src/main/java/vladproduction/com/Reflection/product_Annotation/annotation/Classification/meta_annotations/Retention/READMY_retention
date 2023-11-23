@@ -1,0 +1,16 @@
+Аннотация @Retention
+
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.ANNOTATION_TYPE)
+public @interface Retention
+
+Аннотация @Retention (с англ. означает удержание, задержка) определяет, до какого шага во время
+компиляции аннотация будет доступна.
+Все шаги (они еще называются политиками) находятся в Enum:
+-RetentionPolicy.SOURCE: аннотация сохраняется только в исходном файле и удаляется во время компиляции
+-RetentionPolicy.CLASS: аннотация сохраняется в файле .class во время компиляции,
+    но недоступна во время выполнения через JVM
+-RetentionPolicy.RUNTIME: аннотация сохраняется в файле .class во время компиляции и
+    доступна через JVM во время выполнения
+В случае отсутствия аннотации @Retention по умолнчанию будет использована политика RetentionPolicy.CLASS.

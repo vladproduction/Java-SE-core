@@ -1,0 +1,40 @@
+Аннотация @SuppressWarnings
+
+@Target({TYPE, FIELD, METHOD, PARAMETER, CONSTRUCTOR, LOCAL_VARIABLE, MODULE})
+@Retention(RetentionPolicy.SOURCE)
+public @interface SuppressWarnings
+Предупреждающие сообщения компилятора обычно полезны, но иногда, они могут «зашумлять» полезную
+информацию. Особенно, когда мы не можем или не хотим их устранять. В таких случаях можно
+воспользоваться аннотацией @SuppressWarnings, отключив такие предупреждения, чтобы они не
+отображались.
+Рассматривая код для аннотации @Override, мы вызывали в классе Main метод display() из
+класса Child. В тоже время метод display() из класса Parent не использовался. Среда IDE
+предполагала, что здесь где-то может быть ошибка (создали лишний метод или ошибочно используем
+не тот метод и т. д.) и соответственно, подсвечивая, выделяла цветом название неиспользуемого
+метода display() (и при наведении курсора выдавала сообщение: «Method 'Display()' is never used»).
+Чтобы этого небыло, такое предупреждение можно отключить аннотацией @SuppressWarnings
+(«unused»), установив её перед методом display():
+
+public class Parent {
+    @SuppressWarnings("unused")
+    public void display() {
+        System.out.println("Выполнился метод из родительского класса");
+    }
+}
+Еще одним предупреждением компилятора является предупреждение о применении устаревшего метода,
+помеченного в коде аннотацией @Deprecated. Чтобы его устранить, необходимо пометить вызов
+ метода main() в классе Main аннотацией @SuppressWarnings («deprecation»):
+
+public class Main {
+    @SuppressWarnings("deprecation")
+    public static void main(String[] args) {
+        Child instance = new Child();
+    	  instance.display();
+    }
+}
+Сам код теперь стал проще для чтения, а название метода display() не перечеркивается.
+Чтобы отключить список из нескольких предупреждений, необходимо через запятую перечислить
+список предупреждений.
+Например, в следующем виде:
+
+@SuppressWarnings({"unused", "deprecation"})

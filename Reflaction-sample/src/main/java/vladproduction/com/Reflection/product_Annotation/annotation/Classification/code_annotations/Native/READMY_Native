@@ -1,0 +1,17 @@
+Аннотация @Native
+
+@Documented
+@Target(ElementType.FIELD)
+@Retention(RetentionPolicy.SOURCE)
+public @interface Native
+Начиная с Java 8, в пакете java.lang.annotation появилась новая аннотация под названием @Native,
+применимая только к полям. Она указывает, что аннотированное поле является константой,
+на которую можно ссылаться с нативного кода. Например, вот как она используется в классе Integer:
+
+public final class Integer {
+    @Native public static final int MIN_VALUE = 0x80000000;
+    // последующий код опущен
+}
+
+Эта аннотация также может служить подсказкой для программных инструментов, генерирующих
+некоторые вспомогательные файлы.
