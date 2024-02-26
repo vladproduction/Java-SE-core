@@ -1,4 +1,4 @@
-package com.vladproduction.datatypes;
+package com.vladproduction.datatypes_scanner;
 
 import java.util.Scanner;
 
