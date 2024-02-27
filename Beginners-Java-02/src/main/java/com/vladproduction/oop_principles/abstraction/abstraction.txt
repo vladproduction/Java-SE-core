@@ -1,0 +1,24 @@
+1. Focusing on essential details:
+Abstraction helps us focus on the essential functionalities and characteristics of an object, hiding the internal
+complexities of its implementation.
+Imagine a car: we know it can start, stop, steer, and accelerate, but don't need to understand the intricacies of the engine,
+transmission, or brakes to operate it.
+
+
+2. Levels of abstraction:
+There are different levels of abstraction, ranging from:
+Interfaces: Defining only necessary functionalities without any implementation details.
+Abstract classes: Providing a blueprint for subclasses while potentially implementing some shared logic.
+Concrete classes: Implementing the full functionalities based on interfaces or abstract classes.
+
+3. Benefits of abstraction:
+Improved code modularity and reusability: By separating the "what" and "how" through abstraction, code becomes more
+organized and reusable.
+Enhanced code maintainability: Changes in the internal implementation become less likely to impact the program's overall
+functionality.
+Simplified understanding: Developers can focus on interacting with objects without getting bogged down in the details.
+
+----------------------------------
+In this example, the Shape interface defines the essential functionality of getting an area without specifics.
+The Rectangle class inherits from Shape and provides a base implementation for setting dimensions. Finally, the
+Square class implements the getArea() method specifically for squares, demonstrating the concept of abstraction in Java.
