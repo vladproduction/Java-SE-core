@@ -1,0 +1,21 @@
+What are abstract classes?
+
+A class declared with the keyword abstract is an abstract class.
+Abstract classes are meant to be templates or blueprints, rather than fully usable objects themselves.
+They cannot be directly instantiated (meaning you can't create an object directly using the new keyword).
+Abstract classes are designed to be inherited by other classes (called "subclasses").
+
+Key features:
+
+Abstract Methods: Abstract classes can contain abstract methods. These are methods that have a declaration but no
+implementation (no code body).
+Example: public abstract void makeSound();
+Concrete Methods: They can also have regular, fully implemented methods (these are called concrete methods).
+
+Why use them?
+
+Providing a Base Template: Abstract classes define a common contract or shared structure that their subclasses must follow.
+They can enforce that all subclasses have particular methods, even if the exact implementation is left up to the subclass.
+
+Enforcing Polymorphism: They are crucial for polymorphism – the ability to substitute objects of subclasses where a parent
+(abstract) class object is expected. This allows for flexible and dynamic code

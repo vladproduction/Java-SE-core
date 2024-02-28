@@ -1,0 +1,9 @@
+This code demonstrates how you can create objects of concrete subclasses and call the area method,
+even though it's declared abstract in the parent class. Each subclass provides its specific implementation to calculate the area.
+
+This example showcases the advantages of abstract classes:
+
+Code Reusability: Common functionality like setting color is defined in the parent class, reducing code duplication.
+Polymorphism: You can treat objects of different shapes (subclasses) uniformly through the parent class reference, allowing
+for flexible code.
+Encapsulation: By forcing subclasses to implement the abstract method, the Shape class ensures all shapes have an area calculation.
