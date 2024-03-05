@@ -8,6 +8,11 @@ public class ThisMain {
         human1.setName("John");
         human1.getInfo();
 
+        HumanClass human2 = new HumanClass();
+        human2.setAge(19);
+        human2.setName("Jack");
+        human2.getInfo();
+
     }
 }
 

@@ -1,0 +1,24 @@
+Scenario: Imagine a scenario where you have a class representing a chat room.
+Multiple clients can join the chat and send messages. You want to maintain a central log of all messages received,
+accessed by multiple threads (clients).
+
+Class Structure:
+
+***ChatRoom class:
+Holds a StringBuffer to store the chat log.
+Provides synchronized methods for adding messages to the log.
+
+***Client class:
+Represents a client joining the chat.
+Sends messages to the chat room using the synchronized method.
+
+---------------------------------------------
+Explanation:
+
+The ChatRoom class has a chatLog as a StringBuffer.
+The addMessage() method is synchronized, ensuring only one thread can modify the chatLog at a time.
+The method appends the message with the sender's name and a newline character.
+Optionally, notifyAll() can be used to wake up any threads waiting on the chatLog object (e.g., for reading the latest messages).
+The Client class sends messages to the chat room using the synchronized addMessage() method.
+
+This example demonstrates how StringBuffer provides thread-safe string modification within the synchronized method.

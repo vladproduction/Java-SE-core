@@ -74,5 +74,9 @@ public class ArraysCases {
                 numbers[count++] = input;
             }
         } while (count < 5 && input != 0);
+        for (int i = 0; i < numbers.length; i++) {
+            System.out.print(numbers[i] + "; ");
+        }
+        System.out.println();
     }
 }
