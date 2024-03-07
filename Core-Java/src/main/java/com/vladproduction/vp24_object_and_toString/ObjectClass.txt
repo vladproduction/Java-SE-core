@@ -1,0 +1,43 @@
+Object class, which is the root of all classes in Java:
+
+1. Basic Methods:
+*toString(): Returns a string representation of the object, often used for debugging or logging.
+You can override this method in your classes to provide a custom string representation.
+
+*equals(Object obj): Compares two objects for equality. By default, it checks for reference equality (whether they refer to the
+same object in memory). You often override this method to compare based on object state/attributes.
+
+*hashCode(): Returns an integer hash code value for the object. Used in hash-based collections like HashMap and HashSet.
+Override this method in your classes to ensure consistent hash codes for equal objects.
+
+
+2. Object Lifecycle Methods:
+*clone(): Attempts to create a copy of the object. It's a shallow copy by default, meaning primitive fields are copied,
+but object references are still shared.
+
+*finalize(): A method called by the garbage collector before an object is reclaimed. It's rarely used in modern Java programming
+and has potential issues, so it's generally recommended to avoid it.
+
+
+3. Synchronization Methods:
+*wait(): Causes the current thread to wait for a notification on the object's monitor. Used in thread synchronization.
+
+*notify(): Wakes up one thread waiting on the object's monitor.
+
+*notifyAll(): Wakes up all threads waiting on the object's monitor.
+
+
+4. Class-Related Methods:
+*getClass(): Returns the Class object representing the object's class. Used for reflection and introspection.
+
+
+Key Points:
+
+-All classes in Java, directly or indirectly, inherit from the Object class.
+-These methods provide foundational functionality for objects, including:
+    *String representation
+    *Equality checks
+    *Synchronization
+    *Object lifecycle management
+
+You can override these methods in your custom classes to provide tailored behavior.

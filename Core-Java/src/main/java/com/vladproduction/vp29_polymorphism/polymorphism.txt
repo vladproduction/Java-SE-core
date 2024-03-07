@@ -1,0 +1,27 @@
+What is Polymorphism?
+*Literally meaning "many forms" in Greek, polymorphism lets you write code that interacts with objects in a general way,
+without knowing their exact concrete types at compile time.
+
+*The decision of which behavior to execute happens at runtime, based on the actual object's class.
+
+
+Two main mechanisms for achieving polymorphism in Java:
+1)Method Overriding: This is where a subclass (child class) redefines a method inherited from its parent class. The method
+call determines which specific implementation (overridden method) to execute based on the object's actual class at runtime.
+
+2)Method Overloading: This allows you to have multiple methods with the same name in a class, but with different
+parameter lists (number, type, or order of parameters). The compiler determines which overloaded method to call based on the
+arguments provided during the call.
+
+Benefits of Polymorphism:
+
+*Code Reusability: You can write generic code that works with various objects as long as they share a common interface or superclass.
+*Flexibility: Your code can adapt to different object types without modification, making it more versatile.
+*Maintainability: Changes made to a parent class's methods can propagate to subclasses automatically, reducing maintenance effort.
+
+--------------------------------------------------------------------------
+Example of Polymorphism:
+
+Imagine you have a Shape class with a method draw(). You can create subclasses like Circle, Square, and Triangle that all inherit
+from Shape and override the draw() method to provide their specific drawing behavior. When you call draw() on a Shape reference
+variable that actually points to a Circle object, the circle's overridden draw() method will be executed at runtime.

@@ -1,0 +1,26 @@
+The size and valid value range for primitive data types in Java vary depending on the type.
+Here's a breakdown of some common ones:
+
+*byte: As you mentioned, it's 1 byte (8 bits) and can store integer values
+from -128 to 127 (inclusive).
+
+*short: It's 2 bytes (16 bits) and can store integer values
+from -32,768 to 32,767 (inclusive).
+
+*int: This is the most commonly used integer type. It's 4 bytes (32 bits) and can store integer values
+from -2,147,483,648 to 2,147,483,647 (inclusive).
+
+*long: It's 8 bytes (64 bits) and can store very large integer values
+from -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807 (inclusive).
+
+*float: It's 4 bytes (32 bits) and is used for storing single-precision floating-point numbers (numbers with decimal points).
+It has a smaller range and precision compared to double.
+
+*double: It's 8 bytes (64 bits) and is used for storing double-precision floating-point numbers.
+It offers a wider range and higher precision compared to float.
+
+*boolean: It's 1 byte (although Java might use padding and store it in a single byte for efficiency)
+and can only hold two values: true or false.
+
+*char: It's 2 bytes (16 bits) and is used for storing a single character (like 'a' or 'Z').
+It can also represent Unicode characters for a wider range of symbols.
