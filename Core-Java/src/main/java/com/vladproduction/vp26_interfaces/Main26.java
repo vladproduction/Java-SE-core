@@ -30,7 +30,7 @@ public class Main26 {
         info1.showInfo();
         info2.showInfo();
         //in that case we are considering Object of our class Animal/Person not like a class object,
-        //but like a something what implements interface Info and method showInfo();
+        //but like something what implements interface Info and method showInfo();
 
         //---------------using interface as parameter in method:------------:
         System.out.println("------interface as parameter in method:----");
