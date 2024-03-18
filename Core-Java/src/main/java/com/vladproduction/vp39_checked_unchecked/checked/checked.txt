@@ -1,0 +1,23 @@
+1)Compile-Time Safety:
+Checked exceptions force you to consider potential error scenarios during development.
+This can lead to more robust code by prompting you to think about how to handle potential issues like file access problems
+or database connection failures.
+
+2)Explicit Contract:
+The throws clause in method signatures acts as a contract between the method and its callers. Callers are aware of
+the potential exceptions the method might throw, allowing them to handle them appropriately. This can improve code
+readability and maintainability.
+
+3)Forced Error Handling:
+In some cases, checked exceptions can be beneficial by forcing programmers to handle critical errors that might
+otherwise be ignored. For example, if a file reading operation throws an IOException, the caller is compelled
+to address the issue rather than letting the program crash silently.
+
+4)Potential for Boilerplate Code:
+For common checked exceptions like IOException, handling them can become repetitive, introducing boilerplate code.
+This can make code less concise, especially if the error handling logic is similar across many methods.
+
+5)Debate on Usage:
+Some argue that checked exceptions are overly restrictive and can lead to verbose code.
+They advocate for more reliance on unchecked exceptions for programming errors and using specific design patterns
+for anticipated error scenarios in checked exceptions.

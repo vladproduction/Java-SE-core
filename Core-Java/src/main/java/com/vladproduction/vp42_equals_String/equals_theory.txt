@@ -1,0 +1,42 @@
+In Java, to compare objects based on their content (values) rather than their memory references,
+you need to override the equals() method in your class.
+
+-#- Default equals() method:
+By default, the equals() method inherited from the Object class compares object references.
+This means two objects are considered equal only if they refer to the same memory location.
+
+-#- Overriding equals() method:
+To compare objects based on their content, you need to override the equals() method in your class.
+This method should define the logic for determining if two objects of your class hold the same values for their
+significant attributes.
+
+Here's a general structure for overriding equals():
+
+Java
+@Override
+public boolean equals(Object obj) {
+  if (this == obj) { // Check for same object reference (optional)
+    return true;
+  }
+  if (obj == null || getClass() != obj.getClass()) { // Check for null or different class type
+    return false;
+  }
+
+  // Cast obj to your specific class type for safe access to attributes
+  MyClass other = (MyClass) obj;
+
+  // Implement your comparison logic based on significant attributes
+  return attribute1 == other.attribute1 && attribute2.equals(other.attribute2) && ...;
+}
+
+Key Points:
+1)The overridden equals() method should consider all relevant attributes of your object for comparison.
+2)It's generally recommended to follow a specific order for comparison logic
+(e.g., null check, class type check, attribute comparisons).
+3)The equals() method should be:
+ *reflexive (x.equals(x) returns true);
+ *symmetric (x.equals(y) implies y.equals(x));
+ *transitive (if x.equals(y) and y.equals(z), then x.equals(z));
+
+By overriding equals(), we enable objects of our class to be compared based on their actual content,
+making them suitable for use in collections like HashMap and HashSet where uniqueness is determined by object content.

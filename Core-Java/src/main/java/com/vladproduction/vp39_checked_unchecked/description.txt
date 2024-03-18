@@ -1,0 +1,38 @@
+Exceptions are mechanisms to handle errors or unexpected conditions that arise during program execution.
+They are categorized into two main types:
+*checked exceptions;
+*unchecked exceptions;
+------------------------
+Checked Exceptions:
+-#- Definition: Checked exceptions are exceptions that the compiler forces you to handle explicitly.
+    They are subclasses of the java.lang.Exception class (except java.lang.RuntimeException and its subclasses).
+-#- Handling: When a checked exception is thrown in your code, you must either:
+    Enclose the code within a try-catch block and handle the exception.
+    Declare the exception in the method signature using the 'throws' keyword. This informs callers that the method
+    might throw that exception.
+-#- Examples: Common checked exceptions include IOException (for input/output errors),
+    SQLException (for database access errors), and InterruptedException (when a thread is interrupted).
+-#- Purpose: Checked exceptions are intended for situations where the programmer can reasonably anticipate and recover
+    from the error. For example, handling an IOException when reading from a file might involve retrying the operation
+    or providing alternative data.
+
+------------------------
+Unchecked Exceptions:
+-#- Definition: Unchecked exceptions are exceptions that the compiler does not force you to handle explicitly.
+    They are subclasses of the java.lang.RuntimeException class.
+-#- Handling: You can handle unchecked exceptions within a try-catch block if desired, but it's not mandatory.
+-#- Examples: Common unchecked exceptions include NullPointerException (attempting to use a null reference),
+    ArrayIndexOutOfBoundsException (accessing an invalid array index), and ArithmeticException (division by zero).
+-#- Purpose: Unchecked exceptions are typically used for programming errors or unexpected conditions that
+    the programmer cannot reasonably anticipate or recover from. For instance, a NullPointerException indicates a
+    logic error where a variable might be null when it's not supposed to be. In such cases, it's often better to
+    fix the underlying logic issue rather than just catching the exception.
+
+------------------------
+Choosing Between Checked and Unchecked Exceptions:
+
+   *Use checked exceptions for exceptional conditions that can be anticipated and potentially recovered from,
+    such as network errors or file access problems.
+
+   *Use unchecked exceptions for programming errors or unexpected conditions that indicate a bug in your code,
+    such as null pointer exceptions or array index out-of-bounds exceptions.
