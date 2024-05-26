@@ -1,0 +1,15 @@
+In practice, programming is usually done at the sub-interface level.
+
+Collection interface: List<E>, Set<E> or Queue<E>, which have the following specifications:
+
+• List<E> – list – models a resizable array,
+for which index access is allowed. The list may contain repeating elements.
+Commonly used List implementations are ArrayList, LinkedList, Vector, and Stack.
+
+• Set<E> – set – models a mathematical set,
+Duplicate elements are not allowed. Often used implementations of the Set sub-interface are HashSet and LinkedHashSet.
+The SortedSet<E> sub-interface models an ordered and sorted set of elements, implemented by TreeSet.
+
+• Queue<E> – queue – models queues organized
+according to the First-in-First-out (FIFO) principle - “first in, first out.” The Deque<E> sub-interface models queues,
+which can be worked from both ends. Implementations include PriorityQueue, ArrayDeque, and LinkedList.

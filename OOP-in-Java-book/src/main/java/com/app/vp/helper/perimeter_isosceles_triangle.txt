@@ -1,0 +1,78 @@
+Knowing that the triangle is isosceles, we can find its perimeter based on its height (h) and base (a).
+
+Here are the steps to solve:
+
+Find the side length (b):
+
+Use the formula: b² = (a² - 4h²) / 4.
+Substitute the known values for height (h) and base (a).
+Calculate b².
+Take the square root of both sides of the equation to find the length of side b
+(remember, there can be two roots, take a positive value).
+Find the perimeter (P):
+
+Use the formula for the perimeter of an isosceles triangle: P = a + 2b.
+Substitute the base (a) and side length (b) values you found in the previous step.
+Calculate P.
+
+
+/*version 1 if triangle is isosceles*/
+/**
+ * isosceles triangle
+ * */
+public class Triangle extends Shape{
+
+    private final double base;
+    private final double height;
+
+    public Triangle(String color, double base, double height) {
+        super(color);
+        this.base = base;
+        this.height = height;
+    }
+
+    @Override
+    public String toString() {
+        return "Triangle{" +
+                "base=" + base +
+                ", height=" + height + super.toString();
+    }
+
+    @Override
+    public double getArea() {
+        return 0.5 * base * height;
+    }
+
+    /**
+     * isosceles triangle perimeter:
+     * formula for the perimeter : P = a + 2b.
+     * base (a) and side length (b) values by helper method (findSideLength)
+     * check for negative value
+     * @return perimeter as double value
+     * */
+    @Override
+    public double getPerimeter() {
+        //Find the side length (b):
+        double sideLength = findSideLength(this.base, this.height);
+        return this.base + (2 * sideLength);
+    }
+
+    /**
+     * helper to find side length:
+     * formula: b² = (a² - 4h²) / 4,
+     * where h - height, a - base;
+     * Take the square root of both sides of the equation to find the length of side b
+     * */
+    private static double findSideLength(double base, double height){
+        double baseSquared = base * base;
+        double heightSquared = height * height;
+        // Handle potential negative value (consider throwing an exception)
+        if (baseSquared < (4 * heightSquared)){
+            // Invalid triangle dimensions (negative side length)
+            // throw new IllegalArgumentException("Invalid triangle dimensions");
+            return Double.NaN; // Or return a special value like NaN to indicate an error
+        }
+        double b = Math.sqrt((baseSquared - (4 * heightSquared)) / 4);
+        return b;
+    }
+}

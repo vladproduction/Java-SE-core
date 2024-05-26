@@ -1,0 +1,47 @@
+29-What is an abstract method?
+An abstract method is a method declared with the abstract keyword that outlines the method's purpose (signature)
+but doesn't provide its implementation. It acts like a blueprint that subclasses inheriting the abstract class must fill
+in with their specific code. This promotes code reuse and enforces certain behaviors in subclasses.
+
+30-What is an abstract class?
+In Java, an abstract class is like a blueprint for creating related objects.
+It can't be used directly to create objects itself, but other classes can inherit from it.
+Here's the key idea:
+-It defines a general structure with methods and variables.
+-Some methods can be abstract (missing implementation).
+-Classes inheriting from it (subclasses) must implement the abstract methods to provide specific behavior.
+This enforces consistency and promotes code reuse for related objects.
+
+31-What does the keyword “abstract” mean?
+In Java, the abstract keyword is a non-access modifier used for two purposes:
+*Declaring abstract classes: An abstract class cannot be directly instantiated (you can't create objects of it).
+It serves as a template for subclasses to inherit from and implement its functionalities.
+*Declaring abstract methods: An abstract method outlines what a method should do (signature) but doesn't provide the
+implementation details. Subclasses inheriting the abstract class must provide their own implementation for these methods.
+Essentially, abstract promotes code reuse and enforces consistency across related classes.
+
+32-What is an interface?
+An interface in Java is like a contract that defines what a class can do (its behaviors). Here's a quick rundown:
+-It specifies methods a class must implement, but doesn't provide the implementation itself.
+-It acts like a blueprint for functionalities, focusing on "what" a class can do, not "how."
+-A class can implement multiple interfaces, achieving a form of multiple inheritance (supported by interfaces, not direct
+    class inheritance in Java).
+-This promotes loose coupling (reliance on behaviors, not concrete implementations) and enables polymorphism (treating objects
+    of different classes implementing the same interface uniformly).
+
+33-How is the “implements” keyword used?
+The implements keyword in Java is used to declare that a class will implement the functionalities defined in an interface.
+Here's the key idea:
+-A class can implement one or more interfaces.
+-By implementing an interface, the class promises to provide its own concrete implementations for all the abstract methods
+declared in the interface.
+-This enforces a contract - the class agrees to follow the behavior outlined in the interface.
+Think of it as a class following a specific set of rules (the interface) and providing its own way of fulfilling those rules.
+
+34-Is it possible to use multiple interfaces?
+Absolutely! In Java, a class can implement multiple interfaces using the implements keyword. This is a powerful way to achieve
+a form of multiple inheritance, which is not directly supported through class inheritance.
+Here's why it's useful:
+-A class can combine functionalities from different interfaces.
+-It promotes flexibility and code reuse.
+-It allows a class to fulfill various roles or contracts.

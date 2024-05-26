@@ -1,0 +1,56 @@
+List<Integer> integerList = new ArrayList<>();
+integerList.add(22);
+integerList.add(77);
+integerList.add(11);
+integerList.add(55);
+
+// Sort the list in ascending order
+Collections.sort(integerList);
+
+// Print the sorted list
+System.out.println("integerList = " + integerList);
+
+// Search for element 77 (expected index: 3)
+System.out.println(Collections.binarySearch(integerList, 77));
+
+// Search for non-existing element 100 (expected output: -4)
+System.out.println(Collections.binarySearch(integerList, 100));
+
+Explanation:
+
+Creating the List:
+
+An ArrayList named integerList is created to store integers.
+Elements 22, 77, 11, and 55 are added to the list in the order they are specified.
+Sorting the List:
+
+Collections.sort(integerList) is used to sort the elements in the list in ascending order. After sorting, the list
+becomes [11, 22, 55, 77].
+Printing the Sorted List:
+
+The System.out.println statement prints the contents of the sorted integerList, which is [11, 22, 55, 77].
+Searching for Existing Element (77):
+
+Collections.binarySearch(integerList, 77) attempts to find the index of the element 77 within the sorted list.
+Since 77 exists at index 3, the output is:
+System.out.println(Collections.binarySearch(integerList, 77));
+
+Searching for Non-Existing Element (100):
+
+Collections.binarySearch(integerList, 100) searches for the element 100. However, 100 is not present in the list.
+In this case, Collections.binarySearch returns a negative value that indicates the insertion point for the target element.
+Here's the logic:
+The list is divided into halves repeatedly.
+If the target element (100) is greater than the current element being examined, the search continues in the right half.
+Since 100 is not found, the search reaches the end of the list ([11, 22, 55, 77]).
+The insertion point for 100 would be between 77 (the largest element) and the imaginary element that would come after 77 in
+the sorted order (which is 100 in this case).
+To indicate this insertion point, Collections.binarySearch returns -(insertion point) - 1. In this scenario, the insertion
+point would be 4 (after 77), so the returned value is - (4) - 1 = -5.
+
+Key Points:
+
+Collections.binarySearch is efficient for searching sorted lists.
+It returns the index of the element if found, or a negative value indicating the insertion point if not found.
+The negative value returned for a non-existent element helps determine the appropriate position to insert the missing element
+while maintaining the sorted order.

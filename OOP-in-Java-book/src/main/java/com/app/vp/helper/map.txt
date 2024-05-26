@@ -1,0 +1,27 @@
+A Map<K,V> interface that accepts two generics of types K and V (read as "Map of keys of type K and values of type V"),
+used as a key-value collection. No duplicate keys are allowed.
+Commonly used implementations include HashMap, Hashtable and LinkedHashMap.
+Their sub-interface
+SortedMap<K, V> models an ordered and sorted map based on the key implemented in TreeMap.
+
+    *note that Map<K,V> is not a sub-interface Collection<E>
+    because it implies the use of a pair of objects for each element.
+
+ Conclusion:
+Map - a map, is a collection of key-value pairs (for example, name -
+address, ISBN – title). Each key corresponds to one and only
+one value. Duplicate keys are not allowed, but duplicate values are allowed.
+Maps are similar to arrays, except that an array uses an integer key for indexing access
+to the elements, while the map uses some arbitrary key (like String or some objects, for example).
+
+The implementation of the Map<K,V> interface includes:
+
+• HashMap<K,V> – hash table implementation for the interface Map<K,V>; this is the best implementation;
+    methods in HashMap not synchronized;
+
+• TreeMap<K,V> – implementation of the SortedMap<K,V> interface tree view;
+
+• LinkedHashMap<K,V> – hash table with linked properties list to improve insertion and deletion methods;
+
+• Hashtable<K,V> – modernized legacy from JDK 1.0 implementations; implementation of a synchronized hash table
+    interface Map<K,V>, which does not allow null keys or values for inherited methods.

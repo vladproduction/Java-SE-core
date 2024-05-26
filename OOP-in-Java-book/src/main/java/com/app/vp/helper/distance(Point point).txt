@@ -1,0 +1,49 @@
+distance(Point p):
+
+This method calculates the distance from a given Point object (p)
+to the line segment formed by the beginning and end points of the Line object.
+It utilizes the formula for the shortest distance from a point to a line segment.
+
+Explanation:
+
+The method takes a Point object p as a parameter.
+It calculates the direction vector of the line segment (end point minus begin point).
+It calculates the vector representing the point p relative to the beginning point of the line segment.
+It projects the point vector onto the direction vector to find the closest point on the line segment to the given point.
+It checks if the projection falls outside the line segment range (0 to 1) and adjusts accordingly (distance to the beginning or end point).
+It calculates the coordinates of the closest point on the line segment.
+Finally, it calculates the distance between the given point (p) and the closest point on the line segment using the distance formula.
+
+/**
+ * Method distance(Point p) calculates the distance from a given Point object (p) to the line segment.
+ * This method utilizes the formula for the shortest distance from a point to a line segment.
+ *
+ * @param p The Point object representing the point to calculate the distance from
+ * @return The distance from the point to the line segment as a double value
+ */
+public double distance(Point p) {
+    // Line segment direction vector (end - begin)
+    double dx = end.getX() - begin.getX();
+    double dy = end.getY() - begin.getY();
+
+    // Vector representing the point (p) relative to the begin point of the line segment
+    double px = p.getX() - begin.getX();
+    double py = p.getY() - begin.getY();
+
+    // Calculate the projection of the point vector onto the direction vector
+    double projection = (px * dx + py * dy) / (dx * dx + dy * dy);
+
+    // Check if the projection is outside the line segment range (0 to 1)
+    if (projection < 0) {
+        projection = 0; // Distance to the begin point
+    } else if (projection > 1) {
+        projection = 1; // Distance to the end point
+    }
+
+    // Calculate the closest point on the line segment to the given point
+    double closestX = begin.getX() + (projection * dx);
+    double closestY = begin.getY() + (projection * dy);
+
+    // Calculate the distance between the given point and the closest point on the line segment
+    return Math.sqrt(Math.pow(p.getX() - closestX, 2) + Math.pow(p.getY() - closestY, 2));
+}

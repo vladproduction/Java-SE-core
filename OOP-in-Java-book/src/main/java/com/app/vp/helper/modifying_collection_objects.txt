@@ -1,0 +1,10 @@
+Ability to modify objects in the collection
+The improved for loop offers a convenient way
+to iterate through the elements of the collection. However, it hides the interface
+Iterator, therefore you can NOT delete (via Iterator.
+remove()) or replace elements.
+On the other hand, since the loop variable receives a cloned copy as an object reference, improved
+The for statement can be used to modify "mutating" elements (such as StringBuilder) using references to "cloned" objects,
+but it cannot
+modify “non-mutable” (unchangeable) elements
+(such as String and base class wrappers) because new references are created.

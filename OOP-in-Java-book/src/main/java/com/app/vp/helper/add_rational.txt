@@ -1,0 +1,46 @@
+Are crucial for adding two rational numbers. Let's break down what they do:
+
+1. Adding Rational Numbers:
+
+Imagine you have two rational numbers:
+
+r1 = a / b (numerator: a, denominator: b)
+r2 = c / d (numerator: c, denominator: d)
+You want to find the sum, which can be written as:
+
+r1 + r2 = (a / b) + (c / d)
+
+2. Finding a Common Denominator:
+
+To perform addition on fractions, they need to have a common denominator.
+The common denominator in this case is the least common multiple (LCM) of b and d (denominators of r1 and r2).
+However, for efficiency purposes, we can find the product of the existing denominators (b * d) which is always greater than or
+equal to the LCM.
+
+3. Calculating the New Numerator:
+
+int newNumerator = numerator * other.denominator + other.numerator * denominator;
+
+It multiplies the numerator of each rational number by the denominator of the other.
+This essentially creates fractions with a denominator of (b * d) (product of existing denominators).
+It adds these two newly formed fractions.
+This effectively combines the numerators while ensuring a common denominator of (b * d).
+
+4. New Denominator:
+
+int newDenominator = denominator * other.denominator;
+
+simply multiplies the existing denominators (b and d) together. This provides the common denominator for the resulting sum.
+
+Putting it all Together:
+
+By combining these steps, we get the sum of the two rational numbers with a common denominator and simplified terms
+(using the normalize method from the class).
+
+For example, if r1 = 1/2 and r2 = 2/3, the calculations would be:
+
+newNumerator = (1 * 3) + (2 * 2) = 7
+newDenominator = 2 * 3 = 6
+Therefore, the sum of r1 and r2 would be a new rational number: 7/6.
+The normalize method might further simplify this to 7/6 (already in its most reduced form) or 1
+(if it divides both numerator and denominator by 1).

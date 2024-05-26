@@ -1,0 +1,95 @@
+13-What is an association?
+An association refers to a connection or relationship between two classes established through their objects.
+It describes how objects of different classes "know about" or interact with each other.
+There are different levels of association, with varying degrees of dependency:
+1)HAS-A Relationship:  This is a common association where one class (whole) has a member variable that is an object of another class (part).
+                       For example, a Car class might have an Engine object as a member variable.
+2)Uses-A Relationship: This association describes a scenario where one class utilizes the functionality of another class without
+                       necessarily having it as a member. For instance, a Customer class might use an Order class to place orders
+                       without directly containing Order objects.
+3)Aggregation:         This is a specific type of "Has-A" association where the whole object can exist independently of the part object.
+                       In other words, if the whole object is destroyed, the part object can still exist.
+                       An example might be a Library class containing Book objects. The library can function without all the books,
+                       and books can potentially exist outside the library.
+4)Composition:         This is another type of "Has-A" association where the part object's lifecycle is dependent on the whole object.
+                       If the whole object is destroyed, the part object is also destroyed. An example could be a Car class containing
+                       a Wheel object. The wheels are useless without the car, and the car likely manages the creation and destruction
+                       of the wheels.
+
+14-What is composition?
+In Java, composition is a design principle that uses objects of other classes to create a new, more complex object.
+It's like building a whole from independent parts. Unlike inheritance (which creates a new class based on an existing one),
+composition focuses on has-a relationships.
+*A class has member variables that reference objects of other classes.
+*These member objects are essential parts of the whole object.
+*The owning class controls the lifecycle of the composed objects (creates and destroys them).
+    Benefits:
+-Increased code reusability (composing existing objects).
+-Improved modularity and separation of concerns.
+-More flexibility in object creation and behavior.
+    example:
+    Java
+    class Car {
+      private Engine engine;  // Car has-a Engine
+      private Wheel[] wheels;  // Car has-a array of Wheels
+
+      public Car(Engine engine, Wheel[] wheels) {
+        this.engine = engine;
+        this.wheels = wheels;
+      }
+
+      public void start() {
+        engine.start();
+      }
+    }
+
+15-What is aggregation?
+Aggregation in Java is another way to establish relationships between objects, similar to composition.
+It also represents a "has-a" relationship,
+but with a key difference:
+    *Aggregation: The owning class can exist independently of the composed object.
+                  The composed object's lifecycle is not necessarily tied to the owning class.
+    *Composition: The composed object's lifecycle is dependent on the owning class.
+                  When the owning class is destroyed, the composed object is also destroyed.
+Here's an analogy:
+-Aggregation: Think of a student (owning class) having a textbook (composed object).
+The student can still exist and learn even without that specific textbook.
+-Composition: Imagine a car (owning class) with an engine (composed object).
+Without the engine, the car wouldn't function as a car.
+    example (Aggregation):
+    Java
+    class Library {
+      private List<Book> books; // Library has-a List of Books (can exist without specific books)
+
+      public Library(List<Book> books) {
+        this.books = books;
+      }
+
+      public void addBook(Book book) {
+        books.add(book);
+      }
+    }
+
+
+16-What is the difference between association and composition?
+They differ in the strength and dependency of that connection.
+*Association (Has-A Relationship):
+A looser connection between classes.
+One class (the whole) has a member variable that is an object of another class (the part).
+The lifecycle of the part object is independent of the whole object.
+In other words, destroying the whole object doesn't necessarily destroy the part object.
+*Composition (Stronger Has-A Relationship):
+A stronger connection between classes.
+The part object's lifecycle is dependent on the whole object.
+If the whole object is destroyed, the part object is also destroyed.
+The whole object manages the creation and destruction of the part object.
+_______________________________________________________________________________
+Feature	                       | Association	 |    Composition             |
+-------------------------------|-----------------|----------------------------|
+Relationship Strength	       | Weaker	         |    Stronger                |
+Dependency	                   | Independent	 |    Dependent               |
+Lifecycle Management	       | Independent	 |    Managed by Whole Object |
+-------------------------------------------------------------------------------
+Choosing Between Association and Composition:
+-Use association when the part object can exist independently of the whole object.
+-Use composition when the part object's lifecycle is tied to the whole object and has no meaningful existence outside of it.

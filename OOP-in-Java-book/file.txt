@@ -1,0 +1,12 @@
+1. What is a collection?
+2. Is it possible to organize a collection from basic elements
+types?
+3. What is autoboxing and what is unboxing?
+4. Name the interfaces and subinterfaces of the collection.
+5. What defines the Iterable interface?
+6. What methods does the Iterator<E> interface have?
+7. How does the advanced for loop work?
+8. What is the difference between cycle and advanced
+cycle?
+9. What are List<E>, Set<E>, Queue<E>?
+10. How is the Map<K,V> interface organized?

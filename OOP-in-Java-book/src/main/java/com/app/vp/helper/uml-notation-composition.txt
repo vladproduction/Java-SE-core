@@ -1,0 +1,5 @@
+UML Notation:
+In UML notation, composition is denoted by like a line with a diamond-shaped arrow pointing to its components.
+The diamond is always located on the side of the whole, and the simple line from the component side;
+-a filled diamond indicates a stronger connection—composition;
+-an open diamond indicates a weaker connection—aggregation.

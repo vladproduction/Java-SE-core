@@ -1,0 +1,147 @@
+35-What is a generic in Java? What are its advantages?
+In Java, generics are a powerful feature introduced in Java 5 that allows you to write code that works with various data
+types without sacrificing type safety.
+Here's a quick breakdown:
+Concept: Generics let you create classes, methods, and interfaces that can work with different types of objects.
+You specify a placeholder type like <T> during definition, and later replace it with actual types like Integer or
+String when using them.
+Advantages:
+-Type Safety: Generics prevent runtime errors caused by using the wrong data type. The compiler enforces type safety by
+checking the specified type during code compilation.
+-Reduced Code Duplication: You can write generic code that works with various types, eliminating the need to create
+separate versions for each data type. This improves code maintainability and readability.
+-Flexibility: Generics make your code more adaptable as you can use it with different data types without modifying the core logic.
+Overall, generics enhance code reliability, reusability, and flexibility in Java.
+
+36-How do generics work?
+Generics in Java work by using placeholders called type parameters to represent various data types. Here's a simplified explanation:
+*Defining Generics:
+You use angle brackets <> and a letter (e.g., <T>) to represent the type parameter within a class, method, or interface declaration.
+Example: public class Box<T> { ... } - This Box class can hold objects of any type T.
+*Using Generics:
+When using the generic class, method, or interface, you replace the type parameter with the actual data type you want to use.
+Example: Box<Integer> intBox = new Box<Integer>(); - Creates a Box specifically for Integer objects.
+*Type Safety:
+The compiler checks for type compatibility during compilation. For instance, you can't put a String into an intBox.
+This prevents runtime errors caused by using the wrong data type.
+*Type Erasure:
+Although generics provide compile-time type safety, Java uses a technique called type erasure at runtime.
+The type information from the generic parameter is removed, and the code operates on the actual data type.
+In essence, generics act like templates that can be customized with specific data types while maintaining type safety and
+promoting code reusability.
+
+37-What is type loss?
+In generics, type loss isn't a main concern because generics ensure type safety at compile time.
+However, it can be indirectly affected by:
+    -Type Erasure: At runtime might occur, specific type information from generics is removed.
+          If the underlying data type is prone to type loss:
+          a-narrowing conversion(larger data type to a smaller data type);
+          b-Binary Numeric Promotion(operators (e.g., +, -, *) automatically promote operands to a common type (usually int)
+            before performing the operation. If the result doesn't fit back into the original data type of the operands,
+            precision loss can occur);
+    -Raw Types: Using raw types with generics bypasses some type checks, increasing the chance of type loss issues similar to
+    non-generic code.
+Generics promote type safety, but understanding type erasure and avoiding raw types helps prevent potential type loss at runtime.
+
+38-If the compiler destroys all type parameters during compilation, why should you still use generics?
+Even though generics undergo type erasure in Java, they offer significant benefits beyond compile-time type safety:
+a)Improved Code Readability: Generics make code more self-documenting by explicitly stating the types it can work with.
+This enhances code clarity and maintainability for you and other developers.
+b)Reduced Code Duplication: Generics allow you to write generic code that functions with various data types.
+This eliminates the need to create separate versions for each type, reducing code redundancy and improving maintainability.
+c)Compile-Time Type Checking: While type information is erased at runtime, generics enforce type safety during compilation.
+This catches potential type mismatches early on, preventing runtime errors and making your code more robust.
+d)Type Safety for Framework Creators: Generics enable framework developers to create components that work with a broader
+range of data types safely. This improves the flexibility and reusability of these frameworks.
+In essence, generics provide a balance:
+-Compile-time type safety reduces errors and improves code reliability.
+-Runtime flexibility through type erasure allows the code to work with various data types at runtime.
+-Improved code readability and maintainability.
+These advantages make generics a powerful tool for writing clean, reliable, and reusable Java code.
+
+39-Will it compile? (all 3: yes);
+
+    example class Tester1_extends_Comparable
+
+    public static <T extends Comparable<T>> T max(T x, T y){
+        return x.compareTo(y) > 0 ? x : y;
+    }
+
+    public static int max(int x, int y) {
+        return x > y ? x : y;
+    }
+
+    public static String max(String str1, String str2) {
+        return str1.compareTo(str2) > 0 ? str1 : str2;
+    }
+
+40-What is the difference between List<? extends T> and List <? super T> ?
+The key difference between List<? extends T> and List<? super T> lies in the direction of allowed element types they
+can hold and the operations you can perform on them.
+    a) example in Tester2_Wildcard_Extends
+    List<? extends T> (Wildcard Extends):
+Represents a list that can hold elements of type T or any subtype of T.
+Think of it as a producer (provides elements).
+    b)example in Tester3_Wildcard_Super
+    List<? super T> (Wildcard Super):
+Represents a list that can hold elements of type T or any supertype of T.
+Think of it as a consumer (accepts elements).
+In essence, List<? extends T> is for reading from a list that might hold subtypes,
+while List<? super T> is for adding elements to a list that might have a supertype restriction.
+
+41-Is it possible to pass a List<String> to a method that takes List<Object>?
+Yes, because of a concept called 'covariance' in generics.
+    example in CovariantMain
+That is why:
+a)List<String> is a subtype of List<Object>: String itself is a subclass of Object in Java.
+Since List is covariant with its element type, a list of a subtype (in this case, String) can be assigned to a variable
+of the supertype's list (here, List<Object>).
+b)Type Safety at Compile Time: The compiler still performs type checks to ensure type safety. While a List<String> can be passed,
+you wouldn't be able to add elements other than strings to the List<Object> argument inside the method.
+This is because the method doesn't know the actual element type at compile time (it sees it as Object).
+
+42-What is the difference between List<?> and List<Object> in Java?
+    example in Tester4_diff_unKnow_object;
+-List<?> (Wildcard):
+Represents a list of unknown element type.
+Think of it as a very generic list where you don't know anything specific about the elements.
+Restrictions:
+You cannot add elements to this list because the compiler has no clue what type of elements the list can hold.
+Adding an element might violate type safety.
+You can only read elements and treat them as type Object. This is because the compiler doesn't know the actual element type
+and cannot guarantee safety for other operations.
+-List<Object>:
+Represents a list that can hold elements of type Object (the root of most objects in Java).
+It's more specific than List<?> but less specific than a list with a concrete data type like List<String>.
+Restrictions:
+You can add any object (including primitives that are automatically boxed to objects) to the list.
+You can read elements and treat them as Object. However, if you know the elements might be a specific subtype
+(e.g., String), you'll need to cast them before using methods specific to that type.
+
+43-What are wildcards?
+Wildcards in Java generics are like placeholder symbols denoted by ?. They represent unknown types within generic methods,
+classes, or interfaces.
+Two Main Types:
+a)Extends (? extends T): The wildcard represents a type that's the same as T or a subtype of T. Think of it like a box
+that can hold things of type T or anything derived from T.
+b)Super (? super T): The wildcard represents a type that's T itself or a supertype of T. Imagine a box that can accept
+things of type T or anything that's a broader category than T.
+
+44-What are wildcard characters for restriction top/bottom?
+Wildcards in Java generics don't directly restrict elements to the "top" or "bottom" of a hierarchy.
+However, they do control the direction of allowed element types based on the type parameter T:
+-Extends (? extends T): This wildcard allows elements of type T or subtypes of T. Think of it like a
+restriction towards the "bottom" (more specific types) of the hierarchy. You can read from this list safely.
+-Super (? super T): This wildcard allows elements of type T or supertypes of T. Think of it like a restriction
+towards the "top" (more general types) of the hierarchy. You can add elements to this list safely as long as the added
+elements are compatible with the actual supertype.
+Table to summarizing concept:
+---------------------------------------------------------------------------------------------------------------------------------|
+Wildcard	      |   Allowed Element Types	    |  Use Case                                                                      |
+------------------|-----------------------------|--------------------------------------------------------------------------------|
+? extends T	      |   T or any subtype of T	    |  Reading from a list where element types might be subtypes (flexible reading)  |
+? super T	      |   T or any supertype of T	|  Adding elements to a list where the actual supertype might be more restricted |
+---------------------------------------------------------------------------------------------------------------------------------|
+
+
+

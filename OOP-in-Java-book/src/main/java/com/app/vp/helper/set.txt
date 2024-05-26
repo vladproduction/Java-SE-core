@@ -1,0 +1,10 @@
+Implementations of the Set<E> interface include:
+
+• the HashSet<E> class stores elements in a hash table (by hashcode); HashSet is the best implementation for the Set interface;
+
+• LinkedHashSet<E> – elements are stored as a doubly linked list, which allows for ordered iterations insertions and deletions;
+elements are hashed using hashCode() method and organized into a linked list according to insertion order;
+
+• TreeSet<E> – also supports NavigableSet sub-interfaces and SortedSet;
+stores elements in a tree structure in which the elements are sorted and managed; it is efficient for searching,
+deleting and adding elements; search time estimate is O(log(n));

@@ -1,0 +1,3 @@
+UML Notation:
+UML notation for inheritance uses a solid line with an open arrow from subclass to superclass.
+By convention, the superclass is shown above subclass.

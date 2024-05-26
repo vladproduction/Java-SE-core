@@ -1,0 +1,43 @@
+Line class method:
+public boolean intersects(Line another), which determines whether these segments intersect.
+
+Explanation:
+
+The method takes another Line object (another) as a parameter.
+*It uses the Line-Line intersection formula to calculate a determinant (det) that helps determine various cases.
+*It checks if the lines are collinear (completely parallel) by checking the absolute value of det.
+If it's very close to zero (considering numerical precision), the lines are parallel and don't intersect.
+*It calculates two parameters t and u using the formula. These represent the intersection point's position relative to
+the begin points of each line segment (between 0 and 1 for intersection within the segments).
+*Finally, it checks if both t and u are within the range of 0 to 1. This ensures the intersection point falls within both
+line segments, indicating a true intersection.
+
+/**
+ * Method intersects(Line another) determines whether the current Line segment intersects with another Line segment.
+ *
+ * @param another The Line object representing the other line segment
+ * @return True if the line segments intersect, False otherwise
+ */
+public boolean intersects(Line another) {
+    // Utilize the Line-Line intersection formula
+
+    double det =
+            (this.end.getX() - this.begin.getX()) * (another.end.getY() - another.begin.getY()) -
+            (this.end.getY() - this.begin.getY()) * (another.end.getX() - another.begin.getX());
+
+    // Check for collinearity (lines are parallel)
+    if (Math.abs(det) < 1.0e-10) {
+        return false;
+    }
+
+    double t =
+            ((another.begin.getX() - this.begin.getX()) * (another.end.getY() - another.begin.getY()) -
+             (another.begin.getY() - this.begin.getY()) * (another.end.getX() - another.begin.getX())) / det;
+
+    double u =
+            ((this.begin.getX() - another.begin.getX()) * (this.end.getY() - this.begin.getY()) -
+             (this.begin.getY() - another.begin.getY()) * (this.end.getX() - another.begin.getX())) / det;
+
+    // Check for intersection within line segments
+    return (t >= 0 && t <= 1) && (u >= 0 && u <= 1);
+}

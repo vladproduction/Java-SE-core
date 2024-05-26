@@ -1,0 +1,238 @@
+24-Give examples of polymorphism in inheritance.
+Polymorphism in Java with inheritance can be achieved through two main techniques:
+*Method Overriding:
+This is the most common example of polymorphism in inheritance. It allows a subclass to provide its own implementation
+for a method inherited from the superclass.
+        Example:
+        class Animal {
+          public void makeSound() {
+            System.out.println("Generic animal sound");
+          }
+        }
+
+        class Dog extends Animal {
+          @Override
+          public void makeSound() {
+            System.out.println("Woof!");
+          }
+        }
+
+        public class Main {
+          public static void main(String[] args) {
+            Animal animal = new Animal(); // Create an Animal object
+            animal.makeSound(); // Prints "Generic animal sound" (superclass method)
+
+            Dog dog = new Dog(); // Create a Dog object
+            dog.makeSound(); // Prints "Woof!" (subclass overridden method)
+          }
+        }
+
+*Abstract Classes and Interfaces:
+Abstract classes and interfaces define methods that subclasses must implement. This ensures a consistent behavior for certain
+methods across the inheritance hierarchy while allowing subclasses to provide specific implementations.
+        Example (Abstract Class):
+        abstract class Shape {
+          public abstract double getArea(); // Abstract method, subclasses must implement
+          public void printInfo() {
+            System.out.println("This is a shape");
+          }
+        }
+
+        class Square extends Shape {
+          private double side;
+
+          public Square(double side) {
+            this.side = side;
+          }
+
+          @Override
+          public double getArea() {
+            return side * side;
+          }
+        }
+
+        public class Main {
+          public static void main(String[] args) {
+            Shape square = new Square(5); // Can create object of abstract class through subclass
+            System.out.println(square.getArea()); // Calls overridden method in Square
+          }
+        }
+
+25-What is upcasting and what is downcasting?
+Upcasting and downcasting are techniques in Java related to object references and inheritance.
+They deal with converting object references between a superclass and its subclasses.
+    -Upcasting (Implicit Conversion):
+Converting a reference variable of a subclass to a reference variable of its superclass.
+It's safe and implicit (automatic in Java).
+You can assign a subclass object to a superclass reference variable without an explicit cast.
+Once upcast, the reference can only access members defined in the superclass, not subclass-specific members.
+    -Downcasting (Explicit Conversion):
+Converting a reference variable of a superclass to a reference variable of its subclass.
+It's potentially risky and requires an explicit cast operator ((subclass_name) reference_variable).
+You use downcasting when you know for sure the object referenced by the superclass variable is actually an instance of the subclass.
+Downcasting allows you to access subclass-specific members.
+    Best Practices:
+*Upcasting is generally preferred as it's safer and promotes polymorphism.
+*Downcast only when you're certain the object is of the desired subclass type.
+*Consider using interfaces or abstract classes to define common behaviors instead of relying solely on downcasting.
+
+26-The instanceof operator why for?
+The instanceof operator in Java is used for type checking at runtime. It allows you to verify whether an object referenced
+by a variable is an instance of a specific class, its subclass, or an interface it implements.
+    Useful for:
+*Safe Downcasting:
+    Before downcasting a superclass reference to a subclass, you can use instanceof to ensure the object is actually of the
+    desired subclass type. This helps prevent ClassCastException errors at runtime.
+*Conditional Behavior:
+    You can write code that behaves differently depending on the object's type. For example, you might call different methods
+    based on the object's class.
+*Polymorphism:
+    instanceof can be used in conjunction with polymorphism to determine the actual type of an object at runtime and then call
+    the appropriate method.
+        example:
+        Animal animal = new Dog(); // Upcasting
+
+        if (animal instanceof Dog) {
+          Dog dog = (Dog) animal; // Safe downcasting as instanceof check confirms Dog type
+          dog.bark();
+        } else {
+          System.out.println("Not a Dog object");
+        }
+
+27-Give an example of using polymorphism to separate interface and implementation.
+Here's an example of using polymorphism to separate interface and implementation in Java:
+
+Interface:
+public interface Drawable {
+  // Declares a method to be implemented by subclasses, without specifying implementation details
+  public void draw();
+}
+This Drawable interface defines a single method draw(), which doesn't specify how it should be implemented.
+It acts as a contract that any class implementing it must provide a draw method.
+
+Implementations:
+
+class Square implements Drawable {
+  @Override
+  public void draw() {
+    System.out.println("Drawing a square...");
+    // Specific implementation for drawing a square
+  }
+}
+
+class Circle implements Drawable {
+  @Override
+  public void draw() {
+    System.out.println("Drawing a circle...");
+    // Specific implementation for drawing a circle
+  }
+}
+
+The Square and Circle classes implement the Drawable interface. They each provide their own implementation for the draw method,
+specific to drawing a square and a circle, respectively.
+
+Usage (Polymorphism):
+public class Main {
+
+  public static void main(String[] args) {
+    Drawable[] shapes = new Drawable[2]; // Array of Drawable references
+    shapes[0] = new Square();
+    shapes[1] = new Circle();
+    for (Drawable shape : shapes) {
+      // Polymorphism in action - calls the appropriate draw method based on the object's type
+      shape.draw();
+    }
+  }
+}
+
+In the Main class:
+An array of Drawable references is created (shapes).
+Objects of Square and Circle are assigned to the array elements, even though they have different implementations.
+A loop iterates through the array and calls the draw() method on each element.
+
+Here's where polymorphism comes in:
+Because the references are of type Drawable, the actual object type (either Square or Circle) is determined at runtime.
+When draw() is called, the specific implementation provided by the concrete object (Square or Circle) is executed.
+This demonstrates how interface separation and polymorphism allow you to have a unified way of handling different types
+of objects (shapes in this case) with their own implementations. The code becomes more flexible and easier to maintain
+as you can add new shapes by simply implementing the Drawable interface with their specific drawing logic.
+
+28-Single and Multiple Inheritance – Explain Possibility of implementation in Java.
+Single Inheritance
+A class can inherit from only one direct superclass.
+It establishes a clear "is-a" relationship between the subclass and the superclass.
+The subclass inherits all public and protected members (fields and methods) from the superclass.
+It promotes code reusability and code organization.
+Java fully supports single inheritance.
+        Example:
+        Java
+        class Animal {
+          public void makeSound() {
+            System.out.println("Generic animal sound");
+          }
+        }
+        class Dog extends Animal {
+          public void bark() {
+            System.out.println("Woof!");
+          }
+        }
+In this example, Dog inherits from Animal and can access the makeSound method from the superclass.
+
+Multiple Inheritance
+A class cannot inherit directly from multiple superclasses in Java.
+This is to avoid the diamond problem, where a subclass inherits conflicting methods from two different superclasses.
+However, there are workarounds to achieve some of the benefits of multiple inheritance:
+    *Interfaces: Interfaces allow a class to implement multiple contracts, providing a way to share common functionalities
+     across unrelated classes.
+    *Mixins (not built-in): A design pattern where utility classes can be used to "mix in" specific functionalities to other
+     classes without formal inheritance.
+
+Explanation of Diamond Problem:
+Imagine classes A, B, and C:
+
+      A
+     / \
+    B   C
+      / \
+     D
+If D inherits from both B and C, which might have the same method (e.g., doSomething()), it's unclear which implementation
+of doSomething() should be used. This ambiguity is the diamond problem.
+
+Implementation in Java
+While Java doesn't directly support multiple inheritance through classes, interfaces provide a powerful and flexible
+way to achieve similar benefits:
+        Example:
+        Java
+        interface Drawable {
+          void draw();
+        }
+        interface Movable {
+          void move();
+        }
+        class Shape implements Drawable {
+          @Override
+          public void draw() {
+            System.out.println("Drawing a shape...");
+          }
+        }
+        class AnimatedShape implements Drawable, Movable {
+          @Override
+          public void draw() {
+            System.out.println("Drawing an animated shape...");
+          }
+          @Override
+          public void move() {
+            System.out.println("Moving the animated shape...");
+          }
+        }
+In this example, Shape implements Drawable and AnimatedShape implements both Drawable and Movable. This allows a class
+to inherit functionalities from multiple interfaces without the diamond problem.
+
+Choosing Between Single Inheritance and Interfaces
+*If you need a clear "is-a" relationship and code reusability, use single inheritance.
+*If you need to share functionalities across unrelated classes or avoid the diamond problem, use interfaces.
+
+
+
+
+

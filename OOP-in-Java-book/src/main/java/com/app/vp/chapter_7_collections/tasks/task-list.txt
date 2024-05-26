@@ -1,0 +1,39 @@
+1. Print a singly linked list.
+2. Determine the number of list elements.
+3. Find the average value of the list elements.
+4. Write the list in reverse order.
+5. Write the list in reverse order without recursion.
+6. Remove duplicate elements from the list.
+7. Print the list in reverse order (hint: use Stack).
+8. Determine the value of the k-th element of the list.
+9. Remove the 2nd element from the list.
+10. Insert an element at the beginning of the list.
+11. Insert an element at the end of the list.
+12. Determine the sum of the elements of two lists.
+13. Implement a list using generics.
+14. Add an element to the middle of the list.
+15. Find the first and last elements of a singly linked list.
+16. Find the first and last elements of a doubly linked list.
+17. Remove all elements from the ArrayList to reuse it.
+18. Sort ArrayList in descending order.
+19. Find the number of a given element in ArrayList.
+20. Remove a given element from an ArrayList.
+21. Determine whether a given element is in an ArrayList.
+22. Determine if ArrayList is empty.
+23. Write the isFull() method for a stack created from an array
+lines.
+24. Write a method that reads lines sequentially,
+and then outputs them in reverse order.
+25. Write a method that, based on the input string consisting
+of parentheses, square brackets, and curly braces, determines whether those brackets are properly balanced. For example,
+for the line [()]{}{[()()]()} the program should print tru,
+and for [()] – false.
+26. Using the peek() method, determine the last element added to the stack (without removing it).
+27. Write a size() method for the stack and for the queue that
+determines the number of elements in the collection.
+28. Remove key-value pairs from the map based on a given condition. For example, there are pairs “book title - price” and you need
+delete all pairs for which the price is greater than 300.
+29. Modify Comparator to sort A, a, B, b, C, c...
+(the uppercase letter comes before the lowercase letter).
+30. Make sure that the AddressBookEntry class objects of the example TreeSet<E> class from Section 7.10 are sorted
+and are stored in the order corresponding to the add() method of the Comparable interface.

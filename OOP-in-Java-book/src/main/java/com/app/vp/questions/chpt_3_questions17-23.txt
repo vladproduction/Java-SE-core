@@ -1,0 +1,95 @@
+17-What is inheritance?
+In Java, inheritance is a way to reuse code by creating new classes (subclasses) that inherit properties (fields)
+and methods from existing classes (superclasses). It's like building on top of a foundation. Subclasses can add their
+own unique features while still benefiting from the functionality of the superclass.
+
+18-What is a superclass and what is a subclass?
+*Superclass (parent class, base class): The original class that defines properties and methods.
+Other classes can inherit from it. Think of it as a blueprint.
+*Subclass (child class, derived class): A new class created from an existing superclass.
+It inherits all the properties and methods of the superclass, and can also add its own unique ones.
+It's like a specific house built from a general house plan (the superclass).
+
+19-What does the keyword “extends” mean?
+In Java, the extends keyword is used to establish inheritance between classes. A subclass extends a superclass, meaning the
+subclass inherits all the accessible methods and fields from the superclass.
+It's like saying "this class is a specialized version of that class."
+
+20-What is method overloading?
+Method overloading in Java is a feature that allows you to define multiple methods with the same name within the same class,
+but with different parameters. This promotes code readability and flexibility.
+    example:
+    class Calculator {
+      public int add(int a, int b) {
+        return a + b;
+      }
+      public double add(double a, double b) {
+        return a + b;
+      }
+    }
+    Java will determine which method to use based on the data types of a and b.
+    This allows you to use the same method name for different operations depending on the input data.
+
+21-What is method overriding?
+It happens when a subclass provides its own implementation for a method already defined in its superclass.
+-Conditions for Overriding:
+The subclass method has the same name and same parameter list (number, order, and types of parameters) as the superclass method.
+The subclass method can have the same return type or a subtype of the superclass method's return type (providing more flexibility).
+-Benefits:
+Allows subclasses to specialize the behavior of inherited methods.
+Enables runtime polymorphism (discussed later).
+    example:
+    class Animal {
+      public void speak() {
+        System.out.println("Generic animal sound");
+      }
+    }
+
+    class Dog extends Animal {
+      @Override // This annotation is optional but good practice to indicate overriding
+      public void speak() {
+        System.out.println("Woof!");
+      }
+    }
+
+    public class Main {
+      public static void main(String[] args) {
+        Animal animal = new Animal(); // Create an Animal object
+        animal.speak(); // Prints "Generic animal sound" (superclass method)
+
+        Dog dog = new Dog(); // Create a Dog object
+        dog.speak(); // Prints "Woof!" (subclass overridden method)
+      }
+    }
+
+     The speak method is overridden in the Dog class. When you call speak on an Animal object, the superclass method is used.
+     But when you call it on a Dog object, the overridden method in the Dog class is executed, providing a specific sound for a dog.
+
+22-What is the difference between overloading and overriding?
+Both overloading and overriding are techniques in Java that deal with methods, but they differ in their purpose and how they are achieved.
+        *Method Overloading:
+    Within a class: Defined within the same class.
+    Method signature: Methods have the same name but different parameter lists. This means they can have a different number of parameters,
+                      different parameter types, or both.
+    Return type: Can be the same or different.
+    Purpose: Provides flexibility to handle different types of input data using the same method name.
+        *Method Overriding:
+    Inheritance: Occurs in inheritance hierarchies. A subclass overrides a method already defined in its superclass.
+    Method signature: Methods have the same name and parameter list (number, order, and types).
+    Return type: Must be the same or a subtype of the superclass method's return type (allowing for more flexibility in the subclass).
+    Purpose: Allows subclasses to provide specialized implementations for inherited methods. Enables runtime polymorphism,
+    where the specific method to be called is determined at runtime based on the object's actual class.
+
+23-What does the keyword “super” mean?
+The keyword super used for working with inheritance. It refers to the direct superclass (parent class) of the current class.
+Main uses:
+        *Calling Superclass Constructor:
+    You can use super() to explicitly call the constructor of the superclass from a subclass constructor.
+    This ensures proper initialization of the superclass's members before the subclass code executes.
+        *Accessing Superclass Members:
+    Methods: Use super.methodName() to call a method defined in the superclass, even if it's overridden in the subclass.
+             This is helpful when you want to access the original superclass behavior.
+    Fields: Use super.fieldName to access a field (variable) defined in the superclass, even if there's a field with the same name
+            in the subclass. This is less common but can be useful in specific scenarios.
+super can only be used within a subclass context.
+It cannot be used to access private members of the superclass.

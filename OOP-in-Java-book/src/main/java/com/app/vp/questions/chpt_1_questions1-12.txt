@@ -1,0 +1,99 @@
+1-OOP
+Object-Oriented Programming. It's a foundational way of structuring programs in Java.
+Program contain classes. Classes is a blueprint for creating objects. It defines properties an object will have
+and actions it can perform.
+The benefits of OOP:Organization: OOP helps organize code into clear modules (objects and classes).
+                    Reusability: You can create reusable classes, reducing repetitive code.
+                    Maintainability: OOP code is easier to maintain and modify as changes are isolated within objects.
+
+2-Object
+Object is essentially a real-world entity with properties (data) and behaviors (methods).
+It like a car - it has attributes like color and speed (properties), and actions like accelerating and braking (methods).
+
+3-Class
+A class in Java is like a blueprint for creating objects. It defines the properties (data) that objects of that class
+will have and the actions (methods) they can perform.
+Example Car class: it would not be a physical car, but it would define what makes up a car in your program.
+Properties like color, model, and speed, and methods like accelerate and brake might be specifying. Then we use Car class
+to create multiple individual car objects, each with it`s own properties.
+
+4-Principles OOP
+Encapsulation: This principle bundles data (properties) and the code that manipulates that data (methods) together within a
+single unit called an object. It controls access to the data, ensuring its integrity and promoting data hiding.
+
+Inheritance:  Inheritance allows you to create new classes (subclasses) based on existing classes (superclasses).
+Subclasses inherit properties and methods from the superclass, promoting code reuse and creating hierarchical relationships between objects.
+
+Polymorphism: Polymorphism allows objects of different classes to respond differently to the same method call.
+This flexibility enables writing code that can work with various objects without knowing their exact types beforehand.
+
+Abstraction: Abstraction focuses on the essential details of an object while hiding the underlying implementation.
+It allows you to define interfaces or abstract classes that specify what an object can do without revealing how it does it.
+This promotes reusability and simplifies complex code.
+
+5-field, attribute, variable
+They all store information about the object's state.
+Field: This is the most general term for a data member within a class.
+Attribute: This term is sometimes used for a public field, emphasizing its role as a characteristic of the object.
+Variable: This is a broader programming concept referring to a named storage location in memory. In the context of a class,
+    it refers to the data member itself.
+
+6-How to properly organize access to class fields?
+Fields in Java are declared with private access. This is the foundation of good access control.
+Getters and Setters:-public methods (getters) to retrieve the values of private fields;
+                    -public methods (setters) to modify private fields, but with validation or security checks as needed;
+Benefits:
+Data Protection: Private fields prevent direct modification from outside the class, ensuring data integrity.
+Controlled Access: Getters and setters allow controlled access and potential manipulation logic for data.
+
+7-Access modifiers
+--------------------------------------------------------------------------|
+Modifier	         |   Accessible From                                  |
+--------------------------------------------------------------------------|
+Public	             |   Anywhere in the program                          |
+Private	             |   Only within the class                            |
+Protected	         |   Class and subclasses (same or different packages)|
+Default	             |   Classes within the same package                  |
+--------------------------------------------------------------------------|
+
+8-Constructor
+Special method with the same name as the class. It's called automatically. Job is to:
+    -Initialize the object's state: You can assign initial values to the object's fields (attributes, variables).
+    -Perform any necessary setup: This might involve allocating resources or validating data passed during object creation.
+It's like a blueprint coming to life, setting up the initial state of object.
+
+9-What is the difference between a default constructor, without parameters and a constructor with parameters?
+    -default: provided by the compiler only if not define any constructors, no arguments, create objects without explicit initialization
+    -no args: explicitly defining with no args, more control, can include code to initialize fields or perform setup tasks.
+    -with Parameters: explicitly defining with args (parameters), these arguments are used to provide initial values for the object's fields,
+        this allows for more flexible object creation with customized initial states.
+Both constructors with no arguments and constructors with parameters require your definition,
+whereas a default constructor is a compiler-generated fallback.
+
+10-this
+'this' keyword refers to the current object within a method or constructor. It's particularly useful when you have a variable name that might
+conflict with a field (attribute) of the class.
+How it's used:
+-Access Class Fields:       If a method parameter or local variable has the same name as a class field, you can use this to reference
+                            the class field explicitly.
+-Call Another Constructor:  You can use this to call another constructor within the same class during object creation.
+
+11-What are getters? What are setters?
+They follow encapsulation principles in Java classes:
+-Getter (Accessor Method):
+A public method that returns the value of a private field in the class.
+It provides controlled access to the field's data without exposing it directly.
+-Setter (Mutator Method):
+(Optional) A public method that takes a parameter and assigns it to a private field.
+It allows for controlled modification of the field's value, potentially with validation or security checks.
+Together, they promote data protection and controlled access to an object's internal state.
+
+12-toString()
+The toString() method inherited from the Object class. It serves two purposes:
+-Default String Representation:
+    When you try to print an object directly using System.out.println(object), Java internally calls the object's toString() method.
+    This method should return a human-readable string representation of the object's state.
+-Customizable Output:
+    You can override the default toString() method in your class to provide a more informative or specific string representation
+    of your object. This is particularly useful for debugging and logging purposes.
+
