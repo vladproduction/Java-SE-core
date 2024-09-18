@@ -1,9 +1,9 @@
 # -Java-SE-core
-Key moments of Java Language
+**Key moments of Java Language**
 
-The main aim of this Repository is to open basic mechanisms of working with Java-programming language.
-Each Project represent concrete theme with description.
-----------------------------------
+**The main aim of this Repository is to open basic mechanisms of working with Java-programming language.  
+Each Project represent concrete theme with description.**
+##
 
 Java Platform, Standard Edition (Java SE) is a computing platform for development and deployment of portable code for desktop and server environments. 
 The Java Runtime Environment (JRE) and Java Development Kit (JDK) are the actual files downloaded and installed on a computer to run or develop Java programs, respectively.
