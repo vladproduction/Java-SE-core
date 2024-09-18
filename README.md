@@ -1,4 +1,4 @@
-# -Java-SE-core
+# Java-SE-core
 **Key moments of Java Language**
 
 **The main aim of this Repository is to open basic mechanisms of working with Java-programming language.  
