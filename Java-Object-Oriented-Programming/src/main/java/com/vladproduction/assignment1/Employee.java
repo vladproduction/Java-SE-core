@@ -1,5 +1,9 @@
 package com.vladproduction.assignment1;
 
+/**
+ * modifying through function;
+ * check result by call instance attribute;
+ * */
 public class Employee {
 
     String name;
