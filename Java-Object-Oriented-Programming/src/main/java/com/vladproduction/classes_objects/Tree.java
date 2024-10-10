@@ -1,4 +1,4 @@
-package com.vladproduction;
+package com.vladproduction.classes_objects;
 
 import java.awt.*;
 

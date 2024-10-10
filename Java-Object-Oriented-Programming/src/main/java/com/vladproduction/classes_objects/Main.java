@@ -1,6 +1,6 @@
-package com.vladproduction;
+package com.vladproduction.classes_objects;
 
-import static com.vladproduction.Tree.TRUNK_COLOR;
+import static com.vladproduction.classes_objects.Tree.TRUNK_COLOR;
 
 public class Main {
     public static void main(String[] args) {
@@ -9,6 +9,7 @@ public class Main {
         oakTree.announceTallTree();
 
         Tree mapleTree = new Tree(90, 30, TreeType.MAPLE);
+        mapleTree.grow();
 
         mapleTree.announceTallTree();
 
