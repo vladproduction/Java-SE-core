@@ -29,7 +29,7 @@ public class Tree {
     void announceTallTree(){
         if(this.height > 100){
             System.out.print("announce(): ");
-            System.out.println("Tree " + this.treeType + " is tall!");
+            System.out.println("TreeClass " + this.treeType + " is tall!");
         }
     }
 

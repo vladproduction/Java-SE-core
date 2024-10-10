@@ -3,8 +3,6 @@
 #
 
 ## covered:
-* oop
-* abstraction
-* inheritance
+* classes and objects
 * encapsulation
-* polymorphism
+

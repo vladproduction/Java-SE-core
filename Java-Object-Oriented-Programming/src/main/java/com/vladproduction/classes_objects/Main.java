@@ -14,11 +14,11 @@ public class Main {
         mapleTree.announceTallTree();
 
         /*if (oakTree.height > 100){
-            System.out.println("Tree " + oakTree.treeType + " is tall!");
+            System.out.println("TreeClass " + oakTree.treeType + " is tall!");
         }
 
         if (mapleTree.height > 100){
-            System.out.println("Tree " + mapleTree.treeType + " is tall!");
+            System.out.println("TreeClass " + mapleTree.treeType + " is tall!");
         }*/
 
         //using static attribute
