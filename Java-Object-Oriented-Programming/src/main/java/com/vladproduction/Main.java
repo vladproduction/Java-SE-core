@@ -1,5 +1,7 @@
 package com.vladproduction;
 
+import static com.vladproduction.Tree.TRUNK_COLOR;
+
 public class Main {
     public static void main(String[] args) {
         Tree oakTree = new Tree(120, 12, TreeType.OAK);
@@ -17,5 +19,10 @@ public class Main {
         if (mapleTree.height > 100){
             System.out.println("Tree " + mapleTree.treeType + " is tall!");
         }*/
+
+        //using static attribute
+        System.out.println(TRUNK_COLOR);
+        //or static method
+        Tree.announceTree();
     }
 }
