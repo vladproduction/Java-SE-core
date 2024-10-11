@@ -6,4 +6,5 @@
 * classes and objects
 * encapsulation
 * inheritance
+* polymorphism
 

@@ -1,0 +1,7 @@
+The idea of polymorphism is that an object can use a functionality
+from different classes depending on te context;
+It`s essential key to understand polymorphism;
+
+In Java:
+1) runtime polymorphism;
+2) compile-time polymorphism;
