@@ -5,4 +5,5 @@
 ## covered:
 * classes and objects
 * encapsulation
+* inheritance
 
