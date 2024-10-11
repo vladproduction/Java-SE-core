@@ -7,4 +7,5 @@
 * encapsulation
 * inheritance
 * polymorphism
+* abstraction
 
