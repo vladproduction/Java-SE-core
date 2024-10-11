@@ -1,0 +1,27 @@
+Understanding Runtime Polymorphism
+
+*Method Overriding: 
+Runtime polymorphism occurs when a subclass provides a specific implementation of a method that is already defined in its superclass.
+In your OddArrayList class, you override multiple methods from the ArrayList superclass (such as add(int index, Integer element),
+add(Integer element), addAll(Collection<? extends Integer> c), etc.).
+When you call these overridden methods on an instance of OddArrayList, the JVM determines the method to invoke at runtime based on
+the actual object type, not the reference type.
+
+*Dynamic Method Dispatch:
+In Java, when you have a reference of the superclass type, but the object is of the subclass type, the overridden method
+in the subclass is called.
+
+*For example:
+ArrayList<Integer> myList = new OddArrayList();
+myList.add(3); // This will invoke the add method in OddArrayList
+
+In this example, even though myList is declared as an ArrayList, the add method in OddArrayList will be executed because myList
+refers to an instance of OddArrayList.
+
+*Summary:
+The OddArrayList class demonstrates runtime polymorphism by overriding methods inherited from ArrayList. 
+When these methods are called on an OddArrayList object, the specific implementations in OddArrayList are executed, showing how
+the subclass's behavior can differ from that of the superclass.
+This mechanism allows for more flexible and extensible code, as it enables classes to have specific behaviors while still being
+treated as their superclasses in a polymorphic manner.
+Thus, the OddArrayList serves as a solid example of runtime polymorphism in action.
