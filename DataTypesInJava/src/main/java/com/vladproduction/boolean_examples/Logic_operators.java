@@ -1,4 +1,4 @@
-package Boolean;
+package com.vladproduction.boolean_examples;
 
 import java.util.Random;
 

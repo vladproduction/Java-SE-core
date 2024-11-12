@@ -1,0 +1,18 @@
+c1          c2          &&          ||
+true        true        true        true
+true        false       false       true
+false       true        false       true
+false       false       false       false
+
+Comparison operators produce a boolean result;
+They evaluate relationships between values and operands;
+Expression is true if expression is true;
+Expression is false if expression is false;
+Relational expressions are:
+    * less than (<),
+    * greater than (>),
+    * less than or equal to (<=),
+    * greater than or equal to (>=),
+    * equal to (==),
+    * not equal to (!=).
+Equal to and not equal to work with all built-in data types, but other comparisons only work with boolean.

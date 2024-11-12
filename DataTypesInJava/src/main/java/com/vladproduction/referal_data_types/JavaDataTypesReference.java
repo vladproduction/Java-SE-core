@@ -1,4 +1,4 @@
-package vladproduction.com.app01;
+package com.vladproduction.referal_data_types;
 
 public class JavaDataTypesReference {
     public static void main(String[] args) {

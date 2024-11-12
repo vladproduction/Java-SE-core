@@ -1,0 +1,14 @@
+Narrowing conversion occurs when you convert a larger primitive data type to a smaller one.
+This often involves losing some information due to the reduced size of the target type.
+For example:
+    Converting int to short, byte, or char.
+    Converting long to int, short, or byte.
+    Converting float to int, short, or byte.
+    Converting double to float, int, short, or byte.
+
+When performing these conversions, the following can happen:
+* Loss of Value: The integer may exceed the range of the target type, leading to an incorrect representation.
+    For example, converting 300 into byte results in 44.
+
+* Changing Sign: If the number is negative or if the bit pattern wraps around during conversion, the sign of the result can change.
+    For instance, converting -130 into byte yields -126.

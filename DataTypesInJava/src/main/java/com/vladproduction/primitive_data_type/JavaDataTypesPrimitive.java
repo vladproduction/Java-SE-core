@@ -1,4 +1,4 @@
-package vladproduction.com.app01;
+package com.vladproduction.primitive_data_type;
 
 public class JavaDataTypesPrimitive {
     public static void main(String[] args) {

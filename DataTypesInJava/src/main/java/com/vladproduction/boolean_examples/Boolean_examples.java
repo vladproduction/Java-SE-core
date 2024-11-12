@@ -1,29 +1,29 @@
-package Boolean;
+package com.vladproduction.boolean_examples;
 
-public class Main_true_false_examples {
-    //boolean has two values: "true" and "false"
-    //result of () is inside Java language
-    //() not count; [] count; about massive
-    // && work as logic "AND"; two conditions must be done for TRUE   -->one false-all false
-    // || work as "OR"; work when minimum of one of conditions is done-->one true-all true
-    // == means definitely(exactly)
+public class Boolean_examples {
+    // boolean has two values: "true" and "false"
+    // result of () is inside Java language
+    // () not count; [] count; about massive
+    // && work as logic "AND"; two conditions must be done for TRUE   --> one false - all false
+    // || work as "OR"; work when minimum of one of conditions is done --> one true - all true
+    // == means definitely (exactly the same)
     // if (true){code block} --> if false code don`t work
     // if (true){code block}else{code block #2} --> if false code#2 work
 
     public static void main(String[] args) {
         boolean flag1 = true;
         boolean flag2 = false;
-        System.out.println(flag1+";"+flag2);
+        System.out.println(flag1+" ; "+flag2); //true ; false
 
-        boolean isBigger = 10<15;
-        System.out.println("isBigger="+isBigger);
+        boolean isBigger = 10 > 15;
+        System.out.println("isBigger = "+isBigger); //isBigger=false
 
         boolean isLess = 10 < 15;
-        System.out.println("isLess=" + isLess);
+        System.out.println("isLess = " + isLess); //true
 
         int value = 10;
-        boolean isInside = -5<value&&value<20;
-        System.out.println("isInside="+isInside);
+        boolean isInside = -5 < value && value < 20;
+        System.out.println("isInside = "+isInside); //isInside=true
 
         System.out.println("--------------------------");
         boolean c1 = -5<value;
