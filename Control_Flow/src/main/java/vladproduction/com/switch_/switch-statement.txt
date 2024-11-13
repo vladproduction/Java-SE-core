@@ -1,0 +1,4 @@
+•Unlike if-then and if-then-else statements, the switch statement can have a number of possible execution paths.
+•Works with the byte, short, char, and int primitive data types.
+•It also works with enumerated types, the String class, and
+special classes that wrap certain primitive types: Character, Byte, Short, and Integer.

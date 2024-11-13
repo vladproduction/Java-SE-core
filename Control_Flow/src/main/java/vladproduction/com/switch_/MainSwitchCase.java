@@ -1,4 +1,4 @@
-package vladproduction.com.switch_.switch_case_statement;
+package vladproduction.com.switch_;
 
 /**
  * Main class of the Java program.

@@ -1,4 +1,4 @@
-package vladproduction.com.if_.if_then_statement;
+package vladproduction.com.if_;
 
 /**
 * Main class of the Java Program
@@ -11,7 +11,5 @@ public class Main1 {
 		}else{
 			System.out.println("You should work harder");
 		}
-			
-				
 	}
 }

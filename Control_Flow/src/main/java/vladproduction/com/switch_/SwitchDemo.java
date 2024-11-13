@@ -3,13 +3,7 @@ package vladproduction.com.switch_;
 import java.util.Scanner;
 
 public class SwitchDemo {
-
     public static void main(String[] args) {
-        SwitchDemo main = new SwitchDemo();
-        main.run();
-    }
-
-    private void run() {
         Scanner scanner = new Scanner(System.in);
         int number = scanner.nextInt();
         String name = switch (number) {
@@ -22,4 +16,7 @@ public class SwitchDemo {
         };
         System.out.println(name);
     }
+    //output:
+    /*1
+    First operation*/
 }
