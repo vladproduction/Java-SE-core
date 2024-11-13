@@ -1,4 +1,4 @@
-package vladproduction.com.while_.while_do_while_loop;
+package vladproduction.com.while_;
 
 public class Main_WDW {
 
@@ -10,10 +10,15 @@ public class Main_WDW {
             sequenceWhile++;
         }
         //do-while example
-        int sequenceDoWhile = 10;
+        int x = 5;
         do{
-            System.out.println("do-while: " + sequenceDoWhile);
-            sequenceDoWhile++;
-        }while(sequenceDoWhile < 10);
+            System.out.println("do-while: " + x);
+            x++;
+        }while(x < 10);
+        /*do-while: 5
+        do-while: 6
+        do-while: 7
+        do-while: 8
+        do-while: 9*/
     }
 }

@@ -1,4 +1,4 @@
-package vladproduction.com.while_;
+package vladproduction.com.do_while;
 
 import java.util.Scanner;
 

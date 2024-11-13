@@ -1,4 +1,4 @@
-package vladproduction.com.while_.while_statement;
+package vladproduction.com.while_;
 
 public class MainWhile {
     
