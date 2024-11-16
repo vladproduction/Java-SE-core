@@ -1,6 +1,6 @@
-package vladproduction.com.ch02;
+package com.vladproduction.finalmethod;
 
-public class Main02 {
+public class MainApp01 {
     public static void main(String[] args) {
         Track track = new Track();
         track.typeEngine(); //steel has from parent, but no app to override in child's classes

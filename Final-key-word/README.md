@@ -1,4 +1,8 @@
-In Java, the final keyword is used to declare entities (variables, methods, or classes) with
+The final keyword is a non-access modifier used for classes, attributes and methods, which makes
+them non-changeable (impossible to inherit or override). The final keyword is useful when you want
+a variable to always store the same value, like PI (3.14159...). 
+
+Used to declare entities (variables, methods, or classes) with
 a "final" characteristic, meaning they cannot be modified or overridden once they are defined.
 
 1)Final Variables: When applied to a variable, the final keyword ensures that its value cannot be

@@ -1,4 +1,4 @@
-package vladproduction.com.app01;
+package com.vladproduction.finalclass;
 
 public class ClassB {
 
@@ -26,10 +26,9 @@ public class ClassB {
         this.fieldB = fieldB;
     }
 
-    public  void printMethod(String fieldA, int fieldB){
+    public void printMethod(String fieldA, int fieldB){
         System.out.println("printMethod: " + fieldA + "; " + fieldB);
     }
-
 
     @Override
     public String toString() {

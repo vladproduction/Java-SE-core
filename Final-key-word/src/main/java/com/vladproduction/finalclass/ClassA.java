@@ -1,4 +1,4 @@
-package vladproduction.com.app01;
+package com.vladproduction.finalclass;
 
 public final class ClassA {
     private String fieldA;

@@ -1,6 +1,6 @@
-package vladproduction.com.app02;
+package com.vladproduction.finalmethod;
 
-public class Main02_methodsFinal {
+public class finalMethod {
     public static void main(String[] args) {
 
     }
