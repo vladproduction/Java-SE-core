@@ -1,0 +1,129 @@
+1) OOP Encapsulation Story
+Welcome to a story about encapsulation. This story shows why encapsulation is important in OOP, and what basic Java tools we can employ to achieve encapsulation.
+
+2) Person class
+Take a look at the class Person.
+At first, it looks simple and concise. It contains two public fields: name and age.
+
+3) Using Person class
+The problem of the Person class is that it is not comfortable to use.
+
+Look at client code in PersonTest. Usage of Person class requires several commands to setup an instance of it:
+
+we have to call a constructor to create a Person object,
+then we have to assign a name
+and age.
+
+4) Illegal values
+Also, the Person class does not check assigned values, so we can easily create a person with null or empty name or negative age.
+
+5) Private fields
+So, let's edit the Person class to resolve those issues.
+
+First, we make fields name and age private, so client code can't access them.
+
+Instead, let client code specify those values as constructor arguments
+
+Also, note that defining a constructor prevents the creation of a default constructor with no arguments.
+So client code can't create a Person instance without providing name and age values.
+
+6) Constructor call
+That is how client code may create a Person object via constructor.
+
+7) Constructor call with illegal values
+There is still a problem - nothing prevents assigning illegal values to constructor arguments. So client code is still able
+to create a person with empty name or negative age.
+
+8) Constructor arguments check
+Let's fix this problem.
+
+First, we set up a check for the name argument. We consider null or empty values illegal, so when the constructor gets such a name value,
+it throws an IllegalArgumentException with a related message.
+
+Same behavior is applied when getting a negative age value.
+
+Throwing an exception prevents Person object creating and signals the client code about an error.
+Throwing an exception is a normal practice to create or keep objects in a consistent state.
+
+9) Constructor arguments check (Test)
+So now, client code can't create a Person with invalid values.
+
+10) Fields are inaccessible to read
+You probably noticed that assertion commands in test have disappeared. It is due to the fact that now fields are private and inaccessible outside of the class.
+We hide them to control assignment of values and prevent illegal ones, but one of the consequences is that client code also can’t read a person's name or age.
+
+11) Getters
+In order to provide access to name and age values, we can define special methods:
+
+getName()
+getAge()
+Such methods ("get" + field name with capitalized first letter) are called "getters".
+
+Those methods simply return field values. It is applicable in our case, because name is String and therefore is immutable, and age is int and is transferred by value.
+
+If a field is a mutable object (e.g. array) it is not safe to just return it, because client code can modify it and that modification will be
+uncontrollably applied to the field of our object. So to prevent this, a getter should return a copy of the field value. It is usually called "defensive copy".
+
+12) Getters
+Getters allow getting name and age values.
+
+13) Cannot set values
+Next issue to discuss - client code can't set values to Person objects after they are created.
+
+Actually, classes allowing no changes to their state after creation are called "immutable". Sometimes it is a very useful concept,
+but in our case we will provide ability to change age or name.
+
+14) Setters
+Similarly to getters, there is a concept of "setters" - special methods to set values. Pattern for setter naming is "set" + field name with capitalized first letter.
+
+So, let's add setName and setAge.
+
+15) Setters usage
+Now, client code can change name and age of existing objects.
+
+16) Setters usage problem
+Sadly, now client code can also assign illegal values via setters.
+
+So, the issue is back: name may be empty and age may be negative.
+
+17) Checks in setters
+To fix the problem, let's apply same checks in setName() and setAge() methods as we do in the constructor.
+
+18) Checks in setters (extract methods)
+Actually, it is not a good idea to duplicate code like this. Imagine a situation that we would like to apply some special check on name value, e.g.
+regexp check. Then we must not forget to alter code same way several times in different places. There is even a special principle that urges us
+to beware such a situation - DRY: Do not Repeat Yourself.
+
+Let's extract checks into special methods: checkName() and checkAge(). Now we can just call those methods to check arguments in the constructor(name, age)
+and in setters (name, age)
+
+19) Checks in setters: usage
+Now assignment of illegal name and age values would throw an exception.
+
+20) Aging protocol
+Now, let's take a look at the age setter.
+
+Sadly, human beings are not getting younger. So, we can say that there is no reason to let setting any age.
+
+We may define another protocol for changing age - incrementing it. So, each time a person has a birthday party, we may increment age by one.
+
+21) incrementAge
+So instead of regular setter we define an incrementAge method.
+
+This step increases Person object's consistency in a way - now the policy of how age can be changed is strictly defined inside
+Person class and can't be altered outside.
+
+22) incrementAge usage
+Now, client code may only increment age via incrementAge method and can't set it voluntarily.
+
+We could also define a policy for setting names, e.g. marry and take married name. But let us say it is legal to change your
+own name any way you like.
+
+23) Encapsulation
+So now you have witnessed the application of the encapsulation principle in action:
+
+We have hidden all the fields and implementation details from the client code.
+We have established our own terms of what input values our class accepts.
+We have established a protocol of how client code may get and alter state of instances of our class.
+All of that changes developed Person from a plain structure to a truly object-oriented class.
+

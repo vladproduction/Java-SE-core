@@ -1,0 +1,23 @@
+1 OOP Encapsulation Story
+2 Person class
+3 Using Person class
+4 Illegal values
+5 Private fields
+6 Constructor call
+7 Constructor call with illegal values
+8 Constructor arguments check
+9 Constructor arguments check (Test)
+10 Fields are inaccessible to read
+11 Getters
+12 Getters
+13 Cannot set values
+14 Setters
+15 Setters usage
+16 Setters usage problem
+17 Checks in setters
+18 Checks in setters (extract methods)
+19 Checks in setters: usage
+20 Aging protocol
+21 incrementAge
+22 incrementAge usage
+23 Encapsulation
