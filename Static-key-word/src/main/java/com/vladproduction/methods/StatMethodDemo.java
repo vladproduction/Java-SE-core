@@ -1,4 +1,4 @@
-package vladproduction.com;
+package com.vladproduction.methods;
 
 public class StatMethodDemo {
     public static void main(String[] args) {

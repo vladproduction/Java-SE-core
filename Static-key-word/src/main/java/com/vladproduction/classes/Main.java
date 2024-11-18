@@ -1,9 +1,9 @@
 
-package Class_Methods.ch04;
+package com.vladproduction.classes;
 
 import java.util.Date;
 
-public class Main04 {
+public class Main {
     public String s;
     public static void main(String[] args) {
         int value = storage("1");//2
@@ -26,12 +26,15 @@ public class Main04 {
         Learning.tomorrow("yes");
 
     }
+
     static int storage (String s){
-        return s.length()*2;
+        return s.length() * 2;
     }
+
     public static class StaticTest{
         static  int i = 47;
     }
+
     static class StaticFun{
         static void incr(){
             System.out.println(StaticTest.i++);
