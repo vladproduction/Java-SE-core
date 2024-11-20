@@ -1,0 +1,15 @@
+Late Binding Example
+
+The example describes three classes: Figure (as a superclass), Rectangle, and Triangle (as subclasses).
+
+The Figure class describes two fields for storing the dimensions of figures (dim1 and dim2),
+and also defines a method for calculating the area of a figure, area().
+The shape of the figure is unknown for the Figure class, so this method returns 0.
+
+The Rectangle and Triangle subclasses override the area() method to calculate their area.
+The constructors of these classes pass their dimensions for storage in the dim1 and dim2 fields:
+Rectangle — width and height, Triangle — base length and height.
+
+The FindAreas class creates three objects. One each for the Figure, Rectangle, and Triangle classes.
+It also creates a Figure reference — figref. This reference is in turn bound to the created objects,
+and the area() method is called on it.

@@ -1,0 +1,14 @@
+The example describes:
+
+superclass Insurance that defines:
+a static field LOW
+a static method getCategory() that returns the name of the superclass
+a instance method getPremium() that returns the value of the field LOW.
+
+The CarInsurance class is a subclass of Insurance that defines:
+its static field HIGH
+a static method getCategory() that returns the name of the subclass
+a instance method getPremium() that returns the value of the field HIGH.
+
+The Main class creates a reference to the superclass current and initializes it with an object of the subclass.
+Then, the static method getCategory() is called using the reference to the object and the name of the subclass.
