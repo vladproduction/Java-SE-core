@@ -1,0 +1,18 @@
+{
+  "title": "decomposition-Rational-Numbers-App-story",
+  "readingTime": 60,
+  "authors": [
+    {
+      "name": "vladproduction",
+      "email": "vladproduction.java@gmail.com"
+    }
+  ],
+  "description": "This story describes how and why to decompose complex tasks.",
+  "tags": [
+    "java fundamentals",
+    "java core",
+    "decomposition"
+  ],
+  "program_lang": "java",
+  "complexity": "beginner"
+}

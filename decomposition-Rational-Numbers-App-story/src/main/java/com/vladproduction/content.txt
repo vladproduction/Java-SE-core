@@ -1,0 +1,30 @@
+1 Decomposition Story: Rational Numbers
+2 What the Program Does
+3 Rational Numbers
+4 The Program Issues
+5 Decomposition Plan
+6 Rational Number Class
+7 Rational Number Operations
+8 Forcing the Canonical Form
+9 Forcing the Canonical Form
+10 Applying the RationalNumber Class
+11 What we do next?
+12 Rational Number Interactive Reader
+13 Applying of the Rational Number Interactive Reader
+14 How to abstract the Command Conversation
+15 Command
+16 Conversation
+17 Command Implementations
+18 Applying of Commands and the Conversation
+19 Refactoring the Conversation
+20 Fixing the Command
+21 Enhancing the RationalNumber
+22 Enhancing the RationalNumber
+23 Refactoring
+24 New feature: a Dividing Operation
+25 Dividing: RationalNumber
+26 Dividing: RationalNumber
+27 Dividing: PrintQuotientCommand
+28 Dividing: Main Program
+29 Decomposition Story: Rational Numbers
+

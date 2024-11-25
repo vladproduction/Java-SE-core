@@ -1,0 +1,215 @@
+1 Decomposition Story: Rational Numbers
+Welcome to a story about decomposition.
+This story shows why decomposition is important in program design, how to deconstruct a relatively large all-in-one program into smaller reusable modules.
+
+2 What the Program Does
+What the Program Does
+Here you can see the original all-in-one program.
+
+What does it do?
+
+It interacts with a user, asking them:
+
+to input a rational number,
+and another one,
+to specify, what to do with them,
+and then print the result (sum or product).
+All of these actions are implemented as a single method, besides the gcd method.
+
+3 Rational Numbers
+Let's refresh our memory of Rational Numbers. A number is Rational, if it is expressed as the quotient of two integers, like a/b:
+The first integer, a is called numerator.
+The second integer, b is called denominator.
+Sum of rational numbers may be computed as follows:
+a/b + c/d = (ad + bc)/bd
+Product of rational numbers may be computed as follows:
+a/b * c/d = ac/bd
+If a rational number is expressed as irreducible fraction a/b, where a and b are coprime, we call it a canonical form. E.g., canonical form of 4/8 is 1/2.
+To be sure to print the sum or the product in the canonical form, we use gcd method, which is for calculating the Greatest Common Divisor.
+We find GCD of the numerator and the denominator of the result and reduce it before the output.
+
+4 The Program Issues
+Now that we understand what the program does and how it handles the specifics of rational numbers, let's figure out the issues that this program has.
+Well, at first glance it does what it's supposed to do. Is that not sufficient?
+The main issue is that the program does everything at once. There are no reusable parts. Also, it takes some decent effort to read and understand it.
+Another thing to keep in mind: a well-maintained program product lives and develops with time.
+Let's imagine that we are asked to edit the program to add an option to divide the numbers. We will have to dig through the entire program.
+And what if we have to take care of incorrect input, like zero denominator, for example? Or zero numerator when we want to divide one number by another?
+
+5 Decomposition Plan
+Let's see what we can do to decompose the program and to localize issues.
+First, we can create a special class to represent rational numbers and extract all the related operations into it.
+We could extract the user interaction to insert a rational number to avoid repeating ourselves.
+We can also abstract the user conversation on what operation to conduct. That would probably make adding more operations an easier task.
+So, let us start with decomposition at last.
+
+6 Rational Number Class
+We start with creating a RationalNumber class.
+Obviously, it will contain numerator and denominator fields and a constructor to set them up.
+Note that fields are final: we are going to make RationalNumber objects immutable.
+Also, we provide a simple toString implementation that will make printing rational numbers easier.
+
+7 Rational Number Operations
+Let us drag the sum and multiply operations from the main program to the RationalNumber class. We now have:
+an add method to compute the sum of two rational numbers,
+an multiply method to compute the product,
+and the gcd method that we had to bring to this class since the original operations in the main program use it.
+
+8 Forcing the Canonical Form
+When the rational numbers are extracted into a separate class, it is easier to find flaws and fix them.
+For instance, we can see that gcd method is used in add and multiply methods to make sure the result would be a rational number in the canonical form.
+It is obvious that this reducing is the same in both methods. If so, why would not we extract it into a single point of creating a rational number: the constructor?
+Let us do it!
+
+9 Forcing the Canonical Form
+Now, we use gcd in the constructor and set numerator and denominator already reduced. Since this moment, all the rational numbers defined
+by RationalNumber class are in the canonical form by default!
+Also, we can worry no more on reducing results in add and multiply methods, or any other operations we will add to this class in the future.
+
+10 Applying the RationalNumber Class in the Main.class
+Let us apply the RationalNumber in the main program.
+First, we need to build RationalNumber objects of first and second operands. Yes, it will slightly increase the size of the main program, but we will
+drastically reduce it with following changes:
+the summing operation is reduced to a simple call,
+the multiplicatiing operation is reduced to another simple call,
+and gcd method is removed from the main program since we don't need it here anymore.
+
+11 What we do next?
+Alright, we have extracted the business logic of rational numbers into a standalone class and have benefitted from applying it in the main program.
+What do you think we are going to do next? Take a look at the main program and select the issue that bothers you the most.
+What we do next?
+We have not done with RationalNumber - I feel that there are some flaws to fix.
++++ These input number dialogues are screaming for extracting.
+That endless while(true){...} cycle looks so imperfect
+
+12 Rational Number Interactive Reader
+Yes, we will extract an action of the rational number input.
+The only part that differs in two subsequent dialogues to enter rational numbers in main program is the name of the variable to enter: first and second.
+So, let us extract it to a field of the special class RationalNumberInteractiveReader. This class will encapsulate the whole dialogue of entering a rational number.
+Then we add a constructor to set the variable name and a method to interact with a user and read a rational number.
+
+13 Applying of the Rational Number Interactive Reader
+Now, we can replace a big segment of main program with handling dialogues by two RationalNumberInteractiveReader objects.
+As you can see, the main program becomes more compact and readable, since we abstract its parts and use more high-level objects to describe its business process.
+But there are still a set of low-level details:
+an endless loop of handling the conversation of choosing of an operation to perform. Abstracting it would be a bit more difficult.
+
+14 How to abstract the Command Conversation
+First, why would we abstract it, besides its tendency to be low-level? The main reason to do this is to make adding of new operations easier.
+Again, imagine adding a division operation:
+you have to update the initial message,
+then you need to add another if-perform-break code block, like for the SUM or MULT operations,
+also, you must not forget about the retry message.
+And if it still does not seem like a lot of work to you, imagine adding several such operations independently by different developers:
+it is a recipe of a clinch of merging.
+Okay then, how do we make it more modular? Well, looks like we have a bunch of similar code blocks, if-perform-break operations as we have referenced them before.
+Let us call them commands.
+Each one of the commands has some sort of a tag which must coincide with the user input to activate it and complete the conversation.
+All of the commands are collected into a conversation. The conversation is responsible for activation of a command that relates to the user input.
+Another minor function is printing the initial and retry messages.
+So, we need to abstract commands and a conversation that handles a bunch of commands.
+
+15 Command
+Let us start with commands.
+We know that all of the commands share a part of functionality:
+they have a tag,
+they have an operation to perform when activated.
+So, it is convenient to express a command as an abstract class with extensions that specify their own way to perform a related operation, but still share a common API:
+a constructor to set a tag value,
+a getter to let a conversation collect tags from the commands.
+a checking trigger to define if the input value coincides with the command tag.
+an abstract operation method to call when activated.
+Next let's see how a conversation can manage such commands.
+
+16 Conversation
+A conversation owns an array of commands as a field. It is convenient to set them as varargs in a constructor.
+So, the whole conversation is now extracted into a run method:
+we collect all the tags of the commands to print an initial message,
+we read a user input, then look for a command that fits,
+if such command exists, we execute it and complete the conversation,
+if none of the commands fit, we print a retry message, a list of command tags and go for another iteration.
+Note that we have to use a label to notify the break operation to exit the conversation cycle, not just the for-each cycle for the commands array.
+
+17 Command Implementations
+Before we can apply the Conversation class, we have to provide extensions of the Command abstract class:
+PrintSumCommand prints the sum of two rational numbers,
+PrintProductCommand prints the product of two rational numbers.
+The classes are very similar:
+they ask for two rational numbers in constructors in addition to the tag value,
+they compute a result and print it to System.out, when activated.
+
+18 Applying of Commands and the Conversation
+Now we can replace the while(true){…} conversation cycle in the main program with:
+the initialization of a conversation,
+providing a print sum and a print product operations as its commands,
+and launching it.
+Now the main program looks very compact and straightforward, since we have extracted all the low-level details into reusable modules - classes and methods.
+Let us review our new code base again and see what parts could be improved.
+
+19 Refactoring the Conversation
+First, let us get back to Conversation class. You might have noticed that its run method is still quite big.
+We have extracted it to make the main program look concise and high level. But can we also do something to make the Conversation class look better too?
+Well, at least we can extract printing initial and retry messages into special methods to avoid distracting from main responsibility
+of the run method - the cycle of looking for an appropriate command and executing it.
+
+20 Fixing the Command
+Let's take a look at the Command class. Probably you have noticed that the original program ignored the case of user input when asked them to enter the operation,
+but Command asks for a complete coincidence.
+We can easily fix it. Note that this fix applies to all the commands extending the Command abstract class, and we do not have to repeat it elsewhere.
+
+21 Enhancing the RationalNumber
+At last, let us look at RationalNumber.
+At the first steps we have noticed that the denominator of a rational number cannot be zero, but we did not set any checks to ensure that yet.
+Let us do it. We will raise an appropriate exception if the input value of the denominator would be zero.
+
+22 Enhancing the RationalNumber
+Another possible enhancement is the special handling of output of zero values: if numerator is zero, the denominator value does not matter.
+So, we can establish a special output for a zero values.
+
+23 Refactoring
+As you see, refactorings are easier when you apply them to smaller pieces of code that have less responsibilities.
+Think for a bit, what other enhancements would you apply? What ways for further improvements in RationalNumber do you see? Or would you rather take some actions
+in Conversation and Command classes? Maybe, some considerations over RationalNumberInteractiveReader? Anyway, it is way more convenient to think about it
+when the codebase is decoupled into reusable modules.
+
+24 New feature: a Dividing Operation
+Refactoring is not the only beneficiary of the decomposition - it is also very suitable when you need to add some new features.
+Let us add one: it would be an operation of dividing two rational numbers and printing the result.
+Having the codebase divided into modules, we easily can decompose the new feature as well:
+first, we will add a method of dividing into the RationalNumber class,
+then we add a Command extension to handle "divide and print" operation,
+finally, we add the new command into a conversation in the main program.
+Sounds easy, let us proceed to implementation.
+
+25 Dividing: RationalNumber
+Implementing the dividing operation is very straightforward:
+a/b : c/d = ad/bc
+
+26 Dividing: RationalNumber
+Actually, it is equivalent to a multiplying by an reciprocal(multiplicative inverse) of a second operand):
+a/b : c/d = a/b * d/c = ad/bc
+So, we can just leverage the existing multiply method.
+
+27 Dividing: PrintDivideCommand
+Next, let us add a new PrintDivideCommand.
+It is very similar to existing PrintDivideCommand and PrintSumCommand. The only difference is that it uses the new divide method.
+
+28 Dividing: Main Program
+And the last easy step is to introduce new DIV command to our conversation in the main program.
+So, in three easy steps we have added a new feature to our application. Probably, adding it to the original program would take not a much coding effort,
+but it would not let us to easily break the task into three isolated steps, so we would have to consider more concepts and levels of abstraction
+at once when designing a solution.
+
+29 Decomposition Story: Rational Numbers
+That concludes the Decomposition Story: Rational Numbers.
+You have seen an example of a relatively big all-in-one program that is hard to read and comprehend and requires to be extra cautious when introducing any new features.
+Then we have decoupled it into smaller pieces of code, classes and methods. Each one of them is easier to understand, since it is isolated do not require
+keeping all the original program in mind.
+That classes are also easier to enhance, refactor and fix. And it is quite easier to build a new feature from such small building blocks rather than trying to edit
+the whole original program at once.
+One more important thing is that original program was only suitable for a single purpose. It was not reusable at all.
+But classes and methods we have introduced while decomposing allow to build other solutions. For instance, we could create a program that reads a bunch of rational
+numbers from a file and sum them all and send the result by e-mail, using the same RationalNumber class. Or we could implement a program similar to an original one,
+but for complex numbers, using the same Conversation and Command classes.
+Hopefully, now you better understand importance of decomposition and how to achieve it in practice.
+
