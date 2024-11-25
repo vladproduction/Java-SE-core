@@ -1,0 +1,8 @@
+Refactoring approach consist on:
+
+ * Separation of Concerns: The Matrix class focuses solely on matrix data and operations,
+while the MatrixUtils class handles utility operations like filling the matrix with random numbers.
+
+ * Exception Handling: Improved exception messages for better understanding.
+
+ * Matrix Multiplication: The multiplication logic
