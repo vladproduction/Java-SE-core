@@ -1,11 +1,11 @@
-package vladproduction.com.ch02;
+package com.vladproduction.fileNotFoundException;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 
 public class Main {
     public static void main(String[] args) {
-        File file = new File("src/main/java/Exceptions/com/ch02/Content.txt");
+        File file = new File("ContentHelloWorld.txt");
         ContentReader cr = new ContentReader();
 
         try {

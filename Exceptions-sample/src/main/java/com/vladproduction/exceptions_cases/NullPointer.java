@@ -1,4 +1,4 @@
-package vladproduction.com;
+package com.vladproduction.exceptions_cases;
 
 public class NullPointer {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package vladproduction.com.ch01;
+package com.vladproduction.mostCommonExceptions;
 
 public class MyRecursionStackOverFlow {
 

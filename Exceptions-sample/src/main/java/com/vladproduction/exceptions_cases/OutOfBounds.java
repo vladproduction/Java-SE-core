@@ -1,4 +1,4 @@
-package vladproduction.com;
+package com.vladproduction.exceptions_cases;
 
 import java.util.Arrays;
 

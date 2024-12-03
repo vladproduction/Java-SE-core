@@ -1,9 +1,8 @@
-package vladproduction.com.ch02;
+package com.vladproduction.fileNotFoundException;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 
 public class ContentReader {
 
