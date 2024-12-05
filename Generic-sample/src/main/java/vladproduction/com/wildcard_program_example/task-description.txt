@@ -1,0 +1,20 @@
+First, you need to describe the following classes:
+Coord2 – a point in two-dimensional space
+Coord3, which is a point in three-dimensional space and a descendant of the Coord2 class
+Coord4 – a point in four-dimensional space, a descendant of the Coord3 class
+CoordM – a space (described as an array of points).
+The parameter type of this class is set to an upper limit of type Coord2 – this means that the array type is limited to type Coord2 and its descendant.
+
+It is necessary to describe the Main class, which will implement the showXY() method to display any space on the plane:
+the method must accept spaces of any dimension, so its parameter type must be CoordM<?>.
+
+It is necessary to implement the showXYZ() method to display three-dimensional spaces: the method must accept spaces with at least three coordinates,
+so its parameter type must be restricted to the upper bound of Coord3 to avoid mistakenly passing a two-dimensional space.
+
+It is necessary to implement the showAll() method to display a space with all known dimensions: the method must accept spaces with at least four coordinates,
+so its parameter type must be constrained by the upper bound Coord4.
+
+You should create a two-dimensional space ss based on an array of points of type Coord2 and try to display it by calling the showXY()
+and showXYZ() methods. In this case, there will be a compilation error, since the method is unable to accept two-dimensional spaces.
+You should create a four-dimensional space cc based on an array of points of type Coord4 and try to display it by calling the showXY(),
+showXYZ() and showAll() methods. All methods are executed without errors.
