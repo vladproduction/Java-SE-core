@@ -1,4 +1,4 @@
-package vladproduction.com.ch03;
+package vladproduction.com.ch03_enum_looping;
 
 public class Main02_else_if {
     public static void main(String[] args) {
@@ -6,7 +6,7 @@ public class Main02_else_if {
         Year_Months[] yearMonths = Year_Months.values();
         for (int i = 0; i < yearMonths.length; i++) {
             Year_Months item = yearMonths[i];
-            System.out.println(item+" training plan:");
+            System.out.println(item + " training plan:");
             if (item == Year_Months.JANUARY) {
                 item.swimPool();
                 item.gimExercise();

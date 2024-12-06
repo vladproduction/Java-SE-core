@@ -1,4 +1,4 @@
-package vladproduction.com.ch03;
+package vladproduction.com.ch03_enum_looping;
 
 public class Main01_switch_case {
     public static void main(String[] args) {

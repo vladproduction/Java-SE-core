@@ -1,4 +1,4 @@
-package vladproduction.com.ch02;
+package vladproduction.com.ch02_enum_constructor;
 
 public enum MyDays2 {
 

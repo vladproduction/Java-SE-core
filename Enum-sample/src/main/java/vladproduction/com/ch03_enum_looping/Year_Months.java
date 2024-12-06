@@ -1,4 +1,4 @@
-package vladproduction.com.ch03;
+package vladproduction.com.ch03_enum_looping;
 
 public enum Year_Months implements Gim, Swim, Bike, Run, Rest{
 

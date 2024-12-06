@@ -1,4 +1,4 @@
-package vladproduction.com.ch01;
+package vladproduction.com.ch01_enum_impl_interface;
 
 public class Main {
     public static void main(String[] args) {
