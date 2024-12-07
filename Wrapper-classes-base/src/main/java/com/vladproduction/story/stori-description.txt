@@ -1,0 +1,134 @@
+Integer Wrapper Class
+Hey there, this time we will review wrapper classes in Java and java.lang.Integer in particular.
+
+Wrapper classes describe objects that just store some primitive value of corresponding type:
+
+Integer -> int
+Long -> long
+Double -> double
+Character -> char
+Boolean -> boolean, and so on.
+Wrapper Classes were designed to introduce OOP features like polymorphism in processing primitive values.
+
+We start with just declare an Integer variable.
+
+Integer Constructor (deprecated)
+We can use a regular way to create objects - calling a constructor.
+
+It is not recommended to do so - public constructors of wrapper classes are deprecated.
+
+Integer Comparing
+We will discuss a better way a moment later, but first let us consider two separate Integer objects holding equal values.
+
+As you can expect, comparison with == returns false, since they are two different objects. So, to compare their values, we need to use equals method.
+
+Integer.valueOf
+The better way to get an Integer value from an int is to use Integer.valueOf static method.
+
+Note that in this case == comparison returns true.
+It is this way because valueOf method uses Integer cache - special pool of Integer objects.
+Since an Integer object is immutable, there is no gain in holding in memory two different objects of the same value.
+So, valueOf may return one of such previously created objects.
+
+Integer Cache Details
+Integer cache does not save all the Integer values that your program ever created.
+That would lead to allocating too many memory for such cache in some cases.
+So, Integer cache stores only values between -128 and 127.
+It is considered to cover most of frequently used values in practice.
+Some other wrapper classes - Byte, Short, Long, Character use such caches as well. It is intersting, that there is a way to change size of cache via JVM flags.
+
+Let us change values from 50 to 500. Then we will miss the cache scope and will get two separate objects.
+
+Integer.intValue
+Let us consider the reverse transformation - from Integer value to int. We can use intValue method to do so.
+
+Autoboxing
+Probably, if you type such code in some IDE, it will warn you about "unnessary boxing".
+
+It is because we actually are not required to use valueOf and intValue methods explicitly.
+
+Java compiler allows implicit transformation from a primitive type to a corresponding Wrapper class and vice versa.
+Such transformations are called boxing and unboxing respectively. And implicit way to apply them is called autoboxing.
+
+Autoboxing
+Why would we need such a feature at all? Primitive values are smaller, faster to operate, why can't we use them sometimes?
+
+That is because they lack OOP attitude - no inheritance, no polymorphism.
+
+Let us consider asByte method. It takes a Number as a param, so we can use it to process both Integer and Long values since this classes extends Number.
+
+Autoboxing helps to implicitly transform primitive values to objects of wrapper classes.
+
+Integer.parseInt
+Let us switch to another transformations: how to get an integer value from a String.
+
+In short, use a parseInt method.
+
+It is one of the various static utility methods of Integer class.
+
+Integer.parseInt
+Note that this method cannot will not parse an integer number, if it is not decimal.
+
+Here parseInt will throw a NumberFormatException despite of the "0xff" is valid hexadecimal int literal.
+
+Integer.decode
+You may use decode then to parse such a String value.
+
+Integer.decode
+Actually, decode works quite well when parsing octal or decimal literals too.
+
+Integer parse a binary String
+Sadly, decode will fail to parse a binary string to integer value.
+
+So, we have to switch back to parseInt to do that.
+But this time we use a version of method that takes one more parameter - radix, which sets the base of a numeral system
+that we consider the literal in the first parameter to use.
+
+Integer parse with radix
+Let us to change to a quaternary numeral system - parseInt will parse a string taking 4 as a base.
+
+Integer.toString
+Let us consider the opposite transformation: we can simply use toString() method on Integer objects.
+
+Integer.toString
+What if it is a primitive value?
+
+Then you use static Integer.toString method.
+
+Integer.toString with radix
+There is a version of toString, that takes a radix as well.
+This way you may transform an integer to a hexadecimal, octal or binary symbolic representation.
+
+Integer toString with radix (negative number)
+And what if the number is negative?
+
+Then all the symbolic representations of this number would be considered negative too.
+
+Integer toUnsignedString
+Sometimes you don't need a signed number.
+
+Then you can use special toUnsignedString method. Ther is also a version that takes radix.
+
+Integer to{Radix}String
+Actually such unsigned symbolic representations are usually called binary string, octal string or hex string.
+Corresponding methods just uses toUnsignedString with a related radix value.
+
+Integer. Some Bit Methods
+Integer class contains some methods that helps to operate single bits of integer values
+
+highestOneBit method looks for a highest 1 bit in value and returns an integer, where bit in this position is the only one.
+lowestOneBit does the same but considers position of the lowest 1 bit.
+bitCount just counts, how many 1 bits an integer value contains.
+numberOfLeadingZeros counts, how many 0 bits comes before the first 1 bit in the integer value.
+Sometimes you may get use of this methods.
+For instance, you want to print a bit representation of the whole integer value, including all the 32 bits. You may do it this way.
+
+Integer Wrapper Class
+This was a demo of Integer Wrapper Class - its purpose and capabilities.
+
+We have reviewed:
+
+Nature of wrapper classes.
+Autoboxing feature.
+Transformations from/to String values.
+Some utility methods.
