@@ -1,4 +1,4 @@
-package First_Project;
+package com.vladproduction.First_Project;
 
 public class Hello_Lesson {
         public static void main (String[] args) {
