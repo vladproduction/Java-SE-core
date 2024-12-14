@@ -1,0 +1,11 @@
+Task.
+Enter n from the console - the dimension of the matrix a [n] [n].
+Set the values of the matrix elements in the range of values from -M to M using a random number generator (Random class).
+
+1. Arrange the rows (columns) of the matrix in ascending order of the values of the elements of the k-th column (row).
+
+2. Find and output the largest number of ascending (descending) elements of the matrix, following in a row.
+
+3. Find the sum of the matrix elements located between the first and second positive elements of each row
+
+4. Find the maximum element in the matrix and remove from the matrix all rows and columns containing it

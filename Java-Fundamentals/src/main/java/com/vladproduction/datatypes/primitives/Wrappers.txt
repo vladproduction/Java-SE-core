@@ -1,0 +1,9 @@
+Which statements about wrapper classes are correct?
+Choose 3
+
+A) Wrapper classes are located in the java.util package.
++ correct B) Wrapper class objects can store the same values as their corresponding base types.
+C) Wrapper class objects store mutable values similar to base type variables.
++ correct D) Wrapper class objects are null by default.
++ correct E) Wrapper classes define conversion methods to the base type.
+F) All wrapper classes have a constructor with a parameter of type String.

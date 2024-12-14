@@ -1,0 +1,16 @@
+Which statements are incorrect in relation to the BigDecim0al and BigInteger classes?
+Select 2
+
+A) BigDecimal guarantees the accuracy of calculations, unlike double.
+
+B) BigDecimal and BigInteger perform calculations with any digit capacity.
+
+C) Using the setScale() method of the BigDecimal class,
+   you can set the number of digits after the decimal point, as well as the rounding mode.
+
+incorrect D) Objects of the BigDecimal and BigInteger classes are mutable.
+
+incorrect E) To compare objects without taking into account the scale, use equals().
+
+F) Three constants - ZERO, ONE and TEN - model zero, one and the number ten in operations with
+   objects of the BigDecimal and BigInteger classes.
