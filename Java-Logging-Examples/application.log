@@ -1,0 +1,14 @@
+Jan 14, 2025 2:19:24 PM com.vladproduction.LoggerPerformerAppFileHandler main
+INFO: Starting LoggerPerformerAppFileHandler
+Jan 14, 2025 2:19:24 PM com.vladproduction.LoggerPerformerAppFileHandler main
+INFO: Created person: PersonRecord [name: John, age: 30].
+Jan 14, 2025 2:19:24 PM com.vladproduction.LoggerPerformerAppFileHandler main
+INFO: John's adult status: true
+Jan 14, 2025 2:19:24 PM com.vladproduction.LoggerPerformerAppFileHandler main
+INFO: Created person: PersonRecord [name: Jane, age: 17].
+Jan 14, 2025 2:19:24 PM com.vladproduction.LoggerPerformerAppFileHandler main
+INFO: Jane's adult status: false
+Jan 14, 2025 2:19:24 PM com.vladproduction.LoggerPerformerAppFileHandler main
+INFO: Comparison between John and Jane: John is older than Jane.
+Jan 14, 2025 2:19:24 PM com.vladproduction.LoggerPerformerAppFileHandler main
+INFO: Exiting LoggerPerformerAppFileHandler

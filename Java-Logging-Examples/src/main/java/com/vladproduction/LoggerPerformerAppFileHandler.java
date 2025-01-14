@@ -12,7 +12,9 @@ public class LoggerPerformerAppFileHandler {
     public static void main(String[] args) {
         try {
             // Set up the file handler
-            FileHandler fileHandler = new FileHandler("application.log", false); // (append mode 'true': next logs adding to the file, but not override)
+            // (append mode 'true': next logs adding to the file)
+            // (append mode 'false': next logs adding to the file, but not override)
+            FileHandler fileHandler = new FileHandler("application.log", false);
             fileHandler.setFormatter(new SimpleFormatter());
             logger.addHandler(fileHandler);
             logger.setLevel(Level.ALL); // Set logging level to ALL
