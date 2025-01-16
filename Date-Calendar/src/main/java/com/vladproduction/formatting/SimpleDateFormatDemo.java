@@ -1,4 +1,4 @@
-package vladproduction.com.date_calendar;
+package com.vladproduction.formatting;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

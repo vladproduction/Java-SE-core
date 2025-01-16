@@ -1,4 +1,4 @@
-package vladproduction.com.date_calendar;
+package com.vladproduction.calendar;
 
 import java.util.Calendar;
 

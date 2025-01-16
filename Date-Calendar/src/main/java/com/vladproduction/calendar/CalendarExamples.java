@@ -1,4 +1,4 @@
-package Date;
+package com.vladproduction.calendar;
 //Прибавить к текущей дате месяц или день
 //Проверить, является ли год високосным;
 //Получить отдельные компоненты даты (например, получить из целой даты номер месяца)
@@ -15,7 +15,7 @@ import java.util.Locale;
 
 import static java.util.Calendar.*;
 
-public class CalendarExsamples {
+public class CalendarExamples {
     public static void main(String[] args) {
         Calendar calendar = new GregorianCalendar(2023, 0 , 16);  //16.01.2023
         System.out.println(calendar); //объект Calendar в консоль

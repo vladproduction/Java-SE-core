@@ -1,4 +1,4 @@
-package vladproduction.com.zone_time;
+package com.vladproduction.zoneid;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

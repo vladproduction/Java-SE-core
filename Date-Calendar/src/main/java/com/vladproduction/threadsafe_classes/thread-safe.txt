@@ -1,0 +1,28 @@
+The java.time package introduced in Java 8 provides a comprehensive date and time API that includes several classes
+for handling dates, times, durations, etc.
+Many classes in the java.time package are immutable and therefore inherently thread-safe.
+This means that instances of these classes across multiple threads without explicit synchronization.
+
+Thread-Safe Classes in java.time package:
+
+LocalDate
+LocalTime
+LocalDateTime
+ZonedDateTime
+Duration
+Period
+Instant
+MonthDay
+Year
+YearMonth
+
+Explanation:
+In each example, we define a class that implements Runnable. The run method retrieves the current date/time using the java.time classes.
+Each thread invokes its own instance of LocalDate, LocalDateTime, or ZonedDateTime, demonstrating thread safety, as each thread
+has its own instance of the immutable class.
+When run any of these examples, we will see that both threads can safely access java.time classes simultaneously without any synchronization issues.
+
+Note on Thread Safety
+While the java.time classes are immutable and thus thread-safe, if we are using classes that are mutable or maintaining shared mutable state,
+we may need to use synchronization to ensure thread safety.
+However, for managing dates and times, the java.time package simplifies concurrency by providing immutable classes.

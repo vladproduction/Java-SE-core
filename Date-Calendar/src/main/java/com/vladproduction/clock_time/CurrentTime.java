@@ -1,4 +1,4 @@
-package vladproduction.com.date_time;
+package com.vladproduction.clock_time;
 
 import java.time.LocalTime;
 

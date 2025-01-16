@@ -1,9 +1,9 @@
-package Date;
+package com.vladproduction.date;
 
 
 import java.util.Date;
 
-public class DateExsamples {
+public class DateExamples {
     public static void main(String[] args) {
         Date date = new Date();
         System.out.println(date); //data & time in compilation moment

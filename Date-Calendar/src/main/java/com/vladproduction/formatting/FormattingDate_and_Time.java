@@ -1,4 +1,4 @@
-package vladproduction.com.date_time;
+package com.vladproduction.formatting;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
