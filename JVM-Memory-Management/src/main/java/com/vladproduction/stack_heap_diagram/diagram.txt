@@ -1,0 +1,25 @@
+Heap:
+-------------------------------------
+| Container Object 1                |
+|  - initial: "B"                   |
+-------------------------------------
+| Container Object 2                |
+|  - initial: "A"                   |
+-------------------------------------
+
+Stack:
+MainApp.main() --> (mainApp: MainApp, args: String[])
+    |
+    v
+MainApp.start() --> (last: "Z", container: Container Object 1)
+    |
+    v
+MainApp.another() --> (initialHolder: Container Object 1, newInitial: "Z")
+
+outputs in order:
+
+initialHolder.getInitial() prints "A" (from the newly created Container).
+System.out.print(newInitial) prints "Z".
+After returning to start(), System.out.print(container.getInitial()) prints "B".
+
+output will be: AZB
