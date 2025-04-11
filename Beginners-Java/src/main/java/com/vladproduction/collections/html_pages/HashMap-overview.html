@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>HashMap Internals</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .card {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 class="text-center mt-5">Understanding HashMap Internals</h1>
+
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0">1. Internal Structure</h5>
+        </div>
+        <div class="card-body">
+            <p>HashMap uses an array of buckets to store entries. Each bucket can hold multiple entries that collide at the same index.</p>
+            <ul>
+                <li><strong>Buckets:</strong> Array structure that holds linked lists or trees for managing entries.</li>
+                <li><strong>Hashing Mechanism:</strong> Uses an efficient hash function to determine the index.</li>
+                <li><strong>Collisions:</strong> Handled by linked lists before Java 8, and by balanced trees afterwards.</li>
+                <li><strong>Load Factor and Resizing:</strong> HashMap has a load factor (default is 0.75) that determines when the map should resize. When the number of entries exceeds capacity * load factor, the map will grow, and rehashing will occur to redistribute the entries.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0">2. Time Complexity</h5>
+        </div>
+        <div class="card-body">
+            <p>The average time complexity for operations in a HashMap is O(1).</p>
+            <ul>
+                <li>Put: O(1)</li>
+                <li>Get: O(1)</li>
+                <li>Remove: O(1)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0">3. Example Code</h5>
+        </div>
+        <div class="card-body">
+                <pre><code>
+import java.util.HashMap;
+
+public class HashMapExample {
+    public static void main(String[] args) {
+        HashMap< String, Integer> map = new HashMap<>();
+        map.put("Apple", 1);
+        map.put("Banana", 2);
+        map.put("Orange", 3);
+
+        System.out.println("Apple: " + map.get("Apple"));
+        System.out.println("Banana: " + map.get("Banana"));
+
+        System.out.println("Contains Orange? " + map.containsKey("Orange"));
+        map.remove("Banana");
+        System.out.println("Contains Banana? " + map.containsKey("Banana"));
+
+        for (String key : map.keySet()) {
+            System.out.println(key + ": " + map.get(key));
+        }
+    }
+}
+                </code></pre>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0">Conclusion</h5>
+        </div>
+        <div class="card-body">
+            <p>HashMaps are powerful structures for key-value storage and retrieval. Understanding their mechanics helps in efficient programming.</p>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

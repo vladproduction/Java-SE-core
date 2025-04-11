@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>PriorityQueue Internals</title>
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .card {
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1 class="text-center mt-5">Understanding PriorityQueue Internals</h1>
+
+  <div class="card">
+    <div class="card-header">
+      <h5 class="mb-0">1. Internal Structure</h5>
+    </div>
+    <div class="card-body">
+      <p>PriorityQueue is implemented as a binary heap data structure.</p>
+      <ul>
+        <li><strong>Binary Heap:</strong> A complete binary tree where parent nodes are ordered relative to their children.</li>
+        <li><strong>Min-Heap:</strong> By default, smallest element has highest priority (natural ordering).</li>
+        <li><strong>Custom Ordering:</strong> Can use a Comparator for custom priority ordering.</li>
+        <li><strong>No Random Access:</strong> Elements are not accessible by index.</li>
+        <li><strong>No Null Elements:</strong> Does not permit null elements.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h5 class="mb-0">2. Time Complexity</h5>
+    </div>
+    <div class="card-body">
+      <p>PriorityQueue operations have varying time complexities:</p>
+      <ul>
+        <li>peek(): O(1)</li>
+        <li>poll(): O(log n)</li>
+        <li>offer()/add(): O(log n)</li>
+        <li>remove(Object): O(n)</li>
+        <li>contains(Object): O(n)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h5 class="mb-0">3. Example Code</h5>
+    </div>
+    <div class="card-body">
+                <pre><code>
+import java.util.PriorityQueue;
+import java.util.Comparator;
+
+public class PriorityQueueExample {
+    public static void main(String[] args) {
+        // Default min-heap (natural ordering)
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+
+        // Adding elements
+        minHeap.add(40);
+        minHeap.add(10);
+        minHeap.add(30);
+        minHeap.add(20);
+        minHeap.add(50);
+
+        // Peek at highest priority element (smallest)
+        System.out.println("Peek (min value): " + minHeap.peek());
+
+        // Poll highest priority elements
+        System.out.println("Polling elements in priority order:");
+        while (!minHeap.isEmpty()) {
+            System.out.print(minHeap.poll() + " ");
+        }
+        System.out.println();
+
+        // Max-heap using Comparator
+        PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Comparator.reverseOrder());
+        maxHeap.add(40);
+        maxHeap.add(10);
+        maxHeap.add(30);
+        maxHeap.add(20);
+        maxHeap.add(50);
+
+        System.out.println("Peek (max value): " + maxHeap.peek());
+
+        // Custom objects with priority
+        class Task implements Comparable<Task> {
+            String name;
+            int priority;
+
+            public Task(String name, int priority) {
+                this.name = name;
+                this.priority = priority;
+            }
+
+            @Override
+            public int compareTo(Task other) {
+                return Integer.compare(this.priority, other.priority);
+            }
+
+            @Override
+            public String toString() {
+                return name + " (priority: " + priority + ")";
+            }
+        }
+
+        PriorityQueue< Task> taskQueue = new PriorityQueue<>();
+        taskQueue.add(new Task("Check email", 3));
+        taskQueue.add(new Task("Fix critical bug", 1));
+        taskQueue.add(new Task("Prepare presentation", 2));
+
+        System.out.println("\nProcessing tasks by priority:");
+        while (!taskQueue.isEmpty()) {
+            System.out.println("Processing: " + taskQueue.poll());
+        }
+    }
+}
+                </code></pre>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h5 class="mb-0">Conclusion</h5>
+    </div>
+    <div class="card-body">
+      <p>PriorityQueue is essential when you need to process elements based on priority rather than FIFO order. It's ideal for scenarios like task scheduling, event handling systems, and algorithms like Dijkstra's shortest path. The implementation ensures that the highest priority element is always available in constant time.</p>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

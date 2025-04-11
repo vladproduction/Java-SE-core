@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>TreeSet Internals</title>
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .card {
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1 class="text-center mt-5">Understanding TreeSet Internals</h1>
+
+  <div class="card">
+    <div class="card-header">
+      <h5 class="mb-0">1. Internal Structure</h5>
+    </div>
+    <div class="card-body">
+      <p>TreeSet implements a NavigableSet interface and is backed by a TreeMap.</p>
+      <ul>
+        <li><strong>Red-Black Tree:</strong> Uses TreeMap's balanced tree structure internally.</li>
+        <li><strong>Sorted Elements:</strong> Maintains elements in sorted order based on natural ordering or custom Comparator.</li>
+        <li><strong>No Duplicates:</strong> Only stores unique elements like any Set.</li>
+        <li><strong>NavigableSet:</strong> Provides efficient navigation methods like floor, ceiling, lower, higher.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h5 class="mb-0">2. Time Complexity</h5>
+    </div>
+    <div class="card-body">
+      <p>TreeSet operations have logarithmic time complexity:</p>
+      <ul>
+        <li>add(element): O(log n)</li>
+        <li>remove(element): O(log n)</li>
+        <li>contains(element): O(log n)</li>
+        <li>first()/last(): O(log n)</li>
+        <li>ceiling()/floor()/higher()/lower(): O(log n)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h5 class="mb-0">3. Example Code</h5>
+    </div>
+    <div class="card-body">
+                <pre><code>
+import java.util.TreeSet;
+
+public class TreeSetExample {
+    public static void main(String[] args) {
+        // Create TreeSet with natural ordering
+        TreeSet<Integer> numbers = new TreeSet<>();
+
+        // Adding elements
+        numbers.add(50);
+        numbers.add(20);
+        numbers.add(80);
+        numbers.add(10);
+        numbers.add(60);
+
+        // Display all elements (in sorted order)
+        System.out.println("Numbers in sorted order: " + numbers);
+
+        // Access first and last elements
+        System.out.println("First number: " + numbers.first());
+        System.out.println("Last number: " + numbers.last());
+
+        // Navigation methods
+        System.out.println("Lower than 50: " + numbers.lower(50));  // Strictly less
+        System.out.println("Floor of 25: " + numbers.floor(25));    // Less than or equal
+        System.out.println("Ceiling of 25: " + numbers.ceiling(25)); // Greater than or equal
+        System.out.println("Higher than 50: " + numbers.higher(50)); // Strictly greater
+
+        // Subset operations
+        System.out.println("Subset [20, 60]: " + numbers.subSet(20, true, 60, true));
+        System.out.println("Headset < 50: " + numbers.headSet(50, false));
+        System.out.println("Tailset >= 50: " + numbers.tailSet(50, true));
+
+        // Polling methods
+        System.out.println("Poll first: " + numbers.pollFirst()); // Retrieves and removes first
+        System.out.println("Poll last: " + numbers.pollLast());   // Retrieves and removes last
+        System.out.println("After polling: " + numbers);
+
+        // Descending order
+        System.out.println("Descending set: " + numbers.descendingSet());
+
+        // Using custom Comparator
+        TreeSet< String> names = new TreeSet<>((a, b) -> a.length() - b.length());
+        names.add("Alice");
+        names.add("Bob");
+        names.add("Charlie");
+        names.add("David");
+        System.out.println("Names ordered by length: " + names);
+    }
+}
+                </code></pre>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h5 class="mb-0">Conclusion</h5>
+    </div>
+    <div class="card-body">
+      <p>TreeSet is ideal when you need a set that maintains elements in sorted order and when you need to perform range-based operations efficiently. While it's slower than HashSet for basic operations, its sorting capabilities and navigational methods make it invaluable for certain applications.</p>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

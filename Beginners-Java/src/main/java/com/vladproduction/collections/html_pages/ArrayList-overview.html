@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>ArrayList Internals</title>
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .card {
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1 class="text-center mt-5">Understanding ArrayList Internals</h1>
+
+  <div class="card">
+    <div class="card-header">
+      <h5 class="mb-0">1. Internal Structure</h5>
+    </div>
+    <div class="card-body">
+      <p>ArrayList is backed by a resizable array that grows dynamically as elements are added.</p>
+      <ul>
+        <li><strong>Dynamic Array:</strong> Starts with a default capacity (10) and grows when needed.</li>
+        <li><strong>Resizing:</strong> When capacity is reached, a new larger array is created (typically 1.5x size).</li>
+        <li><strong>Random Access:</strong> Provides O(1) time access to elements by index.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h5 class="mb-0">2. Time Complexity</h5>
+    </div>
+    <div class="card-body">
+      <p>ArrayList operations have varying time complexities:</p>
+      <ul>
+        <li>get(index): O(1)</li>
+        <li>add(element): Amortized O(1)</li>
+        <li>add(index, element): O(n)</li>
+        <li>remove(index): O(n)</li>
+        <li>contains(element): O(n)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h5 class="mb-0">3. Example Code</h5>
+    </div>
+    <div class="card-body">
+                <pre><code>
+import java.util.ArrayList;
+
+public class ArrayListExample {
+    public static void main(String[] args) {
+        ArrayList<String> fruits = new ArrayList<>();
+
+        // Adding elements
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Orange");
+
+        // Accessing elements
+        System.out.println("First fruit: " + fruits.get(0));
+
+        // Inserting at specific position
+        fruits.add(1, "Mango");
+
+        // Iterating through elements
+        System.out.println("All fruits:");
+        for (String fruit : fruits) {
+            System.out.println(fruit);
+        }
+
+        // Removing elements
+        fruits.remove("Banana");
+        fruits.remove(0);  // Removes Apple
+
+        // Size of ArrayList
+        System.out.println("Number of fruits: " + fruits.size());
+
+        // Checking if element exists
+        System.out.println("Contains Orange? " + fruits.contains("Orange"));
+    }
+}
+                </code></pre>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h5 class="mb-0">Conclusion</h5>
+    </div>
+    <div class="card-body">
+      <p>ArrayList is ideal for scenarios requiring fast random access and when the collection size may change frequently. It's less efficient for frequent insertions or deletions in the middle of the list.</p>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

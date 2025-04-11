@@ -1,3 +1,0 @@
-1) open file;
-2) work with file;
-3) close file;

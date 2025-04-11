@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>LinkedHashMap Internals</title>
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .card {
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1 class="text-center mt-5">Understanding LinkedHashMap Internals</h1>
+
+  <div class="card">
+    <div class="card-header">
+      <h5 class="mb-0">1. Internal Structure</h5>
+    </div>
+    <div class="card-body">
+      <p>LinkedHashMap extends HashMap and maintains a doubly-linked list of entries to preserve insertion order.</p>
+      <ul>
+        <li><strong>Hash Table + Linked List:</strong> Combines HashMap's efficiency with ordered iteration.</li>
+        <li><strong>Insertion Order:</strong> By default, maintains elements in the order they were inserted.</li>
+        <li><strong>Access Order:</strong> Can be configured to maintain elements in order of last access (LRU order).</li>
+        <li><strong>Predictable Iteration:</strong> Unlike HashMap, iteration order is predictable.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h5 class="mb-0">2. Time Complexity</h5>
+    </div>
+    <div class="card-body">
+      <p>LinkedHashMap operations have similar complexity to HashMap:</p>
+      <ul>
+        <li>put(key, value): O(1)</li>
+        <li>get(key): O(1)</li>
+        <li>remove(key): O(1)</li>
+        <li>containsKey(key): O(1)</li>
+        <li>iteration: O(n) but more efficient than HashMap due to linked list</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h5 class="mb-0">3. Example Code</h5>
+    </div>
+    <div class="card-body">
+                <pre><code>
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+public class LinkedHashMapExample {
+    public static void main(String[] args) {
+        // Default: insertion-order
+        LinkedHashMap< String, String> capitals = new LinkedHashMap<>();
+
+        // Adding elements
+        capitals.put("USA", "Washington D.C.");
+        capitals.put("India", "New Delhi");
+        capitals.put("Japan", "Tokyo");
+        capitals.put("UK", "London");
+
+        // Iterating - will maintain insertion order
+        System.out.println("Capitals in insertion order:");
+        for (Map.Entry< String, String> entry : capitals.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
+
+        // Access elements
+        System.out.println("\nCapital of Japan: " + capitals.get("Japan"));
+
+        // Removing element
+        capitals.remove("India");
+        System.out.println("\nAfter removing India: " + capitals);
+
+        // LRU Cache example (access-order)
+        System.out.println("\nLRU Cache Example:");
+        LinkedHashMap< Integer, String> lruCache = new LinkedHashMap<>(16, 0.75f, true) {
+            // Override to limit size
+            @Override
+            protected boolean removeEldestEntry(Map.Entry< Integer, String> eldest) {
+                return size() > 3; // Cache size of 3
+            }
+        };
+
+        lruCache.put(1, "Item 1");
+        lruCache.put(2, "Item 2");
+        lruCache.put(3, "Item 3");
+        System.out.println("Cache: " + lruCache);
+
+        // Access item 1 (moves to end in access-order mode)
+        lruCache.get(1);
+        System.out.println("After accessing 1: " + lruCache);
+
+        // Add new item, should evict oldest accessed (item 2)
+        lruCache.put(4, "Item 4");
+        System.out.println("After adding item 4: " + lruCache);
+    }
+}
+                </code></pre>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h5 class="mb-0">Conclusion</h5>
+    </div>
+    <div class="card-body">
+      <p>LinkedHashMap is ideal when you need HashMap's performance but also need to maintain insertion order or access order. It's particularly useful for implementing LRU (Least Recently Used) caches and for scenarios where predictable iteration order matters.</p>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

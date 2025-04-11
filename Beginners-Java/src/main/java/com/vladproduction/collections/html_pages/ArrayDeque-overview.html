@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>ArrayDeque Internals</title>
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .card {
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1 class="text-center mt-5">Understanding ArrayDeque Internals</h1>
+
+  <div class="card">
+    <div class="card-header">
+      <h5 class="mb-0">1. Internal Structure</h5>
+    </div>
+    <div class="card-body">
+      <p>ArrayDeque (Array Double-Ended Queue) is a resizable array implementation of the Deque interface.</p>
+      <ul>
+        <li><strong>Circular Array:</strong> Uses a resizable circular array structure.</li>
+        <li><strong>No Capacity Restrictions:</strong> Grows as needed, unlike fixed-size queues.</li>
+        <li><strong>No Null Elements:</strong> Does not permit null elements.</li>
+        <li><strong>Faster than Stack/LinkedList:</strong> More efficient than Stack for stack operations and LinkedList for queue operations.</li>
+        <li><strong>Double-Ended:</strong> Supports efficient insertion and removal at both ends.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h5 class="mb-0">2. Time Complexity</h5>
+    </div>
+    <div class="card-body">
+      <p>ArrayDeque operations have excellent time complexities:</p>
+      <ul>
+        <li>addFirst()/addLast()/offerFirst()/offerLast(): O(1)</li>
+        <li>removeFirst()/removeLast()/pollFirst()/pollLast(): O(1)</li>
+        <li>getFirst()/getLast()/peekFirst()/peekLast(): O(1)</li>
+        <li>contains(Object): O(n)</li>
+        <li>remove(Object): O(n)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h5 class="mb-0">3. Example Code</h5>
+    </div>
+    <div class="card-body">
+                <pre><code>
+import java.util.ArrayDeque;
+
+public class ArrayDequeExample {
+    public static void main(String[] args) {
+        // Create an ArrayDeque
+        ArrayDeque<String> deque = new ArrayDeque<>();
+
+        // Using as a queue (FIFO)
+        System.out.println("=== Queue Operations ===");
+        deque.offer("First");  // Add to tail
+        deque.offer("Second");
+        deque.offer("Third");
+
+        System.out.println("Queue: " + deque);
+        System.out.println("Poll: " + deque.poll()); // Remove from head
+        System.out.println("Peek: " + deque.peek()); // View head
+        System.out.println("Queue after operations: " + deque);
+
+        // Clear for next demo
+        deque.clear();
+
+        // Using as a stack (LIFO)
+        System.out.println("\n=== Stack Operations ===");
+        deque.push("First");   // Add to head
+        deque.push("Second");
+        deque.push("Third");
+
+        System.out.println("Stack: " + deque);
+        System.out.println("Pop: " + deque.pop()); // Remove from head
+        System.out.println("Peek: " + deque.peek()); // View head
+        System.out.println("Stack after operations: " + deque);
+
+        // Clear for next demo
+        deque.clear();
+
+        // Using as a deque (double-ended queue)
+        System.out.println("\n=== Deque Operations ===");
+        deque.addFirst("Middle");
+        deque.addFirst("First");  // Add to head
+        deque.addLast("Last");    // Add to tail
+
+        System.out.println("Deque: " + deque);
+        System.out.println("First element: " + deque.peekFirst());
+        System.out.println("Last element: " + deque.peekLast());
+
+        System.out.println("Remove first: " + deque.removeFirst());
+        System.out.println("Remove last: " + deque.removeLast());
+        System.out.println("Deque after removals: " + deque);
+
+        // Using iterator
+        System.out.println("\n=== Iterator Demo ===");
+        ArrayDeque<Integer> numbers = new ArrayDeque<>();
+        for (int i = 1; i <= 5; i++) {
+            numbers.add(i);
+        }
+
+        System.out.println("Numbers: " + numbers);
+        System.out.println("Descending iterator:");
+        for (Integer num : numbers.descendingIterator()) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+    }
+}
+                </code></pre>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h5 class="mb-0">Conclusion</h5>
+    </div>
+    <div class="card-body">
+      <p>ArrayDeque is a versatile collection that can efficiently function as a queue, stack, or double-ended queue. It generally provides better performance than Stack or LinkedList for their respective operations. It's the recommended implementation for stack operations and a good general-purpose queue implementation when you need operations at both ends.</p>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

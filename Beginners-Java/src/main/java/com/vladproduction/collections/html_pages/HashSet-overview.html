@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>HashSet Internals</title>
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .card {
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1 class="text-center mt-5">Understanding HashSet Internals</h1>
+
+  <div class="card">
+    <div class="card-header">
+      <h5 class="mb-0">1. Internal Structure</h5>
+    </div>
+    <div class="card-body">
+      <p>HashSet is backed by a HashMap where elements are stored as keys with a dummy value.</p>
+      <ul>
+        <li><strong>Hashing:</strong> Uses hash codes to determine element storage location.</li>
+        <li><strong>No Duplicates:</strong> Only stores unique elements, ignoring duplicates.</li>
+        <li><strong>No Order:</strong> Does not maintain insertion order of elements.</li>
+        <li><strong>Null Element:</strong> Allows one null element.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h5 class="mb-0">2. Time Complexity</h5>
+    </div>
+    <div class="card-body">
+      <p>HashSet operations have constant time complexity on average:</p>
+      <ul>
+        <li>add(element): O(1)</li>
+        <li>remove(element): O(1)</li>
+        <li>contains(element): O(1)</li>
+        <li>size(): O(1)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h5 class="mb-0">3. Example Code</h5>
+    </div>
+    <div class="card-body">
+                <pre><code>
+import java.util.HashSet;
+import java.util.Iterator;
+
+public class HashSetExample {
+    public static void main(String[] args) {
+        HashSet<String> colors = new HashSet<>();
+
+        // Adding elements
+        colors.add("Red");
+        colors.add("Green");
+        colors.add("Blue");
+        colors.add("Red");  // Duplicate - will be ignored
+
+        // Display elements
+        System.out.println("Colors: " + colors);
+
+        // Check size
+        System.out.println("Number of colors: " + colors.size());
+
+        // Check if contains element
+        System.out.println("Contains Green? " + colors.contains("Green"));
+        System.out.println("Contains Yellow? " + colors.contains("Yellow"));
+
+        // Remove element
+        colors.remove("Green");
+
+        // Iterate using Iterator
+        System.out.println("Colors after removal:");
+        Iterator< String> iterator = colors.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+
+        // Using for-each loop
+        System.out.println("Using for-each:");
+        for (String color : colors) {
+            System.out.println(color);
+        }
+
+        // Clear all elements
+        colors.clear();
+        System.out.println("Is empty? " + colors.isEmpty());
+    }
+}
+                </code></pre>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h5 class="mb-0">Conclusion</h5>
+    </div>
+    <div class="card-body">
+      <p>HashSet is the go-to collection when you need to ensure uniqueness of elements and require fast access, addition, and removal operations. It's ideal for scenarios where order doesn't matter but uniqueness does, such as removing duplicates from a collection.</p>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>TreeMap Internals</title>
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .card {
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1 class="text-center mt-5">Understanding TreeMap Internals</h1>
+
+  <div class="card">
+    <div class="card-header">
+      <h5 class="mb-0">1. Internal Structure</h5>
+    </div>
+    <div class="card-body">
+      <p>TreeMap implements a Red-Black tree, a self-balancing binary search tree.</p>
+      <ul>
+        <li><strong>Sorted Keys:</strong> Maintains keys in sorted order based on natural ordering or custom Comparator.</li>
+        <li><strong>Balanced Tree:</strong> Uses Red-Black tree algorithm to ensure O(log n) operations.</li>
+        <li><strong>No Null Keys:</strong> Cannot contain null keys (unless using custom Comparator that handles nulls).</li>
+        <li><strong>Range Operations:</strong> Efficiently supports operations on ranges of keys.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h5 class="mb-0">2. Time Complexity</h5>
+    </div>
+    <div class="card-body">
+      <p>TreeMap operations have logarithmic time complexity:</p>
+      <ul>
+        <li>put(key, value): O(log n)</li>
+        <li>get(key): O(log n)</li>
+        <li>remove(key): O(log n)</li>
+        <li>containsKey(key): O(log n)</li>
+        <li>firstKey()/lastKey(): O(log n)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h5 class="mb-0">3. Example Code</h5>
+    </div>
+    <div class="card-body">
+                <pre><code>
+import java.util.Map;
+import java.util.TreeMap;
+
+public class TreeMapExample {
+    public static void main(String[] args) {
+        // TreeMap with natural ordering (alphabetical)
+        TreeMap< String, Integer> scores = new TreeMap<>();
+
+        // Adding key-value pairs
+        scores.put("John", 85);
+        scores.put("Alice", 92);
+        scores.put("Bob", 78);
+        scores.put("Diana", 95);
+
+        // Display all entries (will be in alphabetical order by key)
+        System.out.println("All scores: " + scores);
+
+        // Get value by key
+        System.out.println("Bob's score: " + scores.get("Bob"));
+
+        // Check if key exists
+        System.out.println("Contains Eve? " + scores.containsKey("Eve"));
+
+        // First and last entries
+        System.out.println("First entry: " + scores.firstEntry());
+        System.out.println("Last entry: " + scores.lastEntry());
+
+        // Navigation methods
+        System.out.println("Lower entry than 'C': " + scores.lowerEntry("C"));
+        System.out.println("Higher entry than 'C': " + scores.higherEntry("C"));
+
+        // Submap (range query)
+        Map< String, Integer> subMap = scores.subMap("Alice", true, "Diana", false);
+        System.out.println("Scores from Alice to before Diana: " + subMap);
+
+        // Iterate through entries
+        System.out.println("All entries:");
+        for (Map.Entry< String, Integer> entry : scores.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
+
+        // Using a custom Comparator (reverse order)
+        TreeMap< String, Integer> reversedScores = new TreeMap<>((a, b) -> b.compareTo(a));
+        reversedScores.putAll(scores);
+        System.out.println("Scores in reverse order: " + reversedScores);
+    }
+}
+                </code></pre>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h5 class="mb-0">Conclusion</h5>
+    </div>
+    <div class="card-body">
+      <p>TreeMap is the ideal choice when you need a map with sorted keys or when you need to perform range operations efficiently. While its operations are slightly slower than HashMap's, the sorted nature provides functionality that HashMap cannot provide, such as finding the closest keys or working with ranges of keys.</p>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

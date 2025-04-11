@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>LinkedList Internals</title>
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .card {
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1 class="text-center mt-5">Understanding LinkedList Internals</h1>
+
+  <div class="card">
+    <div class="card-header">
+      <h5 class="mb-0">1. Internal Structure</h5>
+    </div>
+    <div class="card-body">
+      <p>LinkedList implements a doubly-linked list data structure, where each element (node) contains references to both previous and next nodes.</p>
+      <ul>
+        <li><strong>Nodes:</strong> Each element is stored in a node containing the data and references to adjacent nodes.</li>
+        <li><strong>Head and Tail:</strong> Maintains references to both the first and last elements for efficient access.</li>
+        <li><strong>Bi-directional:</strong> Can be traversed in both directions (forward and backward).</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h5 class="mb-0">2. Time Complexity</h5>
+    </div>
+    <div class="card-body">
+      <p>LinkedList operations have varying time complexities:</p>
+      <ul>
+        <li>get(index): O(n)</li>
+        <li>add(element): O(1)</li>
+        <li>add(index, element): O(n)</li>
+        <li>remove(element): O(n)</li>
+        <li>addFirst/addLast: O(1)</li>
+        <li>removeFirst/removeLast: O(1)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h5 class="mb-0">3. Example Code</h5>
+    </div>
+    <div class="card-body">
+                <pre><code>
+import java.util.LinkedList;
+
+public class LinkedListExample {
+    public static void main(String[] args) {
+        LinkedList<String> animals = new LinkedList<>();
+
+        // Adding elements
+        animals.add("Dog");
+        animals.add("Cat");
+
+        // Adding at the beginning and end
+        animals.addFirst("Lion");
+        animals.addLast("Elephant");
+
+        // Display all elements
+        System.out.println("Animals: " + animals);
+
+        // Get first and last elements
+        System.out.println("First animal: " + animals.getFirst());
+        System.out.println("Last animal: " + animals.getLast());
+
+        // Adding at specific position
+        animals.add(2, "Tiger");
+
+        // Iterating using for-each
+        System.out.println("All animals:");
+        for (String animal : animals) {
+            System.out.println(animal);
+        }
+
+        // Queue operations
+        animals.offer("Giraffe");  // Adds to end
+        System.out.println("Peek: " + animals.peek());  // View first
+        System.out.println("Poll: " + animals.poll());  // Remove first
+
+        // Stack operations
+        animals.push("Monkey");  // Add to front
+        System.out.println("Pop: " + animals.pop());  // Remove from front
+    }
+}
+                </code></pre>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h5 class="mb-0">Conclusion</h5>
+    </div>
+    <div class="card-body">
+      <p>LinkedList is ideal for frequent insertions and deletions, especially at the beginning or end of the list. It also implements both Queue and Deque interfaces, making it versatile for different use cases. However, it's less efficient for random access operations compared to ArrayList.</p>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
