@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Service Repository Pattern in Java</title>
+  <style>
+    :root {
+      --primary-color: #3949ab;
+      --secondary-color: #5c6bc0;
+      --accent-color: #7986cb;
+      --light-bg: #f5f7ff;
+      --dark-bg: #283593;
+      --text-light: #ffffff;
+      --text-dark: #263238;
+      --code-bg: #e8eaf6;
+      --border-radius: 8px;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--light-bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    header {
+      background-color: var(--dark-bg);
+      color: var(--text-light);
+      padding: 2rem 0;
+      text-align: center;
+      border-bottom: 4px solid var(--primary-color);
+    }
+
+    .header-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .header-content h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+    }
+
+    .header-content p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      max-width: 800px;
+    }
+
+    main {
+      padding: 2rem 0;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      transition: var(--transition);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .card h2 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .card h2 .icon {
+      margin-right: 10px;
+      background-color: var(--primary-color);
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    .card-content {
+      margin-top: 1rem;
+    }
+
+    .features-list {
+      list-style-type: none;
+    }
+
+    .features-list li {
+      margin-bottom: 1rem;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .features-list li::before {
+      content: "▹";
+      color: var(--primary-color);
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .code-block {
+      background-color: var(--code-bg);
+      border-left: 4px solid var(--primary-color);
+      padding: 1rem;
+      margin: 1rem 0;
+      overflow-x: auto;
+      border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    }
+
+    .workflow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .workflow-item {
+      flex: 1;
+      min-width: 300px;
+      background-color: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      padding: 1.5rem;
+      transition: var(--transition);
+      border-top: 4px solid var(--accent-color);
+    }
+
+    .workflow-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .workflow-item h3 {
+      color: var(--secondary-color);
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+    }
+
+    .steps {
+      list-style-type: none;
+      counter-reset: step-counter;
+    }
+
+    .steps li {
+      margin-bottom: 0.8rem;
+      padding-left: 2rem;
+      position: relative;
+    }
+
+    .steps li::before {
+      counter-increment: step-counter;
+      content: counter(step-counter);
+      color: var(--text-light);
+      background-color: var(--secondary-color);
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    .summary {
+      background-color: var(--primary-color);
+      color: var(--text-light);
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      margin-top: 2rem;
+    }
+
+    .summary h2 {
+      color: var(--text-light);
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+    }
+
+    .summary ul {
+      list-style-type: none;
+    }
+
+    .summary ul li {
+      margin-bottom: 0.8rem;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .summary ul li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+    }
+
+    footer {
+      background-color: var(--dark-bg);
+      color: var(--text-light);
+      padding: 1.5rem 0;
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .footer-content p {
+      margin: 0.5rem 0;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .header-content h1 {
+        font-size: 2rem;
+      }
+      .card h2 {
+        font-size: 1.5rem;
+      }
+      .workflow {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <div class="header-content">
+      <h1>Service Repository Pattern in Java</h1>
+      <p>A comprehensive guide to implementing clean, maintainable, and flexible enterprise Java applications</p>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <div class="card">
+    <h2><span class="icon">1</span>Design Patterns & Concepts</h2>
+    <div class="card-content">
+      <ul class="features-list">
+        <li>
+          <strong>Repository Pattern:</strong> Cleanly separates data access logic from business logic
+          <ul>
+            <li>Generic Repository&lt;T, ID&gt; interface with type parameters for entity and ID types</li>
+            <li>Complete CRUD operations (Create, Read, Update, Delete)</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Service Layer Pattern:</strong> Encapsulates business logic
+          <ul>
+            <li>UserService&lt;T, ID&gt; provides business operations like filtering by age</li>
+            <li>Validates business rules before delegating to repositories</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Dependency Injection:</strong>
+          <ul>
+            <li>Services receive repositories through constructor injection</li>
+            <li>Makes code more testable and flexible</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Inheritance & Polymorphism:</strong>
+          <ul>
+            <li>Abstract User base class with specific implementations</li>
+            <li>Repository implementations for different database types</li>
+            <li>Common interface allows for polymorphic usage</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Generics:</strong>
+          <ul>
+            <li>Used throughout to provide type safety while allowing flexibility</li>
+            <li>Better handling of different user types and ID types</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Java 8 Features:</strong>
+          <ul>
+            <li>Stream API for filtering collections</li>
+            <li>Optional for safer null handling</li>
+            <li>Method references for cleaner code</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Database Abstraction:</strong>
+          <ul>
+            <li>MongoDB and MySQL implementations with technology-specific methods</li>
+            <li>Common interface for consistent interaction regardless of database type</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2><span class="icon">2</span>Implementation Approaches</h2>
+    <div class="card-content">
+      <ul class="features-list">
+        <li>
+          <strong>Structure:</strong>
+          <ul>
+            <li>Proper package organization (domain, repository, service)</li>
+            <li>Separation of concerns between layers</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Extended Functionality:</strong>
+          <ul>
+            <li>Complete CRUD operations, not just create and read</li>
+            <li>Type-specific methods for each database implementation</li>
+            <li>Better error handling with exceptions and Optional</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Realistic Implementation:</strong>
+          <ul>
+            <li>Simulates database interactions more accurately</li>
+            <li>Uses maps to represent database tables/collections</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Comprehensive Documentation:</strong>
+          <ul>
+            <li>Detailed JavaDoc comments explaining concepts and operations</li>
+            <li>Well-commented Main class demonstrating usage</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Modern Java Practices:</strong>
+          <ul>
+            <li>Follows Java best practices and conventions</li>
+            <li>Uses latest Java features appropriately</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 style="margin: 2rem 0 1rem; color: var(--primary-color);">Workflow Demonstrations</h2>
+  <div class="workflow">
+    <div class="workflow-item">
+      <h3>MongoDB Workflow</h3>
+      <ol class="steps">
+        <li>Creates a MongoDB repository</li>
+        <li>Injects it into a compatible service</li>
+        <li>Registers MongoDB users</li>
+        <li>Performs queries, filtering, and MongoDB-specific operations</li>
+      </ol>
+      <div class="code-block">
+                    <pre>// Create repository
+MongoDBRepository mongoRepo = new MongoDBRepository();
+
+// Inject repository into service (dependency injection)
+UserService&lt;MongoDBUser, String&gt; mongoUserService =
+    new UserService&lt;&gt;(mongoRepo);
+
+// Register users
+mongoUserService.registerUser(user1);
+
+// Filter users by age
+List&lt;MongoDBUser&gt; adultMongoUsers =
+    mongoUserService.getUsersByMinimumAge(18);</pre>
+      </div>
+    </div>
+    <div class="workflow-item">
+      <h3>MySQL Workflow</h3>
+      <ol class="steps">
+        <li>Creates a MySQL repository</li>
+        <li>Injects it into a compatible service</li>
+        <li>Registers MySQL users</li>
+        <li>Performs queries, filtering, and MySQL-specific operations</li>
+      </ol>
+      <div class="code-block">
+                    <pre>// Create repository
+MySqlRepository mySqlRepo = new MySqlRepository();
+
+// Inject repository into service (dependency injection)
+UserService&lt;MySqlUser, Long&gt; mySqlUserService =
+    new UserService&lt;&gt;(mySqlRepo);
+
+// Register users
+mySqlUserService.registerUser(user1);
+
+// Filter users by age
+List&lt;MySqlUser&gt; adultMySqlUsers =
+    mySqlUserService.getUsersByMinimumAge(18);</pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="summary">
+    <h2>Summary</h2>
+    <ul>
+      <li>Real-world enterprise Java applications handle database abstraction, service layers, and dependency injection.</li>
+      <li>It demonstrates the proper use of inheritance, generics, and modern Java features to create a flexible, maintainable codebase.</li>
+      <li>The design allows for easy extension to support additional database types or user classes without modifying existing code, following the Open/Closed Principle from SOLID design principles.</li>
+    </ul>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <p>© 2025 Service Repository Pattern Guide</p>
+      <p>A comprehensive guide to Java enterprise application design</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

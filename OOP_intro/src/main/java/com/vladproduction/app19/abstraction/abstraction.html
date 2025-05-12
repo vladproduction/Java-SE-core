@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abstraction in Java</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 40px;
+        }
+        h1, h2, h3 {
+            color: #4b88c8;
+        }
+        ul {
+            margin-left: 20px;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+<h1>Abstraction in Java</h1>
+
+<p><strong>Abstraction</strong> is one of the fundamental concepts of Object-Oriented Programming in Java. It refers to the process of hiding the implementation details and showing only the essential features to the user. Abstraction helps in reducing complexity and allows the programmer to focus on what an object does instead of how it does it.</p>
+
+<h2>Types of Abstraction in Java</h2>
+<h3>1. Data Abstraction</h3>
+<p>Data abstraction is achieved using abstract classes and interfaces. It helps in exposing only necessary parts of the data to the user and hiding the implementation details.</p>
+
+<h2>Interfaces in Java</h2>
+<ul>
+    <li>An interface is a <strong>blueprint of a class</strong>.</li>
+    <li>Interfaces contain <code>final</code> and <code>static</code> variables (constants).</li>
+    <li>Interfaces primarily contain <strong>abstract methods</strong> (unimplemented methods). From Java 8 onwards, <code>default</code> and <code>static</code> methods are also allowed.</li>
+    <li>An <strong>abstract method</strong> has a method signature but no body.</li>
+    <li>All methods in an interface are <code>public</code> by default.</li>
+    <li>Interfaces support <strong>multiple inheritance</strong>.</li>
+    <li>An interface is defined using the <code>interface</code> keyword.</li>
+    <li>A <strong>class extends another class</strong>, an <strong>interface extends another interface</strong>, but a <strong>class implements an interface</strong>.</li>
+    <li>We can create an <strong>object reference</strong> for an interface, but we <strong>cannot instantiate</strong> an interface directly.</li>
+</ul>
+
+<h2>Abstract Classes</h2>
+<p>An <code>abstract class</code> can have both abstract and concrete methods. It provides a partial implementation and is meant to be extended by subclasses that complete the missing functionality.</p>
+
+<h2>Access Modifiers in Java</h2>
+<ul>
+    <li><strong>public</strong> - The variable or method is accessible from anywhere.</li>
+    <li><strong>protected</strong> - Accessible within the same package and by subclasses (even in different packages).</li>
+    <li><strong>default</strong> (no modifier) - Accessible only within the same package.</li>
+    <li><strong>private</strong> - Accessible only within the same class.</li>
+</ul>
+
+<h2>Example</h2>
+<pre><code>interface Vehicle {
+    void start();
+    void stop();
+}
+
+class Car implements Vehicle {
+    public void start() {
+        System.out.println("Car started");
+    }
+
+    public void stop() {
+        System.out.println("Car stopped");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Vehicle myCar = new Car();
+        myCar.start();
+        myCar.stop();
+    }
+}</code></pre>
+
+<p>This example demonstrates how abstraction hides the actual implementation of <code>start</code> and <code>stop</code> methods inside the <code>Car</code> class and exposes only the method signatures through the <code>Vehicle</code> interface.</p>
+
+</body>
+</html>

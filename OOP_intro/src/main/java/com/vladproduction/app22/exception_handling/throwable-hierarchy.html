@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Java Throwable Hierarchy</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .hierarchy-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+        .throwable {
+            color: #333;
+            font-weight: bold;
+            background-color: #e6f3ff;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .error {
+            color: #d9534f;
+            background-color: #ffebee;
+        }
+        .runtime-exception {
+            color: #f0ad4e;
+            background-color: #fff3cd;
+        }
+        .checked-exception {
+            color: #5cb85c;
+            background-color: #dff0d8;
+        }
+        .hierarchy-level {
+            margin-left: 20px;
+            border-left: 2px solid #007bff;
+            padding-left: 10px;
+        }
+        h1 {
+            color: #007bff;
+            text-align: center;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+        .description {
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 10px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+<div class="hierarchy-container">
+    <h1>Java Throwable Hierarchy</h1>
+
+    <div class="description">
+        <strong>Understanding the Hierarchy:</strong>
+        <p>Java's exception hierarchy starts with the <code>Throwable</code> class. It has two main subclasses: <code>Error</code> and <code>Exception</code>.
+            Exceptions are further divided into checked (compile-time) and unchecked (runtime) exceptions.</p>
+    </div>
+
+    <div class="throwable">
+        java.lang.Throwable
+        <div class="hierarchy-level">
+            <div class="throwable error">
+                java.lang.Error
+                <div class="hierarchy-level">
+                    <div>java.lang.AssertionError</div>
+                    <div>java.lang.LinkageError</div>
+                    <div>java.lang.VirtualMachineError
+                        <div class="hierarchy-level">
+                            <div>java.lang.OutOfMemoryError</div>
+                            <div>java.lang.StackOverflowError</div>
+                            <div>java.lang.UnknownError</div>
+                        </div>
+                    </div>
+                    <div>java.lang.ThreadDeath</div>
+                </div>
+            </div>
+
+            <div class="throwable">
+                java.lang.Exception
+                <div class="hierarchy-level">
+                    <div class="checked-exception">
+                        Checked Exceptions
+                        <div class="hierarchy-level">
+                            <div>java.io.IOException
+                                <div class="hierarchy-level">
+                                    <div>java.io.FileNotFoundException</div>
+                                    <div>java.io.EOFException</div>
+                                </div>
+                            </div>
+                            <div>java.sql.SQLException</div>
+                            <div>java.lang.ReflectiveOperationException
+                                <div class="hierarchy-level">
+                                    <div>java.lang.ClassNotFoundException</div>
+                                    <div>java.lang.NoSuchMethodException</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="throwable runtime-exception">
+                        Unchecked Exceptions (Runtime Exceptions)
+                        <div class="hierarchy-level">
+                            <div>java.lang.RuntimeException
+                                <div class="hierarchy-level">
+                                    <div>java.lang.NullPointerException</div>
+                                    <div>java.lang.ArrayIndexOutOfBoundsException</div>
+                                    <div>java.lang.IllegalArgumentException
+                                        <div class="hierarchy-level">
+                                            <div>java.time.DateTimeException</div>
+                                        </div>
+                                    </div>
+                                    <div>java.lang.IllegalStateException</div>
+                                    <div>java.util.ConcurrentModificationException</div>
+                                    <div>java.lang.SecurityException</div>
+                                    <div>java.lang.ArithmeticException</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="description">
+        <strong>Key Distinctions:</strong>
+        <ul>
+            <li><strong>Errors (Red):</strong> Serious problems that a reasonable application should not try to catch (JVM-related issues).</li>
+            <li><strong>Checked Exceptions (Green):</strong> Compile-time exceptions that must be either caught or declared in method signature.</li>
+            <li><strong>Unchecked Exceptions (Yellow):</strong> Runtime exceptions that do not require explicit handling.</li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

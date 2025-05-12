@@ -1,0 +1,13 @@
+Object-Oriented Concepts Demonstrated:
+
+ * Composition - A "has-a" relationship where the containing object (Vehicle) completely owns and controls the lifecycle of its components (PowerUnit and Tires).
+    When the Vehicle is destroyed, these components are also destroyed.
+
+ * Aggregation - Another "has-a" relationship, but looser than composition. The Vehicle uses an AirFreshener but doesn't control its lifecycle.
+    The AirFreshener can exist independently and be shared with other objects (like an Apartment).
+
+ * Delegation - The Vehicle delegates operations to its components rather than implementing all behavior itself.
+
+ * Inheritance - The Motorcycle class extends Vehicle and overrides behavior to customize it.
+
+ * Encapsulation - Properties are private with controlled access through methods.
