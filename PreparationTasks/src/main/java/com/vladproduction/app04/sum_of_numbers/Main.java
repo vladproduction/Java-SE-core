@@ -8,6 +8,8 @@ public class Main {
 
         int summedNumbers2 = sumNumbers2(a);
         System.out.println("summedNumbers2 = " + summedNumbers2);
+
+        sumNumbers3(a);
     }
 
     private static int sumNumbers1(int a) {
@@ -33,8 +35,16 @@ public class Main {
                 break;
             }
         }
-
         return sum;
-
     }
+
+    private static void sumNumbers3(int a){
+        int sum = 0;
+        while (a > 0){
+            sum += a % 10; //add the last digit to sum
+            a /= 10; //remove last digit
+        }
+        System.out.println("Sum of digits: " + sum);
+    }
+
 }

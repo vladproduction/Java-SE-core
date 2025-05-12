@@ -1,4 +1,4 @@
-package com.vladproduction.app07.find_max_in_array;
+package com.vladproduction.app07.find_max_min_in_array;
 
 public class Main {
     public static void main(String[] args) {
@@ -9,6 +9,9 @@ public class Main {
 
         int maxElement2 = findMaxElement2(array);
         System.out.println("maxElement2 = " + maxElement2);
+
+        int maxElement3 = findMaxElement3(array);
+        System.out.println("maxElement3 = " + maxElement3);
 
     }
 
@@ -39,4 +42,30 @@ public class Main {
         return max;
     }
 
+    private static int findMaxElement3(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            throw new IllegalArgumentException("Array cannot be empty or null");
+        }
+        int max = Integer.MIN_VALUE;
+        for (int i = 0; i < nums.length; i++) {
+            if(nums[i] > max){
+                max = nums[i];
+            }
+        }
+        return max;
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -11,6 +11,8 @@ public class Main {
         revertArray2(arr);
         System.out.println(Arrays.toString(arr));
 
+        revertArray3(arr);
+
     }
 
     private static void revertArray1(int [] array){
@@ -36,6 +38,23 @@ public class Main {
             array[array.length - i - 1] = array[i] - array[array.length - i - 1];
             array[i] = array[i] - array[array.length - i - 1];
         }
+    }
+
+    private static void revertArray3(int [] array){
+        System.out.println("Original array: " + Arrays.toString(array));
+        int start = 0;
+        int end = array.length - 1;
+        while (start < end){
+            // Swap elements
+            int temp = array[start];
+            array[start] = array[end];
+            array[end] = temp;
+
+            //move pointers
+            start++;
+            end--;
+        }
+        System.out.println("Reversed array:" + Arrays.toString(array));
     }
 
 }

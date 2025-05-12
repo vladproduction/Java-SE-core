@@ -17,6 +17,8 @@ public class Main {
         // Example usage with StringBuilder
         boolean palindrome3 = isPalindrome3(text);
         System.out.println("palindrome3 = " + palindrome3); // true
+
+        isPalindrome4(text);
     }
 
     // version #1:
@@ -24,6 +26,7 @@ public class Main {
 
         s = s.toLowerCase();
         char[] chars = s.toCharArray();
+//        System.out.println(chars.length + " " + chars[0] + " " + chars[chars.length - 1]);
         for (int i = 0; i < chars.length/2; i++) {
             char start = chars[i];
             char end = chars[chars.length - 1 - i];
@@ -55,6 +58,17 @@ public class Main {
     private static boolean isPalindrome3(String input) {
         String reversed = new StringBuilder(input).reverse().toString();
         return input.equalsIgnoreCase(reversed);
+    }
+
+    private static void isPalindrome4(String input){
+        boolean isPalindrome = true;
+        for (int i = 0; i < input.length()/2; i++) {
+            if (input.toLowerCase().charAt(i) != input.toLowerCase().charAt(input.length()-i-1)) {
+                isPalindrome = false;
+                break;
+            }
+        }
+        System.out.println("isPalindrome4: " + input + "; is palindrome: " + isPalindrome);
     }
 
 
