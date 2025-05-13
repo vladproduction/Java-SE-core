@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Understanding equals() and hashCode() in Java</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        code {
+            background-color: #f4f4f4;
+            border-radius: 3px;
+            padding: 2px 5px;
+            font-family: monospace;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .highlight {
+            background-color: #ffffcc;
+            padding: 10px;
+            border-left: 5px solid #ffcc00;
+            margin: 20px 0;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+<h1>Understanding equals() and hashCode() in Java</h1>
+
+<section>
+    <h2>The Contract Between equals() and hashCode()</h2>
+    <p>In Java, there is an important contract between the <code>equals()</code> and <code>hashCode()</code> methods:</p>
+    <div class="highlight">
+        <ol>
+            <li>If two objects are equal according to the <code>equals()</code> method, then calling the <code>hashCode()</code> method on each of the two objects must produce the same integer result.</li>
+            <li>If two objects are unequal according to the <code>equals()</code> method, it is <strong>not</strong> required that calling the <code>hashCode()</code> method on each of the two objects produces distinct results. However, producing distinct results for unequal objects may improve the performance of hash tables.</li>
+        </ol>
+    </div>
+    <p>Violating this contract can lead to unpredictable behavior when your objects are used in hash-based collections such as <code>HashMap</code>, <code>HashSet</code>, and <code>Hashtable</code>.</p>
+</section>
+
+<section>
+    <h2>The equals() Method</h2>
+    <h3>Purpose</h3>
+    <p>The <code>equals()</code> method is used to compare the content of objects for equality, not just their references.</p>
+
+    <h3>Requirements</h3>
+    <p>A proper implementation of <code>equals()</code> must satisfy these properties:</p>
+    <ul>
+        <li><strong>Reflexive:</strong> For any non-null reference value <code>x</code>, <code>x.equals(x)</code> should return <code>true</code>.</li>
+        <li><strong>Symmetric:</strong> For any non-null reference values <code>x</code> and <code>y</code>, <code>x.equals(y)</code> should return <code>true</code> if and only if <code>y.equals(x)</code> returns <code>true</code>.</li>
+        <li><strong>Transitive:</strong> For any non-null reference values <code>x</code>, <code>y</code>, and <code>z</code>, if <code>x.equals(y)</code> returns <code>true</code> and <code>y.equals(z)</code> returns <code>true</code>, then <code>x.equals(z)</code> should return <code>true</code>.</li>
+        <li><strong>Consistent:</strong> For any non-null reference values <code>x</code> and <code>y</code>, multiple invocations of <code>x.equals(y)</code> should consistently return <code>true</code> or consistently return <code>false</code>, provided no information used in <code>equals</code> comparisons on the objects is modified.</li>
+        <li><strong>Non-nullity:</strong> For any non-null reference value <code>x</code>, <code>x.equals(null)</code> should return <code>false</code>.</li>
+    </ul>
+
+    <h3>Implementation Steps</h3>
+    <ol>
+        <li>Check if the compared object is the same instance (<code>this == obj</code>)</li>
+        <li>Check if the compared object is null</li>
+        <li>Check if the compared object is of the same class or type</li>
+        <li>Cast the object to the appropriate type</li>
+        <li>Compare the significant fields</li>
+    </ol>
+</section>
+
+<section>
+    <h2>The hashCode() Method</h2>
+    <h3>Purpose</h3>
+    <p>The <code>hashCode()</code> method returns an integer hash value used by hash-based collections to quickly identify potential matches and eliminate obvious non-matches.</p>
+
+    <h3>Requirements</h3>
+    <ul>
+        <li>Must be consistent with <code>equals()</code>: if <code>a.equals(b)</code> is <code>true</code>, then <code>a.hashCode() == b.hashCode()</code> must also be <code>true</code>.</li>
+        <li>Should have good distribution to minimize hash collisions</li>
+        <li>Must be consistent: the same object should return the same hash code across multiple invocations during a single execution of an application</li>
+    </ul>
+
+    <h3>Implementation Approaches</h3>
+    <h4>1. Manual Calculation</h4>
+    <pre>
+@Override
+public int hashCode() {
+    int result = name != null ? name.hashCode() : 0;
+    result = 31 * result + (email != null ? email.hashCode() : 0);
+    result = 31 * result + age;
+    return result;
+}
+        </pre>
+
+    <h4>2. Using java.util.Objects (Java 7+)</h4>
+    <pre>
+@Override
+public int hashCode() {
+    return Objects.hash(name, email, age);
+}
+        </pre>
+</section>
+
+<section>
+    <h2>Common Mistakes</h2>
+    <table>
+        <tr>
+            <th>Mistake</th>
+            <th>Consequence</th>
+        </tr>
+        <tr>
+            <td>Implementing <code>equals()</code> but not <code>hashCode()</code></td>
+            <td>Objects that are "equal" may be treated as different in hash-based collections</td>
+        </tr>
+        <tr>
+            <td>Using == instead of .equals() for strings and other objects</td>
+            <td>Compares references, not content</td>
+        </tr>
+        <tr>
+            <td>Forgetting to check for null</td>
+            <td>NullPointerException when comparing with null objects</td>
+        </tr>
+        <tr>
+            <td>Not checking instance type</td>
+            <td>ClassCastException when comparing with objects of different types</td>
+        </tr>
+        <tr>
+            <td>Inconsistent implementation between <code>equals()</code> and <code>hashCode()</code></td>
+            <td>Unpredictable behavior in collections</td>
+        </tr>
+    </table>
+</section>
+
+<section>
+    <h2>Best Practices</h2>
+    <ol>
+        <li>Always override both <code>equals()</code> and <code>hashCode()</code> together</li>
+        <li>Consider using IDE auto-generation features for consistent implementations</li>
+        <li>For Java 7+, use <code>Objects.equals()</code> and <code>Objects.hash()</code></li>
+        <li>Include all fields that define "logical equality" in both methods</li>
+        <li>Consider using libraries like Lombok to auto-generate these methods</li>
+        <li>Write unit tests to verify your implementations</li>
+    </ol>
+</section>
+
+<section>
+    <h2>Impact on Collections</h2>
+    <p>Proper implementation of <code>equals()</code> and <code>hashCode()</code> is crucial when using:</p>
+    <ul>
+        <li><code>HashMap</code> and <code>Hashtable</code> - for key lookups</li>
+        <li><code>HashSet</code> - for ensuring unique elements</li>
+        <li><code>LinkedHashMap</code> and <code>LinkedHashSet</code></li>
+        <li>Any collection that uses hashing internally</li>
+    </ul>
+</section>
+</body>
+</html>
